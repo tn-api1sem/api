@@ -31,13 +31,17 @@
     <Folder Include="src\models\" />
     <Folder Include="src\controllers\" />
     <Folder Include="src\repositories\" />
+    <Folder Include="src\repositories\entities\" />
     <Folder Include="src\services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="main.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="routes\teste_controller1.py">
+    <Compile Include="routes\api.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\controllers\test_controller.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="__init__.py" />
