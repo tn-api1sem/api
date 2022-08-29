@@ -1,0 +1,5 @@
+doc fastapi 
+https://fastapi.tiangolo.com/tutorial/first-steps/
+
+configurar fastapi em varios controllers
+https://www.tutorialsbuddy.com/python-fastapi-bigger-applications-multiple-separate-files
