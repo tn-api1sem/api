@@ -16,6 +16,7 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>api</Name>
     <RootNamespace>api</RootNamespace>
+    <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,7 @@
   <ItemGroup>
     <Folder Include="src\" />
     <Folder Include="routes\" />
+    <Folder Include="src\controllers\v1\" />
     <Folder Include="src\models\" />
     <Folder Include="src\controllers\" />
     <Folder Include="src\repositories\" />
@@ -41,9 +43,13 @@
     <Compile Include="routes\api.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\controllers\test_controller.py">
+    <Compile Include="src\controllers\v1\test_controller.py" />
+    <Compile Include="src\controllers\v1\__init__.py" />
+    <Compile Include="src\controllers\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="src\repositories\__init__.py" />
+    <Compile Include="src\services\__init__.py" />
     <Compile Include="__init__.py" />
     <Compile Include="src\__init__.py">
       <SubType>Code</SubType>
