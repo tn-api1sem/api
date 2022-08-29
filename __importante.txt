@@ -3,3 +3,6 @@ https://fastapi.tiangolo.com/tutorial/first-steps/
 
 configurar fastapi em varios controllers
 https://www.tutorialsbuddy.com/python-fastapi-bigger-applications-multiple-separate-files
+
+boas praticas python 
+https://dev.to/lucianorangelaguiar/boas-praticas-de-pep-8-5ccl
