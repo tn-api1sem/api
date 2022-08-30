@@ -30,10 +30,11 @@
     <Folder Include="src\" />
     <Folder Include="routes\" />
     <Folder Include="src\controllers\v1\" />
+    <Folder Include="src\data\repository\" />
     <Folder Include="src\models\" />
     <Folder Include="src\controllers\" />
-    <Folder Include="src\repositories\" />
-    <Folder Include="src\repositories\entities\" />
+    <Folder Include="src\data\" />
+    <Folder Include="src\data\context\" />
     <Folder Include="src\services\" />
   </ItemGroup>
   <ItemGroup>
@@ -48,7 +49,10 @@
     <Compile Include="src\controllers\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\repositories\__init__.py" />
+    <Compile Include="src\data\context\api_context.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\data\__init__.py" />
     <Compile Include="src\services\__init__.py" />
     <Compile Include="__init__.py" />
     <Compile Include="src\__init__.py">

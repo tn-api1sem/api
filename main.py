@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.api import router as api_router
 
+#TODO - Fazer backup de todos os aruqivos do database no inicio da aplicação
+
 app = FastAPI()
 
 app.add_middleware(
