@@ -1,8 +1,6 @@
 class DefaultQueryableEntity:
     last_index_id = 0
-    dataset = [
-        object()
-    ]
+    dataset = [ object() ]
 
     def __init__(self) -> None:
         pass

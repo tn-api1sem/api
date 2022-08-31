@@ -12,4 +12,4 @@ userRepository = UserRepository()
 
 @router.get("/")
 def test_route():
-    return userRepository.get_all()
+    return userRepository.insert(1)

@@ -45,6 +45,7 @@
     <Compile Include="routes\api.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="routes\__init__.py" />
     <Compile Include="src\controllers\v1\test_controller.py" />
     <Compile Include="src\controllers\v1\__init__.py" />
     <Compile Include="src\controllers\__init__.py">
@@ -53,7 +54,9 @@
     <Compile Include="src\data\context\api_context.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\data\context\__init__.py" />
+    <Compile Include="src\data\context\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\data\repository\user_repository.py">
       <SubType>Code</SubType>
     </Compile>
