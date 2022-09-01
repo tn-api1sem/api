@@ -30,7 +30,7 @@
     <Folder Include="src\" />
     <Folder Include="routes\" />
     <Folder Include="src\controllers\v1\" />
-    <Folder Include="src\data\database\" />
+    <Folder Include="database\" />
     <Folder Include="src\data\repository\" />
     <Folder Include="src\models\" />
     <Folder Include="src\controllers\" />
@@ -54,10 +54,10 @@
     <Compile Include="src\data\context\api_context.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\data\context\__init__.py">
+    <Compile Include="src\data\context\json_context.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\data\repository\user_repository.py">
+    <Compile Include="src\data\context\__ init __.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\data\repository\__init__.py" />
@@ -67,16 +67,12 @@
     </Compile>
     <Compile Include="src\models\__init__.py" />
     <Compile Include="src\services\__init__.py" />
-    <Compile Include="__init__.py" />
     <Compile Include="src\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\data\database\user.json">
-      <SubType>Code</SubType>
-      <Publish>True</Publish>
-    </Content>
     <Content Include="__importante.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />

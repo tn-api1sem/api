@@ -6,3 +6,8 @@ https://www.tutorialsbuddy.com/python-fastapi-bigger-applications-multiple-separ
 
 boas praticas python 
 https://dev.to/lucianorangelaguiar/boas-praticas-de-pep-8-5ccl
+
+
+OBS:
+def _teste() < função privada
+criar sempre o __init__.py
