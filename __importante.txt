@@ -1,3 +1,7 @@
+************************************************
+
+DOCUMENTAÇÃO
+
 doc fastapi 
 https://fastapi.tiangolo.com/tutorial/first-steps/
 
@@ -7,7 +11,20 @@ https://www.tutorialsbuddy.com/python-fastapi-bigger-applications-multiple-separ
 boas praticas python 
 https://dev.to/lucianorangelaguiar/boas-praticas-de-pep-8-5ccl
 
+************************************************
 
-OBS:
+CONFIGURAÇÃO
+
+Como configurar o projeto caso nao esteja funcionando
+Rode os seguintes comandos
+	- pip install fastapi
+	- pip install uvicorn
+
+************************************************
+
+OBSERVAÇÕES
+
 def _teste() < função privada
 criar sempre o __init__.py
+
+************************************************
