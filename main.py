@@ -1,9 +1,17 @@
-import uvicorn
+import uvicorn, shutil, os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.routes.api import router as api_router
 
-#TODO - Fazer backup de todos os aruqivos do database no inicio da aplicacao
+
+#Backup on start
+files = ["test.json"]
+fileDir = os.path.dirname(os.path.realpath('__file__'))
+for f in files:
+    src = fileDir + "\\database\\"+f
+    dst = fileDir + "\\database\\backup_"+f
+    shutil.copy(src, dst)
+
 
 app = FastAPI()
 
