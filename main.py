@@ -5,7 +5,7 @@ from src.routes.api import router as api_router
 
 
 #Backup on start
-files = ["test.json"]
+files = ['test.json', 'profiles.json', 'rates.json', 'sprints.json', 'team_sprint.json', 'teams.json', 'user_profile.json', 'user_rate.json', 'user_team.json', 'users.json']
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 for f in files:
     src = fileDir + "\\database\\"+f

@@ -20,8 +20,6 @@ Rode os seguintes comandos
 	- pip install fastapi
 	- pip install uvicorn
 
-************************************************
-
 COMO IMPLEMENTAR UMA NOVA ROTA/SERVIÇO/CONTROLLER
 0.Seguir o padrao do teste!
 1.Criar o controller e adicionar nas routes.api
@@ -31,6 +29,12 @@ COMO IMPLEMENTAR UMA NOVA ROTA/SERVIÇO/CONTROLLER
 5.Criar o arquivo .json na pasta database
 6.Colocar o arquivo no array do main para realizar o backup
 
+
+MODELO DE BANCO INICIAL
+{
+    "last_index": 0,
+    "dataset": []
+}
 
 ************************************************
 
