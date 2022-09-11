@@ -80,6 +80,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="database\test.json" />
+    <Content Include="database\teams.json" />
+    <Content Include="database\profiles.json" />
+    <Content Include="database\sprints.json" />
+    <Content Include="database\team_sprint.json" />
+    <Content Include="database\user_rate.json" />
+    <Content Include="database\user_profile.json" />
+    <Content Include="database\user_team.json" />
+    <Content Include="database\rates.json" />
+    <Content Include="database\users.json" />
     <Content Include="__importante.txt" />
   </ItemGroup>
   <ItemGroup>
