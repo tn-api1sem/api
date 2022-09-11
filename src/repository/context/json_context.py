@@ -1,8 +1,8 @@
 import json
 import io
+import sys,os
 from types import SimpleNamespace
-
-from ....src.models.default_queryable_entity import DefaultQueryableEntity
+from .default_queryable_entity import DefaultQueryableEntity
 
 class JsonContext:
     _filename = "";
@@ -11,7 +11,8 @@ class JsonContext:
     _is_transaction_opened = False
 
     def __init__(self, filename) -> None:
-        self._filename = filename;
+        fileDir = os.path.dirname(os.path.realpath('__file__'))
+        self._filename = fileDir + "\\database\\" + filename
         self.begin_transaction();
 
     def begin_transaction(self) -> None:
@@ -38,6 +39,7 @@ class JsonContext:
 
     def insert(self,data):
         self._context.last_index += 1
+        data.id = self._context.last_index
         self._context.dataset.append(data);
         
     def update(self, data):
@@ -65,7 +67,6 @@ class JsonContext:
             database = json.dumps(self._context, default=lambda o: o.__dict__)
             f.write(database)
             
-            f.detach()
             f.close()
 
         self._is_transaction_opened = False
