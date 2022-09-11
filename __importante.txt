@@ -22,9 +22,21 @@ Rode os seguintes comandos
 
 ************************************************
 
+COMO IMPLEMENTAR UMA NOVA ROTA/SERVIÇO/CONTROLLER
+0.Seguir o padrao do teste!
+1.Criar o controller e adicionar nas routes.api
+2.Criar o serviço
+3.Criar o model
+4.Criar o repositorio
+5.Criar o arquivo .json na pasta database
+6.Colocar o arquivo no array do main para realizar o backup
+
+
+************************************************
+
 OBSERVAÇÕES
 
 def _teste() < função privada
-criar sempre o __init__.py
+criar sempre o __init__.py, exceção no model
 
 ************************************************
