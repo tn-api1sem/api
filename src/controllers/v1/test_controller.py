@@ -8,4 +8,4 @@ router = APIRouter(
 
 @router.get("/")
 def test_route():
-    return { "message": "test response" }
+    return `{"response":"OK"}
