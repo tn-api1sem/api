@@ -7,8 +7,5 @@ class user_repository(object):
         self._apiContext = ApiContext()
         pass
 
-    def test(self):
-        self._apiContext.user_table.get_all
-
     def get(self):
         return self._apiContext.user_table.get_all()

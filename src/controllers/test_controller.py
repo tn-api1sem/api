@@ -1,16 +1,16 @@
 from http.client import OK
 from fastapi import APIRouter
-from pydantic import BaseModel
-from ..services.test_service import test_service as TestService
 from ..models.test_model import test_model as TestModel
- 
+from ..services.test_service import test_service
+from ..services.usuario_services import usuario_services as UsuarioService
 router = APIRouter(
     prefix="/api/v1/test",
     tags=["test"],
     responses={404: {"description": "Not found"}},
 )
 
-service = TestService()
+service = test_service()
+usuario_services = UsuarioService()
 
 @router.get("/")
 def test_getall_route():
