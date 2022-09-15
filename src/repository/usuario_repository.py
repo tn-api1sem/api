@@ -1,10 +1,9 @@
 from .context.api_context import ApiContext
 
 class user_repository(object):
-    _apiContext: ApiContext
+    _apiContext: ApiContext = ApiContext()
 
     def __init__(self) -> None:
-        self._apiContext = ApiContext()
         pass
 
     def get(self):

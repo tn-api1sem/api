@@ -1,4 +1,6 @@
-from fastapi import APIRouter
+from http.client import OK
+import json
+from fastapi import APIRouter, Response
 
 from ..services.usuario_services import usuario_services as UsuarioService
 
@@ -9,6 +11,8 @@ router = APIRouter(
 )
 usuario_services = UsuarioService()
 
+
 @router.get("/")
 def get_usuarios():
-    return usuario_services.buscar_usuario()
+    return  usuario_services.buscar_usuario()
+    

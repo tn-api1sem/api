@@ -7,8 +7,8 @@ from src.routes.api import router
 files = ['test.json', 'profiles.json', 'rates.json', 'sprints.json', 'team_sprint.json', 'teams.json', 'user_profile.json', 'user_rate.json', 'user_team.json', 'users.json']
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 for f in files:
-    src = fileDir + "\\database\\"+f
-    dst = fileDir + "\\database\\backup_"+f
+    src = fileDir + "/database/"+f
+    dst = fileDir + "/database/backup_"+f
     shutil.copy(src, dst)
 
 

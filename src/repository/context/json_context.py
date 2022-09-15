@@ -12,7 +12,8 @@ class JsonContext:
 
     def __init__(self, filename) -> None:
         fileDir = os.path.dirname(os.path.realpath('__file__'))
-        self._filename = fileDir + "\\database\\" + filename
+        self._filename = fileDir + "/database/" + filename
+        self.begin_transaction()
 
     def begin_transaction(self) -> None:
         if(self._is_transaction_opened):
