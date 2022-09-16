@@ -8,3 +8,8 @@ class usuario_services(object):
 
     def buscar_usuario(self):
         return self._user_repository.get()
+
+    def buscar_id_usuario(self,id):
+        return self._user_repository.busca_id_usuario(id)
+
+
