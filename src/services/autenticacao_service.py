@@ -10,7 +10,7 @@ class autenticacao_service(object):
     def login (self, login:autenticacao_model):
         todos_usuarios = self.repository.get()
         for usuario in todos_usuarios:
-            if usuario.login==login.usuario and usuario.senha==login.senha
+            if usuario.login==login.usuario and usuario.senha==login.senha:
                 return "Sucesso"
 
         return "Erro"
