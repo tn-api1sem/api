@@ -15,4 +15,7 @@ usuario_services = UsuarioService()
 @router.get("/")
 def get_usuarios():
     return  usuario_services.buscar_usuario()
-    
+
+@router.get("/{id}")
+def id_get_usuario(id:int):
+    return usuario_services.buscar_id_usuario(id)
