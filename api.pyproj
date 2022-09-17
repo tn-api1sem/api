@@ -17,6 +17,7 @@
     <Name>api</Name>
     <RootNamespace>api</RootNamespace>
     <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,44 +29,49 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\" />
-    <Folder Include="routes\" />
-    <Folder Include="src\controllers\v1\" />
+    <Folder Include="src\routes\" />
     <Folder Include="database\" />
-    <Folder Include="src\data\repository\" />
     <Folder Include="src\models\" />
     <Folder Include="src\controllers\" />
-    <Folder Include="src\data\" />
-    <Folder Include="src\data\context\" />
+    <Folder Include="src\repository\" />
+    <Folder Include="src\repository\context\" />
     <Folder Include="src\services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="main.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="routes\api.py">
+    <Compile Include="src\models\test_model.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="routes\__init__.py" />
-    <Compile Include="src\controllers\v1\test_controller.py" />
-    <Compile Include="src\controllers\v1\__init__.py" />
+    <Compile Include="src\repository\test_repository.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\routes\api.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\routes\__init__.py" />
+    <Compile Include="src\controllers\test_controller.py" />
     <Compile Include="src\controllers\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\data\context\api_context.py">
+    <Compile Include="src\repository\context\api_context.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\data\context\json_context.py">
+    <Compile Include="src\repository\context\json_context.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\data\context\__ init __.py">
+    <Compile Include="src\repository\context\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="src\data\repository\__init__.py" />
-    <Compile Include="src\data\__init__.py" />
-    <Compile Include="src\models\default_queryable_entity.py">
+    <Compile Include="src\repository\__init__.py" />
+    <Compile Include="src\repository\context\default_queryable_entity.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="src\models\__init__.py" />
+    <Compile Include="src\services\test_service.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="src\services\__init__.py" />
     <Compile Include="src\__init__.py">
       <SubType>Code</SubType>
@@ -73,7 +79,28 @@
     <Compile Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="database\test.json" />
+    <Content Include="database\teams.json" />
+    <Content Include="database\profiles.json" />
+    <Content Include="database\sprints.json" />
+    <Content Include="database\team_sprint.json" />
+    <Content Include="database\user_rate.json" />
+    <Content Include="database\user_profile.json" />
+    <Content Include="database\user_team.json" />
+    <Content Include="database\rates.json" />
+    <Content Include="database\users.json" />
     <Content Include="__importante.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.10</Version>
+      <Description>env (Python 3.10 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
