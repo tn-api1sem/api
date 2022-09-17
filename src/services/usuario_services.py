@@ -1,3 +1,4 @@
+from ..models.usuario_model import usuario_model
 from ..repository.usuario_repository import user_repository
 
 
@@ -11,5 +12,9 @@ class usuario_services(object):
 
     def buscar_id_usuario(self,id):
         return self._user_repository.busca_id_usuario(id)
+
+    def post_usuario(self, objectToPost: usuario_model):
+        return self._user_repository.post_usuario(objectToPost)
+
 
 

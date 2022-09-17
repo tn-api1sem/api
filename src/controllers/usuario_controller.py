@@ -1,7 +1,8 @@
 from http.client import OK
 import json
-from fastapi import APIRouter, Response
+from fastapi import APIRouter
 
+from ..models.usuario_model import usuario_model
 from ..services.usuario_services import usuario_services as UsuarioService
 
 router = APIRouter(
@@ -19,3 +20,8 @@ def get_usuarios():
 @router.get("/{id}")
 def id_get_usuario(id:int):
     return usuario_services.buscar_id_usuario(id)
+
+@router.post("/")
+def post_usuario(objectToPost:usuario_model):
+    usuario_services.post(objectToPost)
+    return OK
