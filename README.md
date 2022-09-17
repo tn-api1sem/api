@@ -35,10 +35,12 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 
 ## Backlog
 **Primeira Sprint**
-![image](https://user-images.githubusercontent.com/111552950/190877450-60b160ee-f3f9-4d0e-b9e9-50634302d6ff.png)
+![image](https://user-images.githubusercontent.com/111552950/190877802-2cebade1-94b4-45cc-b542-ea32d83edf59.png)
+
 
 **Do Produto** <br />
-![image](https://user-images.githubusercontent.com/111552950/190877011-8b1fcf42-9cfc-420e-8b17-17e56812c111.png)
+![image](https://user-images.githubusercontent.com/111552950/190877849-b79152e9-7417-4bb1-933c-4ade5e36ec8d.png)
+
 
 ## Tecnologias e Ferramentas
 
