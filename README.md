@@ -37,7 +37,7 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 **Primeira Sprint**
 ![image](https://user-images.githubusercontent.com/61194755/190876875-e9f7c9d7-83b0-454b-8927-083c17041c1d.png)
 
-**Do Produto**
+**Do Produto** <br />
 ![image](https://user-images.githubusercontent.com/111552950/190877011-8b1fcf42-9cfc-420e-8b17-17e56812c111.png)
 
 ## Tecnologias e Ferramentas
