@@ -22,5 +22,5 @@ def id_get_usuario(id:int):
 
 @router.post("/")
 def post_usuario(objectToPost:usuario_model):
-    usuario_services.post(objectToPost)
+    usuario_services.post_usuario(objectToPost)
     return OK
