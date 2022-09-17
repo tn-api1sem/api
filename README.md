@@ -32,9 +32,12 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 | 06/11           | Terceira  |   -    |
 | 27/11           | Quarta    |   -     |
 
+
 ## Backlog
 **Primeira Sprint**
 ![image](https://user-images.githubusercontent.com/61194755/190876875-e9f7c9d7-83b0-454b-8927-083c17041c1d.png)
+![image](https://user-images.githubusercontent.com/111552950/190877011-8b1fcf42-9cfc-420e-8b17-17e56812c111.png)
+
 
 **Do Produto**
 
@@ -43,9 +46,12 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 <div class="box">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="40" height="40"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" width="40" height="40"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-plain-wordmark.svg" width="40" height="40"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" width="40" height="40"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" width="40" height="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original-wordmark.svg" width="40" height="40"/> 
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original-wordmark.svg" width="40" height="40"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/>
+
 </div>
 
 
