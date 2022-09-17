@@ -24,8 +24,6 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 - Sistema de controle de versão de código (Git)
 - Documentações
 
-
-
 ## Entrega das Sprints
 | Data da Entrega | Sprints   | Status |
 | -------------   | --------- | -------|
@@ -33,6 +31,12 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 | 09/10           | Segunda   |   -    |
 | 06/11           | Terceira  |   -    |
 | 27/11           | Quarta    |   -     |
+
+## Backlog
+**Primeira Sprint**
+![image](https://user-images.githubusercontent.com/61194755/190876875-e9f7c9d7-83b0-454b-8927-083c17041c1d.png)
+
+**Do Produto**
 
 ## Tecnologias e Ferramentas
 
