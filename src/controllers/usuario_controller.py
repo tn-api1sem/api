@@ -1,5 +1,4 @@
 from http.client import OK
-import json
 from fastapi import APIRouter
 
 from ..models.usuario_model import usuario_model
