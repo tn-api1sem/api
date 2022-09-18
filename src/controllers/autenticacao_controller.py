@@ -6,7 +6,7 @@ from src.services.autenticacao_service import autenticacao_service
 
 
 router = APIRouter(
-    prefix="/api/v1/autenticacao",
+    prefix="/api/v1/auth",
     tags=["autenticacao"],
     responses={404: {"description": "Not found"}},
 )
