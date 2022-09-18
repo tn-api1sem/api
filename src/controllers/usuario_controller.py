@@ -24,3 +24,13 @@ def id_get_usuario(id:int):
 def post_usuario(objectToPost:usuario_model):
     usuario_services.post_usuario(objectToPost)
     return OK
+
+@router.put("/")
+def put_usuario(objectToPut:usuario_model):
+    usuario_services.put_usuario(objectToPut)
+    return OK
+
+@router.delete("/{id}")
+def delete_id_usuario(id:int):
+    return usuario_services.delete_id_usuario(id)
+

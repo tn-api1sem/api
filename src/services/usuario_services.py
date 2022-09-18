@@ -16,5 +16,10 @@ class usuario_services(object):
     def post_usuario(self, objectToPost: usuario_model):
         return self._user_repository.post_usuario(objectToPost)
 
+    def put_usuario(self, objectToPut: usuario_model):
+        return self._user_repository.put_usuario(objectToPut)
+
+    def delete_id_usuario(self, id:int):
+       return self ._user_repository.delete_id_usuario(id)
 
 

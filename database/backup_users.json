@@ -1,16 +1,1 @@
-{
-  "last_index": 2,
-  "dataset": [
-    {
-      "usuario":"admin",
-      "senha":"admin",
-      "id_perfil":1,
-      "id": 1
-    },{
-      "usuario":"lucas",
-      "senha":"teste",
-      "id_perfil":2,
-      "id": 2
-    }
-  ]
-}
+{"last_index": 3, "dataset": [{"usuario": "admin", "senha": "admin", "id_perfil": 1, "id": 1}, {"usuario": "lucas", "senha": "teste", "id_perfil": 2, "id": 2}, {"usuario": "jose", "senha": "admin", "id_perfil": 1, "id": 3}]}
