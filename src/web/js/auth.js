@@ -7,11 +7,17 @@ let userLogin = function () {
     }
 
     const xml = new XMLHttpRequest();
-    xml.onreadystatechange = function () {
+    xml.onloadend = function () {
         if (xml.status == 200) {
             console.log(xml.response);
+            //Redirecionar
+            return;
         }
     };
+
+    xml.onerror = function(){
+        alert("Usuario/Senha incorretos");
+    }
 
     xml.open("POST", localURL + "/api/v1/auth");
     xml.setRequestHeader('Access-Control-Allow-Origin', '*');
