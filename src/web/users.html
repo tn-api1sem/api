@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>Tables</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -161,25 +161,11 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
-                        </li>
                         <li>
+                            <a href="index.html">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li class="active">
                             <a href="users.html">
                                 <i class="fas fa-user"></i>Usuarios</a>
                         </li>
@@ -199,12 +185,13 @@
                             <!-- Search -->
 
                             <form class="form-header invisible" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
-                            
+
                             <!-- Search -->
                             <div class="header-button">
                                 <!-- <div class="noti-wrap">
@@ -371,10 +358,70 @@
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
-                
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE -->
+                                <h3 class="title-5 m-b-35">Usuarios</h3>
+                                <div class="table-data__tool">
+                                    <div class="table-data__tool-right ml-auto">
+                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#createUserModal">
+                                            <i class="zmdi zmdi-plus"></i>Adicionar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>nome</th>
+                                                <th>perfil</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody-users">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- END MAIN CONTENT-->
-            <!-- END PAGE CONTAINER-->
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModal"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createUserModal">Cadastrar Usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login-form">
+                            <div class="form-group">
+                                <label>Login</label>
+                                <input class="au-input au-input--full" type="text" name="login" id="newUserLogin" placeholder="Login">
+                            </div>
+                            <div class="form-group">
+                                <label>Senha</label>
+                                <input class="au-input au-input--full" type="password" name="password" id="newUserPass" placeholder="Senha">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" onclick="registerNewUser()">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -402,9 +449,46 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script src="js/consts.js"></script>
 
     <script>
         document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
+    </script>
+
+    <script src="js/users.js"></script>
+
+    <script>
+        async function loadUsers() {
+            var users = await getUsers();
+            var tbody = document.getElementById('tbody-users');
+            console.log(users)
+
+            for (var i = 0; i < users.length; i++) {
+                tbody.innerHTML += "<tr class=\"tr-shadow\">" +
+                    "<td>" + users[i].usuario + "</td>" +
+                    "<td>" + users[i].id_perfil + "</td>" +
+                    "<td>\<div class=\"table-data-feature\">" +
+                    // Editar Usuario
+                    // "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Editar\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteUser(" + users[i].id + ")\" >\<i class=\"zmdi zmdi-delete\"></i>\</button>" +
+                    "</div>\</td>" +
+                    "</tr><tr class=\"spacer\"></tr>"
+            }
+        }
+
+        loadUsers();
+
+        function deleteUser(id) {
+            alert(id)
+        }
+
+        function registerNewUser(){
+            var login = document.getElementById('newUserLogin').value;
+            var password = document.getElementById('newUserPass').value;
+            
+            alert(login)
+            alert(password)
+        }
     </script>
 
 </body>

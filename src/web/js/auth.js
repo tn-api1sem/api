@@ -1,6 +1,7 @@
 let userLogin = function () {
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("pass").value;
+    let email = document.getElementById("email").value.toString();
+    let password = document.getElementById("pass").value.toString();
+
     const params = {
         usuario: email,
         senha: password
@@ -11,6 +12,8 @@ let userLogin = function () {
         if (xml.status == 200) {
             console.log(xml.response);
             //Redirecionar
+            window.localStorage.setItem('user', xml.response)
+            window.location.href = 'index.html'
             return;
         }
     };
