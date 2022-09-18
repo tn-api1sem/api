@@ -32,5 +32,6 @@ def put_usuario(objectToPut:usuario_model):
 
 @router.delete("/{id}")
 def delete_id_usuario(id:int):
-    return usuario_services.delete_id_usuario(id)
+    usuario_services.delete_id_usuario(id)
+    return OK
 
