@@ -1,4 +1,1 @@
-{
-  "last_index": 0,
-  "dataset": []
-}
+{"last_index": 8, "dataset": [{"usuario": "admin", "senha": "admin", "id_perfil": 1, "id": 1}, {"usuario": "teste", "senha": "1234", "id_perfil": 1, "id": 6}, {"usuario": "Tech_ninja", "senha": "Tech_ninja", "id_perfil": 1, "id": 8}]}

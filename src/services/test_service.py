@@ -1,4 +1,4 @@
-from ..models import test_model 
+from ..models import test_model
 from ..repository.test_repository import test_repository
 
 
