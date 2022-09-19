@@ -6,8 +6,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.routes.api import router
 
-#Backup on start
-files = ['test.json', 'profiles.json', 'rates.json', 'sprints.json', 'team_sprint.json', 'teams.json', 'user_profile.json', 'user_rate.json', 'user_team.json', 'users.json']
+# Backup on start
+files = ['test.json', 'profiles.json', 'rates.json', 'sprints.json', 'team_sprint.json',
+         'teams.json', 'user_profile.json', 'user_rate.json', 'user_team.json', 'users.json']
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 for f in files:
     src = fileDir + "/database/"+f
@@ -20,7 +21,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8000"],
+    allow_origins=["*", "null"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -34,4 +35,3 @@ webbrowser.open(url,new=2)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
-

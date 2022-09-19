@@ -1,3 +1,4 @@
+from distutils.log import error
 from src.models.login_model import autenticacao_model
 from src.repository.autenticacao_repository import user_repository
 
@@ -13,4 +14,4 @@ class autenticacao_service(object):
             if usuario.usuario == login.usuario and usuario.senha == login.senha:
                 return usuario
 
-        return "Erro"
+        raise Exception("Usuario/Senhas incorretos")
