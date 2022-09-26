@@ -12,7 +12,7 @@ files = ['test.json', 'profiles.json', 'rates.json', 'sprints.json', 'team_sprin
 fileDir = os.path.dirname(os.path.realpath('__file__'))
 for f in files:
     src = fileDir + "/database/"+f
-    dst = fileDir + "/database/backup_"+f
+    dst = fileDir + "/database/backup/backup_"+f
     shutil.copy(src, dst)
 
 
