@@ -414,6 +414,11 @@
                                 <label>Senha</label>
                                 <input class="au-input au-input--full" type="password" name="password" id="newUserPass" placeholder="Senha">
                             </div>
+                            <div class="form-group">
+                                <label>Perfis</label>
+                                <select class="au-input au-input--full" id="combobox-profiles">
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -461,7 +466,6 @@
         async function loadUsers() {
             var users = await getUsers();
             var tbody = document.getElementById('tbody-users');
-            console.log(users)
 
             for (var i = 0; i < users.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
@@ -476,7 +480,17 @@
             }
         }
 
+        async function loadComboBox(){
+            var profiles = await getUsers();
+            var select = document.getElementById("combobox-profiles")
+
+            for(var i = 0; i < profiles.length; i++){
+                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].usuario}</option>`
+            }
+        }
+
         loadUsers();
+        loadComboBox();
 
         function registerNewUser(){
             var login = document.getElementById('newUserLogin').value;
