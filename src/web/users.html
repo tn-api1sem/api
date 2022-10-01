@@ -376,6 +376,8 @@
                                         <thead>
                                             <tr>
                                                 <th>nome</th>
+                                                <th>email</th>
+                                                <th>celular</th>
                                                 <th>perfil</th>
                                                 <th></th>
                                             </tr>
@@ -419,6 +421,10 @@
                                 <input class="au-input au-input--full" type="password" name="password" id="newUserPass" placeholder="Senha">
                             </div>
                             <div class="form-group">
+                                <label>Celular</label>
+                                <input class="au-input au-input--full" type="number" name="celular" id="celular" placeholder="Celular">
+                            </div>
+                            <div class="form-group">
                                 <label>Perfis</label>
                                 <select class="form-control" id="combobox-profiles">
                                     <option disabled selected value="-1">Selecione o Perfil</option>
@@ -428,7 +434,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary" onclick="registerNewUser()">Cadastrar</button>
+                        <button type="button" class="btn btn-primary" onclick="insertOrUpdate()">Cadastrar</button>
                     </div>
                 </div>
             </div>
@@ -475,10 +481,11 @@
             for (var i = 0; i < users.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + users[i].usuario + "</td>" +
+                    "<td>" + users[i].email + "</td>" +
+                    "<td>" + users[i].celular + "</td>" +
                     "<td>" + users[i].id_perfil + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
-                    // Editar Usuario
-                    // "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Editar\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"insertOrUpdate("+ users[i].usuario +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteUser(" + users[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
                     "</div>\</td>" +
                     "</tr><tr class=\"spacer\"></tr>"
@@ -497,29 +504,23 @@
         loadUsers();
         loadComboBox();
 
-        function registerNewUser(){
+        function insertOrUpdate(id = 0){
             var login = document.getElementById('newUserLogin').value;
             var password = document.getElementById('newUserPass').value;
             var email = document.getElementById('email').value;
+            var celular = document.getElementById('celular').value;
             
-            var selectPerfil = document.getElementById('perfil');
-            var idPerfil = select.options[select.selectedIndex].value;
+            var selectPerfil = document.getElementById('combobox-profiles');
+            var idPerfil = selectPerfil.options[selectPerfil.selectedIndex].value;
 
-            console.log(email);
-            console.log(idPerfil);
-            //createUser(idPerfil, login, password, email);
+            if(!id){
+                createUser(idPerfil, login, password, email, celular);
+                return;
+            }
+
+            updateUsers(id, idPerfil, login, password, email, celular)
         }
 
-        function editUser(){
-            var id = document.getElementById('id').value;
-            var login = document.getElementById('newUserLogin').value;
-            var password = document.getElementById('newUserPass').value;
-            var email = document.getElementById('email').value;
-            
-            var selectPerfil = document.getElementById('perfil');
-            var idPerfil = select.options[select.selectedIndex].value;
-            updateUsers(id, idPerfil, login, password, email)
-        }
     </script>
 
 </body>

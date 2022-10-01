@@ -29,7 +29,7 @@ let deleteUser = async (id) => {
     window.location.reload();
 }
 
-let createUser = async (id_perfil, login, password, email) => {
+let createUser = async (id_perfil, login, password, email, celular) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -38,6 +38,7 @@ let createUser = async (id_perfil, login, password, email) => {
         "senha": password.toString(),
         "email": email.toString(),
         "id_perfil": id_perfil,
+        "celular":celular,
         "id": 0
     });
 
@@ -56,7 +57,7 @@ let createUser = async (id_perfil, login, password, email) => {
     window.location.reload();
 }
 
-let updateUsers = async (id, id_perfil, login, password, email) => {
+let updateUsers = async (id, id_perfil, login, password, email, celular) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -65,6 +66,7 @@ let updateUsers = async (id, id_perfil, login, password, email) => {
         "senha": password.toString(),
         "email": email.toString(),
         "id_perfil": id_perfil,
+        "celular":celular,
         "id": id
     });
 
