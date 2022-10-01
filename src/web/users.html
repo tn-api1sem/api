@@ -500,8 +500,25 @@
         function registerNewUser(){
             var login = document.getElementById('newUserLogin').value;
             var password = document.getElementById('newUserPass').value;
+            var email = document.getElementById('email').value;
             
-            createUser(login, password);
+            var selectPerfil = document.getElementById('perfil');
+            var idPerfil = select.options[select.selectedIndex].value;
+
+            console.log(email);
+            console.log(idPerfil);
+            //createUser(idPerfil, login, password, email);
+        }
+
+        function editUser(){
+            var id = document.getElementById('id').value;
+            var login = document.getElementById('newUserLogin').value;
+            var password = document.getElementById('newUserPass').value;
+            var email = document.getElementById('email').value;
+            
+            var selectPerfil = document.getElementById('perfil');
+            var idPerfil = select.options[select.selectedIndex].value;
+            updateUsers(id, idPerfil, login, password, email)
         }
     </script>
 
