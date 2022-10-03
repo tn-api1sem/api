@@ -15,3 +15,4 @@ class autenticacao_service(object):
                 return usuario
 
         raise Exception("Usuario/Senhas incorretos")
+
