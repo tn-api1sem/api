@@ -7,13 +7,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.routes.api import router
 
 # Backup on start
-files = ['test.json', 'profiles.json', 'rates.json', 'sprints.json', 'team_sprint.json',
-         'teams.json', 'user_profile.json', 'user_rate.json', 'user_team.json', 'users.json']
-fileDir = os.path.dirname(os.path.realpath('__file__'))
-for f in files:
-    src = fileDir + "/database/"+f
-    dst = fileDir + "/database/backup/backup_"+f
-    shutil.copy(src, dst)
+# files = ['test.json', 'profiles.json', 'rates.json', 'sprints.json', 'team_sprint.json',
+#          'teams.json', 'user_profile.json', 'user_rate.json', 'user_team.json', 'users.json']
+# fileDir = os.path.dirname(os.path.realpath('__file__'))
+# for f in files:
+#     src = fileDir + "/database/"+f
+#     dst = fileDir + "/database/backup/backup_"+f
+#     shutil.copy(src, dst)
 
 
 #Configure fastapi
