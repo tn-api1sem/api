@@ -177,7 +177,7 @@
                         <div class="header-wrap">
                             <!-- Search -->
 
-                            <form class="form-header invisible" action="" method="POST">
+                            <form class="form-header invisible" action="" method="POST" id="form">
                                 <input class="au-input au-input--xl" type="text" name="search"
                                     placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
@@ -220,7 +220,12 @@
                                 <h3 class="title-5 m-b-35">Usuarios</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-right ml-auto">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#createUserModal">
+                                        <button 
+                                            class="au-btn au-btn-icon au-btn--green au-btn--small" 
+                                            data-toggle="modal" 
+                                            data-target="#createUserModal"
+                                            onclick="clearForm()"
+                                        >
                                             <i class="zmdi zmdi-plus"></i>Adicionar
                                         </button>
                                     </div>
@@ -372,6 +377,15 @@
             document.getElementById('email').value = user.email;
             document.getElementById('celular').value = user.celular;
             document.getElementById('combobox-profiles').value = user.id_perfil;
+        }
+
+        function clearForm(){
+            document.getElementById('newUserLogin').value = '';
+            document.getElementById('newUserPass').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('celular').value = '';
+            
+            document.getElementById('combobox-profiles').value = '';
         }
 
         function insertOrUpdate(id = 0){
