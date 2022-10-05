@@ -14,6 +14,23 @@ let getUsers = async () => {
     return JSON.parse(users);
 }
 
+let getUsersById = async (id) => {
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+
+    var users;
+
+    await fetch(localURL + '/api/v1/usuario/'+id, requestOptions)
+        .then(response => response.text())
+        .then(result => users = result)
+        .catch(error => console.log('error', error));
+
+    return JSON.parse(users);
+}
+
+
 let deleteUser = async (id) => {
     var requestOptions = {
         method: 'DELETE',
@@ -29,14 +46,16 @@ let deleteUser = async (id) => {
     window.location.reload();
 }
 
-let createUser = async (login, password) => {
+let createUser = async (id_perfil, login, password, email, celular) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
         "usuario": login.toString(),
         "senha": password.toString(),
-        "id_perfil": 1,
+        "email": email.toString(),
+        "id_perfil": id_perfil,
+        "celular":celular,
         "id": 0
     });
 
@@ -53,4 +72,31 @@ let createUser = async (login, password) => {
         .catch(error => console.log('error', error));
 
     window.location.reload();
+}
+
+let updateUsers = async (id, id_perfil, login, password, email, celular) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+        "usuario": login.toString(),
+        "senha": password.toString(),
+        "email": email.toString(),
+        "id_perfil": id_perfil,
+        "celular":celular,
+        "id": id
+    });
+
+    var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+    };
+
+    await fetch(localURL + "/api/v1/usuario/", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
 }
