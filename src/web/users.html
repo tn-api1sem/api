@@ -177,7 +177,7 @@
                         <div class="header-wrap">
                             <!-- Search -->
 
-                            <form class="form-header invisible" action="" method="POST">
+                            <form class="form-header invisible" action="" method="POST" id="form">
                                 <input class="au-input au-input--xl" type="text" name="search"
                                     placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
@@ -220,7 +220,12 @@
                                 <h3 class="title-5 m-b-35">Usuarios</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-right ml-auto">
-                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small" data-toggle="modal" data-target="#createUserModal">
+                                        <button 
+                                            class="au-btn au-btn-icon au-btn--green au-btn--small" 
+                                            data-toggle="modal" 
+                                            data-target="#createUserModal"
+                                            onclick="clearForm()"
+                                        >
                                             <i class="zmdi zmdi-plus"></i>Adicionar
                                         </button>
                                     </div>
@@ -276,12 +281,18 @@
                             </div>
                             <div class="form-group">
                                 <label>Celular</label>
-                                <input class="au-input au-input--full" type="number" name="celular" id="celular" placeholder="Celular">
+                                <input 
+                                    class="au-input au-input--full" 
+                                    type="text" 
+                                    onchange="maskPhone()" 
+                                    name="celular" 
+                                    id="celular" 
+                                    placeholder="(XX) XXXX-XXXX">
                             </div>
                             <div class="form-group">
-                                <label>Perfis</label>
+                                <label>Perfil</label>
                                 <select class="form-control" id="combobox-profiles">
-                                    <option disabled selected value="-1">Selecione o Perfil</option>
+                                    <option disabled selected value="-1">Selecionar</option>
                                 </select>
                             </div>
                         </div>
@@ -320,6 +331,7 @@
     <!-- Main JS-->
     <script src="js/main.js"></script>
     <script src="js/consts.js"></script>
+    <script src="js/js-brasil.js"></script>
 
     <script>
         document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
@@ -339,7 +351,7 @@
                     "<td>" + users[i].celular + "</td>" +
                     "<td>" + users[i].id_perfil + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"insertOrUpdate("+ users[i].usuario +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadUser("+ users[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteUser(" + users[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
                     "</div>\</td>" +
                     "</tr><tr class=\"spacer\"></tr>"
@@ -358,6 +370,24 @@
         loadUsers();
         loadComboBox();
 
+        async function loadUser(id){
+            var user = await getUsersById(id)
+            document.getElementById('newUserLogin').value = user.usuario;
+            document.getElementById('newUserPass').value = user.senha;
+            document.getElementById('email').value = user.email;
+            document.getElementById('celular').value = user.celular;
+            document.getElementById('combobox-profiles').value = user.id_perfil;
+        }
+
+        function clearForm(){
+            document.getElementById('newUserLogin').value = '';
+            document.getElementById('newUserPass').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('celular').value = '';
+            
+            document.getElementById('combobox-profiles').value = '';
+        }
+
         function insertOrUpdate(id = 0){
             var login = document.getElementById('newUserLogin').value;
             var password = document.getElementById('newUserPass').value;
@@ -373,6 +403,12 @@
             }
 
             updateUsers(id, idPerfil, login, password, email, celular)
+        }
+
+        function maskPhone(){
+            var el = document.getElementById('celular');
+            var phoneMask = jsbrasil.maskBr.celular(el.value);
+            el.value = phoneMask;
         }
 
     </script>
