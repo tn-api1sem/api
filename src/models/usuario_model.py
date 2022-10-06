@@ -5,4 +5,9 @@ class usuario_model(BaseModel):
     senha:str
     id_perfil:int
     id:int
+    email:str
+    celular:int
+
+
+
 
