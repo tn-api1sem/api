@@ -221,7 +221,7 @@
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-right ml-auto">
                                         <button class="au-btn au-btn-icon au-btn--green au-btn--small"
-                                            data-toggle="modal" data-target="#createUserModal" onclick="clearForm()">
+                                            data-toggle="modal" data-target="#createTeamModal" onclick="clearForm()">
                                             <i class="zmdi zmdi-plus"></i>Adicionar
                                         </button>
                                     </div>
@@ -251,12 +251,12 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModal"
+        <div class="modal fade" id="createTeamModal" tabindex="-1" role="dialog" aria-labelledby="createTeamModal"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="createUserModal">Cadastrar Usuario</h5>
+                        <h5 class="modal-title" id="createTeamModal">Cadastrar Time</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -328,16 +328,16 @@
     </script>
 
     <script>
-        async function loadUsers() {
+        async function loadTeams() {
             var teams = await getTeams();
             var tbody = document.getElementById('tbody-teams');
 
-            for (var i = 0; i < users.length; i++) {
+            for (var i = 0; i < teams.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
-                    "<td>" + teams[i].nome + "</td>" +
+                    "<td>" + teams[i].times + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadUser(" + users[i].id + ")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteUser(" + users[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createTeamModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadTeam(" + teams[i].id + ")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteTeam(" + teams[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
                     "</div>\</td>" +
                     "</tr><tr class=\"spacer\"></tr>"
             }
@@ -352,10 +352,10 @@
             }
         }
 
-        loadUsers();
+        loadTeams();
         loadComboBox();
 
-        async function loadUser(id) {
+        async function loadTeam(id) {
             var user = await getUsersById(id)
             document.getElementById('newUserLogin').value = user.usuario;
             document.getElementById('newUserPass').value = user.senha;
@@ -371,8 +371,8 @@
 
         function insertOrUpdate(id = 0) {
             var nomeTime = document.getElementById('nome').value;
-            //var selectIntegrante = document.getElementById('combobox-profiles');
-            //var selectedIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.value);
+            var selectIntegrante = document.getElementById('combobox-profiles');
+            var selectedIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.value);
 
             createTeam(nomeTime);
 

@@ -47,14 +47,14 @@ let getUsersById = async (id) => {
 }
 
 
-let deleteUser = async (id) => {
+let deleteTeam = async (id) => {
     var requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
     };
 
 
-    await fetch(localURL + '/api/v1/usuario/' + id, requestOptions)
+    await fetch(localURL + '/api/v1/times/' + id, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
