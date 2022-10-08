@@ -35,6 +35,6 @@ def put_times(objectToPut: times_model):
 
 
 @router.delete("/{id}")
-def delete_id_times(id_times: int):
-    times_services.delete_id_times(id_times)
+def delete_id_times(id: int):
+    times_services.delete_id_times(id)
     return OK
