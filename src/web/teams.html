@@ -382,7 +382,12 @@
             for (i = 0; i < selectedIntegrante.length; i++) {
                 console.log('ENTROU');
                 console.log(typeof (selectedIntegrante[i]))
-                createTeam(nomeTime, parseInt(selectedIntegrante[i]))
+                if (selectedIntegrante.length > 1) {
+                    createTeam(nomeTime, parseInt(selectedIntegrante[i]), false)
+                } else {
+                    createTeam(nomeTime, parseInt(selectedIntegrante[i]), true)
+                }
+
             }
 
             /*
