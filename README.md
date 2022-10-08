@@ -20,7 +20,7 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 
 **Não-Funcionais**
 - Linguagem de programação Python
-- Uso de bases de dados simples, dentre as opções abaixo ou similares
+- Uso de bases de dados simples.
 - Sistema de controle de versão de código (Git)
 - Documentações
 
