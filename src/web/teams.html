@@ -268,15 +268,13 @@
                                 <input class="au-input au-input--full" type="text" name="nome" id="nome"
                                     placeholder="Nome do Time">
                             </div>
-                            <!--
-                                <div class="form-group">
+                            <div class="form-group">
                                 <label>Integrantes</label>
                                 <select class="form-control" data-role="select-dropdown" multiple
                                     id="combobox-profiles">
                                     <option disabled selected value="-1"></option>
                                 </select>
                             </div>
-                            -->
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -315,9 +313,12 @@
     <script src="js/consts.js"></script>
     <script src="js/js-brasil.js"></script>
 
+    <!-- 
     <script>
         document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
     </script>
+
+   -->
 
     <script src="js/teams.js"></script>
 
@@ -356,12 +357,14 @@
         loadComboBox();
 
         async function loadTeam(id) {
-            var user = await getUsersById(id)
+            var user = await getTeamById(id)
+            /*
             document.getElementById('newUserLogin').value = user.usuario;
             document.getElementById('newUserPass').value = user.senha;
             document.getElementById('email').value = user.email;
             document.getElementById('celular').value = user.celular;
             document.getElementById('combobox-profiles').value = user.id_perfil;
+            */
         }
 
         function clearForm() {
@@ -373,8 +376,14 @@
             var nomeTime = document.getElementById('nome').value;
             var selectIntegrante = document.getElementById('combobox-profiles');
             var selectedIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.value);
-
-            createTeam(nomeTime);
+            console.log(selectedIntegrante);//retorna um array
+            console.log(selectedIntegrante[0]);//acessa
+            console.log(selectedIntegrante.length);//tamanho
+            for (i = 0; i < selectedIntegrante.length; i++) {
+                console.log('ENTROU');
+                console.log(typeof (selectedIntegrante[i]))
+                createTeam(nomeTime, parseInt(selectedIntegrante[i]))
+            }
 
             /*
             if (!id) {

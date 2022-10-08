@@ -30,20 +30,20 @@ let getTeams = async () => {
     return JSON.parse(teams);
 }
 
-let getUsersById = async (id) => {
+let getTeamById = async (id) => {
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
     };
 
-    var users;
+    var teams;
 
-    await fetch(localURL + '/api/v1/usuario/' + id, requestOptions)
+    await fetch(localURL + '/api/v1/times/' + id, requestOptions)
         .then(response => response.text())
-        .then(result => users = result)
+        .then(result => teams = result)
         .catch(error => console.log('error', error));
 
-    return JSON.parse(users);
+    return JSON.parse(teams);
 }
 
 
@@ -62,13 +62,13 @@ let deleteTeam = async (id) => {
     window.location.reload();
 }
 
-let createTeam = async (nome) => {
+let createTeam = async (nome, id_user) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
         "times": nome.toString(),
-        "id_times": 1,
+        "id_users": id_user,
         "id": 0
     });
 
