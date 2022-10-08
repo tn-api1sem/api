@@ -45,12 +45,6 @@ class JsonContext:
         data.id = self._context.last_index
         self._context.dataset.append(data)
 
-    def insertTeams(self, data):
-        if data.fl_single == True:
-            self._context.last_index += 1
-        data.id = self._context.last_index
-        self._context.dataset.append(data)
-
     def update(self, data):
         index = self._get_registry_index(data.id)
 

@@ -15,7 +15,7 @@ class times_repository(object):
 
     def post_times(self, objectPost):
         self._apiContext.times_table.begin_transaction()
-        self._apiContext.times_table.insertTeams(objectPost)
+        self._apiContext.times_table.insert(objectPost)
         self._apiContext.times_table.commit()
 
     def put_times(self, objectPut):

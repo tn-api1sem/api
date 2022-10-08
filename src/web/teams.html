@@ -376,19 +376,11 @@
             var nomeTime = document.getElementById('nome').value;
             var selectIntegrante = document.getElementById('combobox-profiles');
             var selectedIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.value);
-            console.log(selectedIntegrante);//retorna um array
-            console.log(selectedIntegrante[0]);//acessa
-            console.log(selectedIntegrante.length);//tamanho
+            let listUsers = [];
             for (i = 0; i < selectedIntegrante.length; i++) {
-                console.log('ENTROU');
-                console.log(typeof (selectedIntegrante[i]))
-                if (selectedIntegrante.length > 1) {
-                    createTeam(nomeTime, parseInt(selectedIntegrante[i]), false)
-                } else {
-                    createTeam(nomeTime, parseInt(selectedIntegrante[i]), true)
-                }
-
+                listUsers.push(parseInt(selectedIntegrante[i]));
             }
+            createTeam(nomeTime, listUsers);
 
             /*
             if (!id) {
