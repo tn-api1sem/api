@@ -1,6 +1,7 @@
 from http.client import OK
 from fastapi import APIRouter
 
+from  ..models.profile_model import perfil_model
 from ..models.usuario_model import usuario_model
 from ..services.usuario_services import usuario_services as UsuarioService
 
@@ -24,6 +25,9 @@ def id_get_usuario(id:int):
 def post_usuario(objectToPost:usuario_model):
     usuario_services.post_usuario(objectToPost)
     return OK
+
+def perfil_usuario(objectToPost:perfil_model):
+    return perfil_model
 
 @router.put("/")
 def put_usuario(objectToPut:usuario_model):
