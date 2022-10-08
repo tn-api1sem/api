@@ -341,8 +341,12 @@
     <script src="js/users.js"></script>
 
     <script>
+        loadUsers();
+        loadComboBox();
+
         async function loadUsers() {
             var users = await getUsers();
+            var profiles = await getProfiles();
             var tbody = document.getElementById('tbody-users');
 
             for (var i = 0; i < users.length; i++) {
@@ -350,7 +354,7 @@
                     "<td>" + users[i].usuario + "</td>" +
                     "<td>" + users[i].email + "</td>" +
                     "<td>" + users[i].celular + "</td>" +
-                    "<td>" + users[i].id_perfil + "</td>" +
+                    "<td>" + profiles[users[i].id_perfil-1].perfil + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
                     "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadUser("+ users[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteUser(" + users[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
@@ -367,9 +371,6 @@
                 select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].perfil}</option>`
             }
         }
-
-        loadUsers();
-        loadComboBox();
 
         async function loadUser(id){
             var user = await getUsersById(id)
