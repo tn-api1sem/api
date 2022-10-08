@@ -267,6 +267,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="login-form">
+                            <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
                             <div class="form-group">
                                 <label>Email</label>
                                 <input class="au-input au-input--full" type="text" name="email" id="email" placeholder="Email">
@@ -284,7 +285,6 @@
                                 <input 
                                     class="au-input au-input--full" 
                                     type="text" 
-                                    onchange="maskPhone()" 
                                     name="celular" 
                                     id="celular" 
                                     placeholder="(XX) XXXX-XXXX">
@@ -372,6 +372,7 @@
 
         async function loadUser(id){
             var user = await getUsersById(id)
+            document.getElementById('id-user').value = user.id;
             document.getElementById('newUserLogin').value = user.usuario;
             document.getElementById('newUserPass').value = user.senha;
             document.getElementById('email').value = user.email;
@@ -380,6 +381,7 @@
         }
 
         function clearForm(){
+            document.getElementById('id-user').value = 0;
             document.getElementById('newUserLogin').value = '';
             document.getElementById('newUserPass').value = '';
             document.getElementById('email').value = '';
@@ -387,8 +389,9 @@
             
             document.getElementById('combobox-profiles').value = '';
         }
-
-        function insertOrUpdate(id = 0){
+        
+        function insertOrUpdate(){
+            var id = document.getElementById('id-user').value;
             var login = document.getElementById('newUserLogin').value;
             var password = document.getElementById('newUserPass').value;
             var email = document.getElementById('email').value;
@@ -397,20 +400,15 @@
             var selectPerfil = document.getElementById('combobox-profiles');
             var idPerfil = selectPerfil.options[selectPerfil.selectedIndex].value;
 
-            if(!id){
+            console.log(id);
+            console.log(!id);
+            if(id == 0){
                 createUser(idPerfil, login, password, email, celular);
                 return;
             }
 
             updateUsers(id, idPerfil, login, password, email, celular)
         }
-
-        function maskPhone(){
-            var el = document.getElementById('celular');
-            var phoneMask = jsbrasil.maskBr.celular(el.value);
-            el.value = phoneMask;
-        }
-
     </script>
 
 </body>

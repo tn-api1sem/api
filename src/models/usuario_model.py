@@ -1,12 +1,12 @@
 from pydantic import BaseModel
 
 class usuario_model(BaseModel):
-    usuario:str
-    senha:str
-    id_perfil:int
-    id:int
-    email:str
-    celular:int
+    id:int | None
+    id_perfil:int | None
+    email:str | None
+    usuario:str | None
+    senha:str | None
+    celular:str | None
 
 
 
