@@ -10,6 +10,11 @@ var sidebar = [
         "link": "users.html",
         "icon": "fas fa-user"
     },
+    {
+        "description": "Sprints",
+        "link": "sprint.html",
+        "icon": "fas fa-check-circle"
+    },
 ]
 
 
