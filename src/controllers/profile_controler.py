@@ -13,28 +13,25 @@ profile_services = ProfileService()
 
 
 @router.get("/")
-def get_usuarios():
-    return  profile_services.buscar_usuario()
+def get_profiles():
+    return  profile_services.get_profile()
 
 @router.get("/{id}")
-def id_get_usuario(id:int):
-    return profile_services.buscar_id_usuario(id)
+def get_profile_by_id(id:int):
+    return profile_services.get_profile_by_id(id)
 
 @router.post("/")
-def post_usuario(objectToPost:profile_model):
-    profile_services.post_profile(objectToPost)
+def create_profile(objectToPost:profile_model):
+    profile_services.create(objectToPost)
     return OK
 
-def perfil_usuario(objectToPost:profile_model):
-    return profile_model
-
 @router.put("/")
-def put_usuario(objectToPut:profile_model):
-    profile_services.put_profile(objectToPut)
+def update_profile(objectToPut:profile_model):
+    profile_services.update(objectToPut)
     return OK
 
 @router.delete("/{id}")
-def delete_id_usuario(id:int):
-    profile_services.delete_id_profile(id)
+def delete_profile(id:int):
+    profile_services.delete(id)
     return OK
 

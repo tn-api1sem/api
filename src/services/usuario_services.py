@@ -1,7 +1,7 @@
 
 from ..repository.usuario_repository import user_repository
 from ..models.usuario_model import usuario_model
-
+import re
 
 class usuario_services(object):
     _user_repository: user_repository = user_repository()
@@ -18,11 +18,13 @@ class usuario_services(object):
     def post_usuario(self, objectToPost: usuario_model):
         if self._valida_geral(objectToPost):
             raise Exception("Insira todos os campos corretamente")
+
         return self._user_repository.post_usuario(objectToPost)
 
     def put_usuario(self, objectToPut: usuario_model):
         if self._valida_geral(objectToPut):
             raise Exception("Insira todos os campos corretamente")
+            
         return self._user_repository.put_usuario(objectToPut)
 
     def delete_id_usuario(self, id: int):
@@ -31,6 +33,14 @@ class usuario_services(object):
     def _valida_geral(self, model: usuario_model):
         if not model.email or not model.celular or not model.usuario or not model.senha:
             return True
+
+        if model.id_perfil < 0:
+            return True
+
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        if not re.fullmatch(regex, model.email):
+            return True
+            
         return False
 
 

@@ -103,6 +103,7 @@ function createBody(id, id_perfil, login, password, email, celular){
 
 function isError(x){
     if(x == 200){
+        window.location.reload()
         return;
     }
 

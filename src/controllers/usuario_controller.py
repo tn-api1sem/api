@@ -1,4 +1,4 @@
-from http.client import OK
+from http.client import BAD_REQUEST, OK
 from fastapi import APIRouter
 
 from ..models.usuario_model import usuario_model
@@ -22,13 +22,19 @@ def id_get_usuario(id:int):
 
 @router.post("/")
 def post_usuario(objectToPost:usuario_model):
-    usuario_services.post_usuario(objectToPost)
-    return OK
+    try:
+        usuario_services.post_usuario(objectToPost)
+        return OK
+    except Exception as e:
+        return str(e)
 
 @router.put("/")
 def put_usuario(objectToPut:usuario_model):
-    usuario_services.put_usuario(objectToPut)
-    return OK
+    try:
+        usuario_services.put_usuario(objectToPut)
+        return OK
+    except Exception as e:
+        return str(e)
 
 @router.delete("/{id}")
 def delete_id_usuario(id:int):

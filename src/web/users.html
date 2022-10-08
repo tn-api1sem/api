@@ -299,7 +299,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary" onclick="insertOrUpdate()">Cadastrar</button>
+                        <button type="button" class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -326,9 +326,10 @@
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"> </script>
-    <script src="js/sidebar.js"></script>
-
+    
     <!-- Main JS-->
+    <script src="js/sidebar.js"></script>
+    <script src="js/profiles.js"></script>
     <script src="js/main.js"></script>
     <script src="js/consts.js"></script>
     <script src="js/js-brasil.js"></script>
@@ -359,11 +360,11 @@
         }
 
         async function loadComboBox(){
-            var profiles = await getUsers();
+            var profiles = await getProfiles();
             var select = document.getElementById("combobox-profiles")
 
             for(var i = 0; i < profiles.length; i++){
-                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].usuario}</option>`
+                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].perfil}</option>`
             }
         }
 
@@ -387,7 +388,7 @@
             document.getElementById('email').value = '';
             document.getElementById('celular').value = '';
             
-            document.getElementById('combobox-profiles').value = '';
+            document.getElementById('combobox-profiles').value = '-1';
         }
         
         function insertOrUpdate(){
@@ -400,8 +401,6 @@
             var selectPerfil = document.getElementById('combobox-profiles');
             var idPerfil = selectPerfil.options[selectPerfil.selectedIndex].value;
 
-            console.log(id);
-            console.log(!id);
             if(id == 0){
                 createUser(idPerfil, login, password, email, celular);
                 return;

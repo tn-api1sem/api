@@ -9,16 +9,15 @@ class profille_repository(object):
     def get(self):
         return self._apiContext.profile_table.get_all()
 
-    def busca_id_profile(self,id):
+    def find(self,id):
         return self._apiContext.profile_table.get(id)
 
-
-    def post_profile(self, objectPost):
+    def create(self, objectPost):
         self._apiContext.profile_table.begin_transaction()
         self._apiContext.profile_table.insert(objectPost)
         self._apiContext.profile_table.commit()
 
-    def put_profile(self, objectPut):
+    def update(self, objectPut):
         self._apiContext.profile_table.begin_transaction()
         self._apiContext.profile_table.commit()
         self._apiContext.profile_table.begin_transaction()
@@ -26,7 +25,7 @@ class profille_repository(object):
         self._apiContext.profile_table.commit()
 
 
-    def delete_id_usuario(self, id:int):
+    def delete(self, id:int):
         self._apiContext.profile_table.begin_transaction()
         self._apiContext.profile_table.delete(id)
         self._apiContext.profile_table.commit()

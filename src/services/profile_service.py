@@ -7,17 +7,17 @@ class profile_services(object):
     def __init__(self):
         pass;
 
-    def buscar_usuario(self):
+    def get_profile(self):
         return self._profille_repository.get()
 
-    def buscar_id_usuario(self,id):
-        return self._profille_repository.busca_id_usuario(id)
+    def get_profile_by_id(self,id):
+        return self._profille_repository.find(id)
 
-    def post_usuario(self, objectToPost: profile_model):
-        return self._profile_repository.post_usuario(objectToPost)
+    def create(self, objectToPost: profile_model):
+        return self._profile_repository.create(objectToPost)
 
-    def put_usuario(self, objectToPut: profile_model):
-        return self._profile_repository.put_usuario(objectToPut)
+    def update(self, objectToPut: profile_model):
+        return self._profile_repository.update(objectToPut)
 
-    def delete_id_usuario(self, id:int):
-       return self ._profile_repository.delete_id_usuario(id)
+    def delete(self, id:int):
+       return self ._profile_repository.delete(id)
