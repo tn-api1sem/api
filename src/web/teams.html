@@ -231,7 +231,7 @@
                                         <thead>
                                             <tr>
                                                 <th>nome</th>
-                                                <!--<th>email</th>-->
+                                                <th>Integrantes</th>
                                                 <!--<th>celular</th>-->
                                                 <!--<th>perfil</th>-->
                                                 <th></th>
@@ -336,6 +336,7 @@
             for (var i = 0; i < teams.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + teams[i].times + "</td>" +
+                    "<td>" + teams[i].userName + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
                     "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createTeamModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadTeam(" + teams[i].id + ")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteTeam(" + teams[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
@@ -376,11 +377,17 @@
             var nomeTime = document.getElementById('nome').value;
             var selectIntegrante = document.getElementById('combobox-profiles');
             var selectedIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.value);
+            var selectedNameIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.text);
+            console.log(selectedNameIntegrante);
             let listUsers = [];
+            let listNameUsers = [];
             for (i = 0; i < selectedIntegrante.length; i++) {
                 listUsers.push(parseInt(selectedIntegrante[i]));
+                listNameUsers.push(selectedNameIntegrante[i].toString());
+                console.log(listNameUsers);
             }
-            createTeam(nomeTime, listUsers);
+
+            createTeam(nomeTime, listUsers, listNameUsers);
 
             /*
             if (!id) {

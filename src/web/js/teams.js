@@ -62,13 +62,14 @@ let deleteTeam = async (id) => {
     window.location.reload();
 }
 
-let createTeam = async (nome, id_user) => {
+let createTeam = async (nome, id_user, userName) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
         "times": nome.toString(),
         "id_users": id_user,
+        "userName": userName,
         "id": 0,
 
     });
