@@ -28,18 +28,20 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 | Data da Entrega | Sprints   | Status |
 | -------------   | --------- | -------|
 | 18/09           | Primeira  |   OK   |
-| 09/10           | Segunda   |   -    |
+| 09/10           | Segunda   |   OK   |
 | 06/11           | Terceira  |   -    |
-| 27/11           | Quarta    |   -     |
+| 27/11           | Quarta    |   -    |
 
 
 ## Backlog
 **Primeira Sprint**
-![image](https://user-images.githubusercontent.com/111552950/190877802-2cebade1-94b4-45cc-b542-ea32d83edf59.png)
+![Sprint1](https://user-images.githubusercontent.com/61194755/194774698-db1e92a4-4552-4f19-be1b-6067e9da8afe.png)
 
+**Segunda Sprint**
+![Sprint2](https://user-images.githubusercontent.com/61194755/194774716-77e5e9d8-37e1-407d-8c0d-5c9e04174512.png)
 
 **Do Produto** <br />
-![image](https://user-images.githubusercontent.com/111552950/190877849-b79152e9-7417-4bb1-933c-4ade5e36ec8d.png)
+![Backlog](https://user-images.githubusercontent.com/61194755/194774724-e9b025d1-f91e-47f8-8685-8a8cd4f30e10.png)
 
 
 ## Tecnologias e Ferramentas
