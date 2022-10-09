@@ -216,34 +216,36 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3>Sprints</h3>
-                                <!-- Button trigger modal -->
-                                <button 
-                                        style="margin-left: 90%; margin-bottom: 20px;"
-                                        class="au-btn au-btn-icon au-btn--green au-btn--small" 
-                                        data-toggle="modal" 
-                                        data-target="#createUserModal"
-                                        onclick="clearForm()"
-                                        >
-                                        <i class="zmdi zmdi-plus"></i>Adicionar
-                                </button>
                                 <!-- DATA TABLE -->
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Sprint</th>
-                                            <th scope="col">Data de Entrega</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <th scope="row">hoje</th>
-                                            <th scope="row">OK</th>
-                                        </tr>
-                                    </tbody>
-                                  </table>
+                                <h3 class="title-5 m-b-35">Sprint</h3>
+                                <div class="table-data__tool">
+                                    <div class="table-data__tool-right ml-auto">
+                                        <button 
+                                            class="au-btn au-btn-icon au-btn--green au-btn--small" 
+                                            data-toggle="modal" 
+                                            data-target="#createsprint"
+                                            onclick="clearForm()"
+                                        >
+                                            <i class="zmdi zmdi-plus"></i>Adicionar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>Sprint</th>
+                                                <th>Data de Inicio</th>
+                                                <th>Data de Entrega</th>
+                                                <th>time</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody-sprint">
+
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!-- END DATA TABLE -->
                             </div>
                         </div>
@@ -253,12 +255,12 @@
         </div>
 
         <!-- modal -->
-        <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModal"
+        <div class="modal fade" id="createsprint" tabindex="-1" role="dialog" aria-labelledby="createsprint"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="createUserModal">Criar Sprint</h5>
+                        <h5 class="modal-title" id="createsprint">Criar Sprint</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -267,19 +269,23 @@
                         <div class="login-form">
                             <div class="form-group">
                                 <label>Nome da Sprint</label>
-                                <input class="au-input au-input--full" type="text" name="email" id="email" placeholder="Ex: Projeto">
+                                <input class="au-input au-input--full" type="text" name="nome" id="nome" placeholder="Ex: Projeto">
                             </div>
                             <div class="form-group">
                                 <label>Data de Entrega</label>
-                                <input class="au-input au-input--full" type="date" name="login" id="newUserLogin" placeholder="Ex: dd/mm/aaaa">
+                                <input class="au-input au-input--full" type="date" name="datainico" id="datainico" placeholder="Ex: dd/mm/aaaa">
                             </div>
                             <div class="form-group">
-                                <label>Status</label>
-                                <select class="form-select form-select-lg mb-3" style="border-radius: 5px; width: 30em; height: 43px; border: 1px solid rgba(0, 0, 0, 0.1);" id="combobox-profiles">
-                                    <option disabled selected value="0">Selecionar</option>
-                                    <option  value="1">Não Inciado</option>
-                                    <option  value="2">Em Andamento</option>
-                                    <option  value="3">Concluido</option>
+                                <label>Data de Inicio</label>
+                                <input class="au-input au-input--full" type="date" name="dataentrega" id="dataentrega" placeholder="Ex: dd/mm/aaaa">
+                            </div>
+                            <div class="form-group">
+                                <label>Time</label>
+                                <select class="form-control" id="combobox-times">
+                                    <option disabled selected value="-1">Selecionar</option>
+                                    <option value="0">GDM</option>
+                                    <option value="1">Alpha</option>
+                                    <option value="2">Losers</option>
                                 </select>
                             </div>
                         </div>
@@ -324,80 +330,67 @@
         document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
     </script>
 
-    <script src="js/users.js"></script>
+    <script src="js/sprint.js"></script>
 
     <script>
-        async function loadUsers() {
-            var users = await getUsers();
-            var tbody = document.getElementById('tbody-users');
+        loadSprints()
+        async function loadSprints() {
+            var sprints = await getSprints();
+            var tbody = document.getElementById('tbody-sprint');
 
-            for (var i = 0; i < users.length; i++) {
+            for (var i = 0; i < sprints.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
-                    "<td>" + users[i].usuario + "</td>" +
-                    "<td>" + users[i].email + "</td>" +
-                    "<td>" + users[i].celular + "</td>" +
-                    "<td>" + users[i].id_perfil + "</td>" +
+                    "<td>" + sprints[i].name + "</td>" +
+                    "<td>" + sprints[i].start_date + "</td>" +
+                    "<td>" + sprints[i].end_date + "</td>" +
+                    "<td>" + sprints[i].team_id + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadUser("+ users[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteUser(" + users[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createsprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadSprint("+ sprints[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteSprint(" + sprints[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
                     "</div>\</td>" +
                     "</tr><tr class=\"spacer\"></tr>"
             }
         }
 
         async function loadComboBox(){
-            var profiles = await getUsers();
-            var select = document.getElementById("combobox-profiles")
+            var times = await getUsers();
+            var select = document.getElementById("combobox-times")
 
             for(var i = 0; i < profiles.length; i++){
                 select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].usuario}</option>`
             }
         }
 
-        loadUsers();
         loadComboBox();
 
-        async function loadUser(id){
-            var user = await getUsersById(id)
-            document.getElementById('newUserLogin').value = user.usuario;
-            document.getElementById('newUserPass').value = user.senha;
-            document.getElementById('email').value = user.email;
-            document.getElementById('celular').value = user.celular;
-            document.getElementById('combobox-profiles').value = user.id_perfil;
+        async function loadSprint(id){
+            var sprint = await getSprintsById(id)
+            document.getElementById('nome').value = sprint.name;
+            document.getElementById('datainicio').value = sprint.start_date;
+            document.getElementById('dataentrega').value = sprint.end_date;
+            document.getElementById('combobox-times').value = sprint.team_id;
         }
 
         function clearForm(){
-            document.getElementById('newUserLogin').value = '';
-            document.getElementById('newUserPass').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('celular').value = '';
-            
-            document.getElementById('combobox-profiles').value = '';
+            document.getElementById('nome').value = '';
+            document.getElementById('datainicio').value = null;
+            document.getElementById('dataentrega').value = null;
+            document.getElementById('combobox-times').value = '';
         }
 
         function insertOrUpdate(id = 0){
-            var login = document.getElementById('newUserLogin').value;
-            var password = document.getElementById('newUserPass').value;
-            var email = document.getElementById('email').value;
-            var celular = document.getElementById('celular').value;
-            
-            var selectPerfil = document.getElementById('combobox-profiles');
-            var idPerfil = selectPerfil.options[selectPerfil.selectedIndex].value;
+            var nome = document.getElementById('nome').value;
+            var datainico = document.getElementById('datainicio').null;
+            var dataentrega = document.getElementById('dataentrega').value;
+            var time = document.getElementById('combobox-times').value;
 
             if(!id){
-                createUser(idPerfil, login, password, email, celular);
+                createSprint(nome, datainico, dataentrega, time);
                 return;
             }
 
-            updateUsers(id, idPerfil, login, password, email, celular)
+            updateSprint(id, nome, datainico, dataentrega, time)
         }
-
-        function maskPhone(){
-            var el = document.getElementById('celular');
-            var phoneMask = jsbrasil.maskBr.celular(el.value);
-            el.value = phoneMask;
-        }
-    
     </script>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
