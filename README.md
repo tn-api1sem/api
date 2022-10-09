@@ -67,3 +67,4 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 | Dev Team          | Danilo Wesley da Costa Silva  |
 | Dev Team          | Felipe Fernandes Pereira      |
 | Dev Team          | Wagner de Deus Silva Junior   |
+| Dev Team          | Lucas Caetano da Silva        |
