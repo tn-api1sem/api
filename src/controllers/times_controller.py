@@ -18,8 +18,8 @@ def get_times():
 
 
 @router.get("/{id}")
-def id_get_times(id_times: int):
-    return times_services.buscar_id_times(id_times)
+def id_get_times(id: int):
+    return times_services.buscar_id_times(id)
 
 
 @router.post("/")

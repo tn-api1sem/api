@@ -263,6 +263,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="login-form">
+                            <input class="au-input au-input--full" type="hidden" name="id-team" id="id-team">
                             <div class="form-group">
                                 <label>Nome</label>
                                 <input class="au-input au-input--full" type="text" name="nome" id="nome"
@@ -358,22 +359,20 @@
         loadComboBox();
 
         async function loadTeam(id) {
-            var user = await getTeamById(id)
-            /*
-            document.getElementById('newUserLogin').value = user.usuario;
-            document.getElementById('newUserPass').value = user.senha;
-            document.getElementById('email').value = user.email;
-            document.getElementById('celular').value = user.celular;
-            document.getElementById('combobox-profiles').value = user.id_perfil;
-            */
+            var team = await getTeamById(id)
+            document.getElementById('id-team').value = team.id;
+            document.getElementById('nome').value = team.times;
+            document.getElementById('combobox-profiles').value = team.id_users;
         }
 
         function clearForm() {
+            document.getElementById('id-team').value = 0;
             document.getElementById('nome').value = '';
             document.getElementById('combobox-profiles').value = '';
         }
 
-        function insertOrUpdate(id = 0) {
+        function insertOrUpdate() {
+            var id = document.getElementById('id-team').value;
             var nomeTime = document.getElementById('nome').value;
             var selectIntegrante = document.getElementById('combobox-profiles');
             var selectedIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.value);
@@ -387,16 +386,11 @@
                 console.log(listNameUsers);
             }
 
-            createTeam(nomeTime, listUsers, listNameUsers);
-
-            /*
             if (!id) {
-                createUser(idPerfil, login, password, email, celular);
+                createTeam(nomeTime, listUsers, listNameUsers);
                 return;
             }
-
-            updateUsers(id, idPerfil, login, password, email, celular)
-            */
+            updateTeams(id, nomeTime, listUsers, listNameUsers);
         }
     </script>
 

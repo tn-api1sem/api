@@ -83,23 +83,20 @@ let createTeam = async (nome, id_user, userName) => {
 
     await fetch(localURL + "/api/v1/times/", requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => isError(result))
         .catch(error => console.log('error', error));
 
-    window.location.reload();
 }
 
-let updateUsers = async (id, id_perfil, login, password, email, celular) => {
+let updateTeams = async (id, nome, id_user, userName) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-        "usuario": login.toString(),
-        "senha": password.toString(),
-        "email": email.toString(),
-        "id_perfil": id_perfil,
-        "celular": celular,
-        "id": id
+        "times": nome.toString(),
+        "id_users": id_user,
+        "userName": userName,
+        "id": id,
     });
 
     var requestOptions = {
@@ -109,9 +106,18 @@ let updateUsers = async (id, id_perfil, login, password, email, celular) => {
         redirect: 'follow'
     };
 
-    await fetch(localURL + "/api/v1/usuario/", requestOptions)
+    await fetch(localURL + "/api/v1/times/", requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => isError(result))
         .catch(error => console.log('error', error));
 
+}
+
+function isError(x) {
+    if (x == 200) {
+        window.location.reload()
+        return;
+    }
+
+    alert(x);
 }
