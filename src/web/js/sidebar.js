@@ -15,15 +15,20 @@ var sidebar = [
         "link": "sprint.html",
         "icon": "fas fa-check-circle"
     },
+    {
+        "description": "Times",
+        "link": "teams.html",
+        "icon": "fas fa-users"
+    },
 ]
 
 
 var sidebarElement = document.getElementById("menu-navbar");
-for(var i = 0; i < sidebar.length; i++ ){
+for (var i = 0; i < sidebar.length; i++) {
     var id = sidebar[i].link;
 
-    sidebarElement.innerHTML += 
-    `
+    sidebarElement.innerHTML +=
+        `
         <li id="${id}">
             <a 
                 href="${sidebar[i].link}"  
@@ -37,6 +42,6 @@ for(var i = 0; i < sidebar.length; i++ ){
 var currentPage = window.location.href;
 var pageHtml = currentPage.substring(currentPage.lastIndexOf('/') + 1, currentPage.length)
 
-sidebarElement  .innerHTML = sidebarElement.innerHTML.replace(',','')
+sidebarElement.innerHTML = sidebarElement.innerHTML.replace(',', '')
 var el = document.getElementById(pageHtml)
 el.classList.add('active'); 
