@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title Page-->
-    <title>Tables</title>
+    <title>Times</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -161,7 +161,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list" id="menu-navbar">
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -193,7 +193,7 @@
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div> -->
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#" id="username"></a>
+                                            <a class="js-acc-btn" href="#" id="teamname"></a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="account-dropdown__footer">
@@ -217,15 +217,11 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Usuarios</h3>
+                                <h3 class="title-5 m-b-35">Times</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-right ml-auto">
-                                        <button 
-                                            class="au-btn au-btn-icon au-btn--green au-btn--small" 
-                                            data-toggle="modal" 
-                                            data-target="#createUserModal"
-                                            onclick="clearForm()"
-                                        >
+                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small"
+                                            data-toggle="modal" data-target="#createTeamModal" onclick="clearForm()">
                                             <i class="zmdi zmdi-plus"></i>Adicionar
                                         </button>
                                     </div>
@@ -235,13 +231,13 @@
                                         <thead>
                                             <tr>
                                                 <th>nome</th>
-                                                <th>email</th>
-                                                <th>celular</th>
-                                                <th>perfil</th>
+                                                <th>Integrantes</th>
+                                                <!--<th>celular</th>-->
+                                                <!--<th>perfil</th>-->
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbody-users">
+                                        <tbody id="tbody-teams">
 
                                         </tbody>
                                     </table>
@@ -255,51 +251,35 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModal"
+        <div class="modal fade" id="createTeamModal" tabindex="-1" role="dialog" aria-labelledby="createTeamModal"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="createUserModal">Cadastrar Usuario</h5>
+                        <h5 class="modal-title" id="createTeamModal">Cadastrar Time</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="login-form">
-                            <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
                             <div class="form-group">
-                                <label>Email</label>
-                                <input class="au-input au-input--full" type="text" name="email" id="email" placeholder="Email">
+                                <label>Nome</label>
+                                <input class="au-input au-input--full" type="text" name="nome" id="nome"
+                                    placeholder="Nome do Time">
                             </div>
                             <div class="form-group">
-                                <label>Login</label>
-                                <input class="au-input au-input--full" type="text" name="login" id="newUserLogin" placeholder="Login">
-                            </div>
-                            <div class="form-group">
-                                <label>Senha</label>
-                                <input class="au-input au-input--full" type="password" name="password" id="newUserPass" placeholder="Senha">
-                            </div>
-                            <div class="form-group">
-                                <label>Celular</label>
-                                <input 
-                                    class="au-input au-input--full" 
-                                    type="text" 
-                                    name="celular" 
-                                    id="celular" 
-                                    placeholder="(XX) XXXX-XXXX">
-                            </div>
-                            <div class="form-group">
-                                <label>Perfil</label>
-                                <select class="form-control" id="combobox-profiles">
-                                    <option disabled selected value="-1">Selecionar</option>
+                                <label>Integrantes</label>
+                                <select class="form-control" data-role="select-dropdown" multiple
+                                    id="combobox-profiles">
+                                    <option disabled selected value="-1"></option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
+                        <button type="button" class="btn btn-primary" onclick="insertOrUpdate()">Cadastrar</button>
                     </div>
                 </div>
             </div>
@@ -326,89 +306,97 @@
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"> </script>
-    
-    <!-- Main JS-->
     <script src="js/sidebar.js"></script>
-    <script src="js/profiles.js"></script>
+
+    <!-- Main JS-->
     <script src="js/main.js"></script>
     <script src="js/consts.js"></script>
     <script src="js/js-brasil.js"></script>
 
+    <!-- 
     <script>
         document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
     </script>
 
-    <script src="js/users.js"></script>
+   -->
+
+    <script src="js/teams.js"></script>
 
     <script>
-        loadUsers();
-        loadComboBox();
+        $(function () {
+            $("#combobox-profiles").select2();
+        }); 
+    </script>
 
-        async function loadUsers() {
-            var users = await getUsers();
-            var profiles = await getProfiles();
-            var tbody = document.getElementById('tbody-users');
-            console.log(users)
+    <script>
+        async function loadTeams() {
+            var teams = await getTeams();
+            var tbody = document.getElementById('tbody-teams');
 
-            for (var i = 0; i < users.length; i++) {
+            for (var i = 0; i < teams.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
-                    "<td>" + users[i].usuario + "</td>" +
-                    "<td>" + users[i].email + "</td>" +
-                    "<td>" + users[i].celular + "</td>" +
-                    "<td>" + profiles[users[i].id_perfil-1].perfil + "</td>" +
+                    "<td>" + teams[i].times + "</td>" +
+                    "<td>" + teams[i].userName + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadUser("+ users[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteUser(" + users[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createTeamModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadTeam(" + teams[i].id + ")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteTeam(" + teams[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
                     "</div>\</td>" +
                     "</tr><tr class=\"spacer\"></tr>"
             }
         }
 
-        async function loadComboBox(){
-            var profiles = await getProfiles();
+        async function loadComboBox() {
+            var profiles = await getUsers();
             var select = document.getElementById("combobox-profiles")
 
-            for(var i = 0; i < profiles.length; i++){
-                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].perfil}</option>`
+            for (var i = 0; i < profiles.length; i++) {
+                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].usuario}</option>`
             }
         }
 
-        async function loadUser(id){
-            var user = await getUsersById(id)
-            document.getElementById('id-user').value = user.id;
+        loadTeams();
+        loadComboBox();
+
+        async function loadTeam(id) {
+            var user = await getTeamById(id)
+            /*
             document.getElementById('newUserLogin').value = user.usuario;
             document.getElementById('newUserPass').value = user.senha;
             document.getElementById('email').value = user.email;
             document.getElementById('celular').value = user.celular;
             document.getElementById('combobox-profiles').value = user.id_perfil;
+            */
         }
 
-        function clearForm(){
-            document.getElementById('id-user').value = 0;
-            document.getElementById('newUserLogin').value = '';
-            document.getElementById('newUserPass').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('celular').value = '';
-            
-            document.getElementById('combobox-profiles').value = '-1';
+        function clearForm() {
+            document.getElementById('nome').value = '';
+            document.getElementById('combobox-profiles').value = '';
         }
-        
-        function insertOrUpdate(){
-            var id = document.getElementById('id-user').value;
-            var login = document.getElementById('newUserLogin').value;
-            var password = document.getElementById('newUserPass').value;
-            var email = document.getElementById('email').value;
-            var celular = document.getElementById('celular').value;
-            
-            var selectPerfil = document.getElementById('combobox-profiles');
-            var idPerfil = selectPerfil.options[selectPerfil.selectedIndex].value;
 
-            if(id == 0){
+        function insertOrUpdate(id = 0) {
+            var nomeTime = document.getElementById('nome').value;
+            var selectIntegrante = document.getElementById('combobox-profiles');
+            var selectedIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.value);
+            var selectedNameIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.text);
+            console.log(selectedNameIntegrante);
+            let listUsers = [];
+            let listNameUsers = [];
+            for (i = 0; i < selectedIntegrante.length; i++) {
+                listUsers.push(parseInt(selectedIntegrante[i]));
+                listNameUsers.push(selectedNameIntegrante[i].toString());
+                console.log(listNameUsers);
+            }
+
+            createTeam(nomeTime, listUsers, listNameUsers);
+
+            /*
+            if (!id) {
                 createUser(idPerfil, login, password, email, celular);
                 return;
             }
 
             updateUsers(id, idPerfil, login, password, email, celular)
+            */
         }
     </script>
 

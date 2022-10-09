@@ -160,29 +160,8 @@
             </div> -->
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li id="user-menu">
-                            <a href="users.html">
-                                <i class="fas fa-user"></i>Usuarios</a>
-                        </li>
+                    <ul class="list-unstyled navbar__list" id="menu-navbar">
+                        
                     </ul>
                 </nav>
             </div>
@@ -199,12 +178,13 @@
                             <!-- Search -->
 
                             <form class="form-header invisible" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
-                            
+
                             <!-- Search -->
                             <div class="header-button">
                                 <!-- <div class="noti-wrap">
@@ -371,7 +351,7 @@
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
-                
+
             </div>
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
@@ -397,8 +377,8 @@
     <script src="vendor/circle-progress/circle-progress.min.js"></script>
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="js/sidebar.js"></script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
@@ -406,12 +386,8 @@
     <script>
         var user = JSON.parse(window.localStorage.getItem('user')).usuario;
         document.getElementById('username').innerHTML = user;
-
-        if(user != 'admin'){
-            document.getElementById('user-menu').style.display = 'none';
-        }
     </script>
-
+    
 </body>
 
 </html>

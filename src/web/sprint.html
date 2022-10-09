@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
+<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -209,7 +209,7 @@
                 </div>
             </header>
             <!-- HEADER DESKTOP-->
-
+            
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
@@ -217,13 +217,13 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Usuarios</h3>
+                                <h3 class="title-5 m-b-35">Sprint</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-right ml-auto">
                                         <button 
                                             class="au-btn au-btn-icon au-btn--green au-btn--small" 
                                             data-toggle="modal" 
-                                            data-target="#createUserModal"
+                                            data-target="#createsprint"
                                             onclick="clearForm()"
                                         >
                                             <i class="zmdi zmdi-plus"></i>Adicionar
@@ -234,14 +234,14 @@
                                     <table class="table table-data2">
                                         <thead>
                                             <tr>
-                                                <th>nome</th>
-                                                <th>email</th>
-                                                <th>celular</th>
-                                                <th>perfil</th>
+                                                <th>Sprint</th>
+                                                <th>Data de Inicio</th>
+                                                <th>Data de Entrega</th>
+                                                <th>time</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbody-users">
+                                        <tbody id="tbody-sprint">
 
                                         </tbody>
                                     </table>
@@ -254,52 +254,43 @@
             </div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="createUserModal"
+        <!-- modal -->
+        <div class="modal fade" id="createsprint" tabindex="-1" role="dialog" aria-labelledby="createsprint"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="createUserModal">Cadastrar Usuario</h5>
+                        <h5 class="modal-title" id="createsprint">Criar Sprint</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="login-form">
-                            <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
                             <div class="form-group">
-                                <label>Email</label>
-                                <input class="au-input au-input--full" type="text" name="email" id="email" placeholder="Email">
+                                <label>Nome da Sprint</label>
+                                <input class="au-input au-input--full" type="text" name="nome" id="nome" placeholder="Ex: Projeto">
                             </div>
                             <div class="form-group">
-                                <label>Login</label>
-                                <input class="au-input au-input--full" type="text" name="login" id="newUserLogin" placeholder="Login">
+                                <label>Data de Entrega</label>
+                                <input class="au-input au-input--full" type="date" name="datainicio" id="datainicio" placeholder="Ex: dd/mm/aaaa">
                             </div>
                             <div class="form-group">
-                                <label>Senha</label>
-                                <input class="au-input au-input--full" type="password" name="password" id="newUserPass" placeholder="Senha">
+                                <label>Data de Inicio</label>
+                                <input class="au-input au-input--full" type="date" name="dataentrega" id="dataentrega" placeholder="Ex: dd/mm/aaaa">
                             </div>
                             <div class="form-group">
-                                <label>Celular</label>
-                                <input 
-                                    class="au-input au-input--full" 
-                                    type="text" 
-                                    name="celular" 
-                                    id="celular" 
-                                    placeholder="(XX) XXXX-XXXX">
-                            </div>
-                            <div class="form-group">
-                                <label>Perfil</label>
-                                <select class="form-control" id="combobox-profiles">
+                                <label>Times</label>
+                                <select class="form-control" id="combobox-times">
                                     <option disabled selected value="-1">Selecionar</option>
                                 </select>
                             </div>
                         </div>
                     </div>
+                    <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
+                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -326,10 +317,9 @@
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"> </script>
-    
-    <!-- Main JS-->
     <script src="js/sidebar.js"></script>
-    <script src="js/profiles.js"></script>
+
+    <!-- Main JS-->
     <script src="js/main.js"></script>
     <script src="js/consts.js"></script>
     <script src="js/js-brasil.js"></script>
@@ -338,78 +328,82 @@
         document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
     </script>
 
-    <script src="js/users.js"></script>
+    <script src="js/sprint.js"></script>
+    <script src="js/teams.js"></script>
 
     <script>
-        loadUsers();
-        loadComboBox();
+        loadSprints()
+        async function loadSprints() {
+            var sprints = await getSprints();
+            var times = await getTeams();
+            var tbody = document.getElementById('tbody-sprint');
 
-        async function loadUsers() {
-            var users = await getUsers();
-            var profiles = await getProfiles();
-            var tbody = document.getElementById('tbody-users');
-            console.log(users)
-
-            for (var i = 0; i < users.length; i++) {
+            for (var i = 0; i < sprints.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
-                    "<td>" + users[i].usuario + "</td>" +
-                    "<td>" + users[i].email + "</td>" +
-                    "<td>" + users[i].celular + "</td>" +
-                    "<td>" + profiles[users[i].id_perfil-1].perfil + "</td>" +
+                    "<td>" + sprints[i].name + "</td>" +
+                    "<td>" + sprints[i].start_date + "</td>" +
+                    "<td>" + sprints[i].end_date + "</td>" +
+                    "<td>" + times.find(x => x.id == sprints[i].team_id).times + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadUser("+ users[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteUser(" + users[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createsprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadSprint("+ sprints[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteSprint(" + sprints[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
                     "</div>\</td>" +
                     "</tr><tr class=\"spacer\"></tr>"
             }
         }
 
         async function loadComboBox(){
-            var profiles = await getProfiles();
-            var select = document.getElementById("combobox-profiles")
+            var times = await getTeams();
+            var select = document.getElementById("combobox-times")
 
-            for(var i = 0; i < profiles.length; i++){
-                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].perfil}</option>`
+            for(var i = 0; i < times.length; i++){
+                select.innerHTML += `<option value=${times[i].id}>${times[i].times}</option>`
             }
         }
 
-        async function loadUser(id){
-            var user = await getUsersById(id)
-            document.getElementById('id-user').value = user.id;
-            document.getElementById('newUserLogin').value = user.usuario;
-            document.getElementById('newUserPass').value = user.senha;
-            document.getElementById('email').value = user.email;
-            document.getElementById('celular').value = user.celular;
-            document.getElementById('combobox-profiles').value = user.id_perfil;
+        loadComboBox();
+
+        async function loadSprint(id){
+            var sprint = await getSprintsById(id)
+            document.getElementById('id-user').value = id;
+            document.getElementById('nome').value = sprint.name;
+            document.getElementById('datainicio').value = sprint.start_date;
+            document.getElementById('dataentrega').value = sprint.end_date;
+            document.getElementById('combobox-times').value = sprint.team_id;
         }
 
         function clearForm(){
             document.getElementById('id-user').value = 0;
-            document.getElementById('newUserLogin').value = '';
-            document.getElementById('newUserPass').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('celular').value = '';
-            
-            document.getElementById('combobox-profiles').value = '-1';
+            document.getElementById('nome').value = '';
+            document.getElementById('datainicio').value = null;
+            document.getElementById('dataentrega').value = null;
+            document.getElementById('combobox-times').value = '';
         }
-        
+
         function insertOrUpdate(){
             var id = document.getElementById('id-user').value;
-            var login = document.getElementById('newUserLogin').value;
-            var password = document.getElementById('newUserPass').value;
-            var email = document.getElementById('email').value;
-            var celular = document.getElementById('celular').value;
-            
-            var selectPerfil = document.getElementById('combobox-profiles');
-            var idPerfil = selectPerfil.options[selectPerfil.selectedIndex].value;
+            var nome = document.getElementById('nome').value;
+            var datainico = document.getElementById('datainicio').value;
+            var dataentrega = document.getElementById('dataentrega').value;
+            var time = document.getElementById('combobox-times').value;
 
             if(id == 0){
-                createUser(idPerfil, login, password, email, celular);
+                createSprint(nome, datainico, dataentrega, time);
+                window.location.reload();
                 return;
             }
 
-            updateUsers(id, idPerfil, login, password, email, celular)
+            updateSprint(id, nome, datainico, dataentrega, time)
+            window.location.reload()
         }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+    $(function(){
+        //código para exibir os modais
+    });
     </script>
 
 </body>
