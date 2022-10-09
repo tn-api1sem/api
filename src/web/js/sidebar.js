@@ -23,8 +23,9 @@ var sidebar = [
     {
         "description": "Times",
         "link": "teams.html",
-        "icon": "fas fa-users"
-    },
+        "icon": "fas fa-users",
+        "allowed-users": [1]
+    }
 ]
 
 var user = JSON.parse(window.localStorage.getItem('user'));
