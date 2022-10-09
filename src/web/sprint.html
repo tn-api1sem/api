@@ -273,26 +273,24 @@
                             </div>
                             <div class="form-group">
                                 <label>Data de Entrega</label>
-                                <input class="au-input au-input--full" type="date" name="datainico" id="datainico" placeholder="Ex: dd/mm/aaaa">
+                                <input class="au-input au-input--full" type="date" name="datainicio" id="datainicio" placeholder="Ex: dd/mm/aaaa">
                             </div>
                             <div class="form-group">
                                 <label>Data de Inicio</label>
                                 <input class="au-input au-input--full" type="date" name="dataentrega" id="dataentrega" placeholder="Ex: dd/mm/aaaa">
                             </div>
                             <div class="form-group">
-                                <label>Time</label>
+                                <label>Times</label>
                                 <select class="form-control" id="combobox-times">
                                     <option disabled selected value="-1">Selecionar</option>
-                                    <option value="0">GDM</option>
-                                    <option value="1">Alpha</option>
-                                    <option value="2">Losers</option>
                                 </select>
                             </div>
                         </div>
                     </div>
+                    <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
                     <div class="modal-footer">
                         <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-primary" onclick="insertOrUpdate()">Criar</button>
+                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -331,6 +329,7 @@
     </script>
 
     <script src="js/sprint.js"></script>
+    <script src="js/teams.js"></script>
 
     <script>
         loadSprints()
@@ -339,11 +338,12 @@
             var tbody = document.getElementById('tbody-sprint');
 
             for (var i = 0; i < sprints.length; i++) {
+                var times = await getTeamById(sprints[i].team_id);
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + sprints[i].name + "</td>" +
                     "<td>" + sprints[i].start_date + "</td>" +
                     "<td>" + sprints[i].end_date + "</td>" +
-                    "<td>" + sprints[i].team_id + "</td>" +
+                    "<td>" + times.times + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
                     "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createsprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadSprint("+ sprints[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteSprint(" + sprints[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
@@ -353,11 +353,11 @@
         }
 
         async function loadComboBox(){
-            var times = await getUsers();
+            var times = await getTeams();
             var select = document.getElementById("combobox-times")
 
-            for(var i = 0; i < profiles.length; i++){
-                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].usuario}</option>`
+            for(var i = 0; i < times.length; i++){
+                select.innerHTML += `<option value=${times[i].id}>${times[i].times}</option>`
             }
         }
 
@@ -365,6 +365,7 @@
 
         async function loadSprint(id){
             var sprint = await getSprintsById(id)
+            document.getElementById('id-user').value = id;
             document.getElementById('nome').value = sprint.name;
             document.getElementById('datainicio').value = sprint.start_date;
             document.getElementById('dataentrega').value = sprint.end_date;
@@ -372,24 +373,28 @@
         }
 
         function clearForm(){
+            document.getElementById('id-user').value = 0;
             document.getElementById('nome').value = '';
             document.getElementById('datainicio').value = null;
             document.getElementById('dataentrega').value = null;
             document.getElementById('combobox-times').value = '';
         }
 
-        function insertOrUpdate(id = 0){
+        function insertOrUpdate(){
+            var id = document.getElementById('id-user').value;
             var nome = document.getElementById('nome').value;
-            var datainico = document.getElementById('datainicio').null;
+            var datainico = document.getElementById('datainicio').value;
             var dataentrega = document.getElementById('dataentrega').value;
             var time = document.getElementById('combobox-times').value;
 
-            if(!id){
+            if(id == 0){
                 createSprint(nome, datainico, dataentrega, time);
+                window.location.reload();
                 return;
             }
 
             updateSprint(id, nome, datainico, dataentrega, time)
+            window.location.reload()
         }
     </script>
 

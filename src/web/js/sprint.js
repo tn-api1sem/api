@@ -49,10 +49,10 @@ let createSprint = async (name, start_date, end_date, team_id) => {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-        "nome": name.toString(),
-        "datainicio": start_date.toString(),
-        "dataentrega": end_date.toString(),
-        "time": team_id,
+        "name": name.toString(),
+        "start_date": start_date.toString(),
+        "end_date": end_date.toString(),
+        "team_id": team_id,
     });
 
     var requestOptions = {
@@ -75,10 +75,10 @@ let updateSprint = async (id, name, start_date, end_date, team_id) => {
     myHeaders.append("Content-type", "application/json");
 
     var raw = JSON.stringify({
-        "nome": name.toString(),
-        "datainicio": start_date.toString(),
-        "dataentrega": end_date.toString(),
-        "time": team_id,
+        "name": name.toString(),
+        "start_date": start_date.toString(),
+        "end_date": end_date.toString(),
+        "team_id": team_id,
         "id": id
     });
 
