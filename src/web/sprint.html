@@ -335,15 +335,15 @@
         loadSprints()
         async function loadSprints() {
             var sprints = await getSprints();
+            var times = await getTeams();
             var tbody = document.getElementById('tbody-sprint');
 
             for (var i = 0; i < sprints.length; i++) {
-                var times = await getTeamById(sprints[i].team_id);
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + sprints[i].name + "</td>" +
                     "<td>" + sprints[i].start_date + "</td>" +
                     "<td>" + sprints[i].end_date + "</td>" +
-                    "<td>" + times.times + "</td>" +
+                    "<td>" + times.find(x => x.id == sprints[i].team_id).times + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
                     "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createsprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadSprint("+ sprints[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteSprint(" + sprints[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
