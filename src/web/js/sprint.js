@@ -38,7 +38,7 @@ let deleteSprint = async (id) => {
 
     await fetch(localURL + '/api/v1/sprint/' + id, requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result => window.location.reload())
     .catch(error => console.log('error', error));
 
     window.location.reload();
@@ -64,7 +64,7 @@ let createSprint = async (name, start_date, end_date, team_id) => {
 
     await fetch(localURL + "/api/v1/sprint/", requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result => window.location.reload())
     .catch(error => console.log('error', error))
 
     window.location.reload();
@@ -91,6 +91,6 @@ let updateSprint = async (id, name, start_date, end_date, team_id) => {
 
     await fetch(localURL + "/api/v1/sprint/", requestOptions)
     .then(response => response.text())
-    .then(result => console.log(result))
+    .then(result => window.location.reload())
     .catch(error => console.log('error', error));
 }

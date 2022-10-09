@@ -348,8 +348,7 @@
             var users = await getUsers();
             var profiles = await getProfiles();
             var tbody = document.getElementById('tbody-users');
-            console.log(users)
-
+            
             for (var i = 0; i < users.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + users[i].usuario + "</td>" +
