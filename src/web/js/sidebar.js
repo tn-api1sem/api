@@ -6,25 +6,25 @@ var sidebar = [
         "description": "Dashboard",
         "link": "index.html",
         "icon": "fas fa-tachometer-alt",
-        "allowed-users": [1,2]
+        "admin-only": false
     },
     {
         "description": "Usuarios",
         "link": "users.html",
         "icon": "fas fa-user",
-        "allowed-users": [1]
+        "admin-only": true
     },
     {
         "description": "Sprints",
         "link": "sprint.html",
         "icon": "fas fa-check-circle",
-        "allowed-users": [1]
+        "admin-only": true
     },
     {
         "description": "Times",
         "link": "teams.html",
         "icon": "fas fa-users",
-        "allowed-users": [1]
+        "admin-only": true
     }
 ]
 
@@ -33,18 +33,20 @@ console.log(user)
 var sidebarElement = document.getElementById("menu-navbar");
 for (var i = 0; i < sidebar.length; i++) {
     var id = sidebar[i].link;
-
-    if(sidebar[i]["allowed-users"].includes(user.id_perfil))
-        sidebarElement.innerHTML += 
-        `
-            <li id="${id}">
-                <a 
-                    href="${sidebar[i].link}"  
-                >
-                    <i class="${sidebar[i].icon}"></i>${sidebar[i].description}
-                </a>
-            </li>
-        `
+    
+    if(sidebar[i]["admin-only"] && user.usuario != 'admin')
+        continue;
+    
+    sidebarElement.innerHTML += 
+    `
+        <li id="${id}">
+            <a 
+                href="${sidebar[i].link}"  
+            >
+                <i class="${sidebar[i].icon}"></i>${sidebar[i].description}
+            </a>
+        </li>
+    `
 }
 
 //Sidebar active
