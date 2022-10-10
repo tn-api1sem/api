@@ -9,7 +9,7 @@ var sidebar = [
         "admin-only": false
     },
     {
-        "description": "Usuarios",
+        "description": "Usuários",
         "link": "users.html",
         "icon": "fas fa-user",
         "admin-only": true

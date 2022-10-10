@@ -1,5 +1,5 @@
 {
-  "last_index": 2,
+  "last_index": 5,
   "dataset": [
     {
       "id":1,
@@ -7,7 +7,19 @@
     },
     {
       "id":2,
-      "perfil":"Usuario"
+      "perfil":"Usuário"
+    },
+    {
+      "id":3,
+      "perfil":"Líder do Grupo"
+    },
+    {
+      "id":4,
+      "perfil":"Líder Técnico"
+    },
+    {
+      "id":5,
+      "perfil":"Product Owner"
     }
   ]
 }
