@@ -56,7 +56,7 @@ let deleteTeam = async (id) => {
 
     await fetch(localURL + '/api/v1/times/' + id, requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
+        .then(result => callbackHandler(result, 'Time deletado com sucesso'))
         .catch(error => console.log('error', error));
 
     window.location.reload();
@@ -71,7 +71,6 @@ let createTeam = async (nome, id_user, userName) => {
         "id_users": id_user,
         "userName": userName,
         "id": 0,
-
     });
 
     var requestOptions = {
@@ -83,7 +82,7 @@ let createTeam = async (nome, id_user, userName) => {
 
     await fetch(localURL + "/api/v1/times/", requestOptions)
         .then(response => response.text())
-        .then(result => isError(result))
+        .then(result => callbackHandler(result, 'Time cadastrado com sucesso'))
         .catch(error => console.log('error', error));
 
 }
@@ -108,13 +107,14 @@ let updateTeams = async (id, nome, id_user, userName) => {
 
     await fetch(localURL + "/api/v1/times/", requestOptions)
         .then(response => response.text())
-        .then(result => isError(result))
+        .then(result => callbackHandler(result, 'Time atualizado com sucesso'))
         .catch(error => console.log('error', error));
 
 }
 
-function isError(x) {
+function callbackHandler(x, successMessage) {
     if (x == 200) {
+        console.log(successMessage)
         window.location.reload()
         return;
     }

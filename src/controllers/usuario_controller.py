@@ -23,7 +23,7 @@ def id_get_usuario(id:int):
 @router.post("/")
 def post_usuario(objectToPost:usuario_model):
     try:
-        usuario_services.post_usuario(objectToPost)
+        usuario_services.create(objectToPost)
         return OK
     except Exception as e:
         return str(e)
@@ -31,13 +31,17 @@ def post_usuario(objectToPost:usuario_model):
 @router.put("/")
 def put_usuario(objectToPut:usuario_model):
     try:
-        usuario_services.put_usuario(objectToPut)
+        usuario_services.update(objectToPut)
         return OK
     except Exception as e:
         return str(e)
 
 @router.delete("/{id}")
 def delete_id_usuario(id:int):
-    usuario_services.delete_id_usuario(id)
-    return OK
+    try:
+        usuario_services.delete_by_id(id)
+        return OK
+    except Exception as e:
+        return str(e)
+    
 

@@ -13,11 +13,16 @@ class profile_services(object):
     def get_profile_by_id(self,id):
         return self._profille_repository.find(id)
 
-    def create(self, objectToPost: profile_model):
-        return self._profile_repository.create(objectToPost)
+    def create(self, model: profile_model):
+        self._validate(model)
+        return self._profile_repository.create(model)
 
-    def update(self, objectToPut: profile_model):
-        return self._profile_repository.update(objectToPut)
+    def update(self, model: profile_model):
+        self._validate(model)
+        return self._profile_repository.update(model)
 
     def delete(self, id:int):
        return self ._profile_repository.delete(id)
+
+    def _validate(self, model:profile_model):
+        return;
