@@ -1,8 +1,11 @@
-from http.client import OK
+from http.client import BAD_REQUEST,OK
 from fastapi import APIRouter
 
 from ..models.times_model import times_model
 from ..services.times_service import times_services as TimesService
+
+from  ..models.profile_model import profile_model
+from ..services.profile_service import profile_services as ProfileService
 
 router = APIRouter(
     prefix="/api/v1/times",
@@ -15,6 +18,10 @@ times_services = TimesService()
 @router.get("/")
 def get_times():
     return times_services.buscar_times()
+    try:
+        return profile_services.get_profile()
+    except Exception as e:
+        return str(e)
 
 
 @router.get("/{id}")
@@ -24,14 +31,18 @@ def id_get_times(id: int):
 
 @router.post("/")
 def post_times(objectToPost: times_model):
-    times_services.post_times(objectToPost)
-    return OK
+   times_services.post_times(objectToPost)
+   return OK
+
+
 
 
 @router.put("/")
 def put_times(objectToPut: times_model):
+
     times_services.put_times(objectToPut)
     return OK
+
 
 
 @router.delete("/{id}")
