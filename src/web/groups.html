@@ -96,7 +96,7 @@
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-right ml-auto">
                                         <button class="au-btn au-btn-icon au-btn--green au-btn--small"
-                                            data-toggle="modal" data-target="#createTeamModal" onclick="clearForm()">
+                                            data-toggle="modal" data-target="#createGroupModal" onclick="clearForm()">
                                             <i class="zmdi zmdi-plus"></i>Adicionar
                                         </button>
                                     </div>
@@ -105,14 +105,13 @@
                                     <table class="table table-data2">
                                         <thead>
                                             <tr>
-                                                <th>nome</th>
-                                                <th>Integrantes</th>
-                                                <!--<th>celular</th>-->
-                                                <!--<th>perfil</th>-->
+                                                <th>Turma</th>
+                                                <th>Líder do Grupo</th>
+                                                <th>Fake Client</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbody-teams">
+                                        <tbody id="tbody-groups">
 
                                         </tbody>
                                     </table>
@@ -126,32 +125,40 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="createTeamModal" tabindex="-1" role="dialog" aria-labelledby="createTeamModal"
+        <div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="createGroupModal"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="createTeamModal">Cadastrar Time</h5>
+                        <h5 class="modal-title">Cadastrar Time</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="login-form">
-                            <input class="au-input au-input--full" type="hidden" name="id-team" id="id-team">
+                        <form id="group-form">
+                            <input class="au-input au-input--full" type="hidden" name="id-group" id="id-group">
                             <div class="form-group">
-                                <label>Nome</label>
-                                <input class="au-input au-input--full" type="text" name="nome" id="nome"
-                                    placeholder="Nome do Time">
+                                <label>Turma</label>
+                                <input class="au-input au-input--full" type="text" name="group-name" id="group-name"
+                                    placeholder="Nome da Turma">
                             </div>
                             <div class="form-group">
-                                <label>Integrantes</label>
-                                <select class="form-control" data-role="select-dropdown" multiple
-                                    id="combobox-profiles">
-                                    <option disabled selected value="-1"></option>
+                                <label>Lider do Grupo</label>
+                                <select class="form-control" data-role="select-dropdown" id="combobox-gl" name="combobox-gl">
                                 </select>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label>Fake Client</label>
+                                <select class="form-control" data-role="select-dropdown" id="combobox-fc" name="combobox-fc">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Times</label>
+                                <select class="form-control" multiple data-role="select-dropdown" id="combobox-teams" name="combobox-teams">
+                                </select>
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -160,113 +167,135 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
+    
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+
     <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
+    <script src="vendor/slick/slick.min.js"></script>
     <script src="vendor/wow/wow.min.js"></script>
     <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
+    <script src="vendor/counter-up/jquery.counterup.min.js"></script>
     <script src="vendor/circle-progress/circle-progress.min.js"></script>
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"> </script>
-    <script src="js/sidebar.js"></script>
-
+    
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script src="js/sidebar.js"></script>
     <script src="js/consts.js"></script>
-    <script src="js/js-brasil.js"></script>
-
-    <script>
-        document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
-    </script>
-
     <script src="js/teams.js"></script>
     <script src="js/users.js"></script>
+    <script src="js/groups.js"></script>
 
     <script>
-        $(function () {
-            $("#combobox-profiles").select2();
+        $(document).ready(function() {
+            //Combobox
+            $("#combobox-gl").select2({
+                dropdownParent: $('#createGroupModal .modal-content')
+            });
+            $("#combobox-fc").select2({
+                dropdownParent: $('#createGroupModal .modal-content')
+            });
+            $("#combobox-teams").select2();
+
+            //Call Functions
+            loadComboBox();
+            loadGroups();
+
+            //Load Header
+            document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
         }); 
-    </script>
-
-    <script>
-        async function loadTeams() {
-            var teams = await getTeams();
-            var tbody = document.getElementById('tbody-teams');
-
-            for (var i = 0; i < teams.length; i++) {
-                tbody.innerHTML += "<tr class=\"tr-shadow\">" +
-                    "<td>" + teams[i].times + "</td>" +
-                    "<td>" + teams[i].userName + "</td>" +
-                    "<td>\<div class=\"table-data-feature\">" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createTeamModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadTeam(" + teams[i].id + ")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteTeam(" + teams[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
-                    "</div>\</td>" +
-                    "</tr><tr class=\"spacer\"></tr>"
-            }
-        }
-
+        
         async function loadComboBox() {
-            var profiles = await getUsers();
-            var select = document.getElementById("combobox-profiles")
+            var users = await getUsers();
 
-            for (var i = 0; i < profiles.length; i++) {
-                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].usuario}</option>`
+            var selectGroupLeader = document.getElementById("combobox-gl")
+            var selectFakeClient = document.getElementById("combobox-fc")
+            for (let user of users) {
+                selectGroupLeader.innerHTML += `<option value=${user.id}>${user.usuario}</option>`
+                selectFakeClient.innerHTML += `<option value=${user.id}>${user.usuario}</option>`
+            }
+
+            var teams = await getTeams();
+            
+            var selectTeams = document.getElementById("combobox-teams")
+            for(let team of teams){
+                selectTeams.innerHTML += `<option value=${team.id}>${team.times}</option>`
             }
         }
 
-        loadTeams();
-        loadComboBox();
-
-        async function loadTeam(id) {
-            var team = await getTeamById(id)
-            document.getElementById('id-team').value = team.id;
-            document.getElementById('nome').value = team.times;
-            document.getElementById('combobox-profiles').value = team.id_users;
+        async function loadGroup(id){
+            var team = await getGroupById(id);
+            jsonToForm("group-form", team);
         }
 
-        function clearForm() {
-            document.getElementById('id-team').value = 0;
-            document.getElementById('nome').value = '';
-            document.getElementById('combobox-profiles').value = '';
-        }
+        async function loadGroups() {
+            var groups = await getGroups();
+            var users = await getUsers();
 
-        function insertOrUpdate() {
-            var id = document.getElementById('id-team').value;
-            var nomeTime = document.getElementById('nome').value;
-            var selectIntegrante = document.getElementById('combobox-profiles');
-            var selectedIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.value);
-            var selectedNameIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.text);
-            console.log(selectedNameIntegrante);
-            let listUsers = [];
-            let listNameUsers = [];
-            for (i = 0; i < selectedIntegrante.length; i++) {
-                listUsers.push(parseInt(selectedIntegrante[i]));
-                listNameUsers.push(selectedNameIntegrante[i].toString());
-                console.log(listNameUsers);
+            var tbody = document.getElementById('tbody-groups');
+
+            for (let group of groups) {
+                tbody.innerHTML += 
+                    `
+                    <tr class="tr-shadow">
+                        <td>${group.name}</td>
+                        <td>${users[group.groupLeader].username}</td>
+                        <td>${users[group.fakeClient].username}</td>
+                        <td>
+                            <div class="table-data-feature">
+                                <button 
+                                    class="item" 
+                                    data-toggle="modal" 
+                                    data-target="#createGroupModal" 
+                                    data-placement="top"
+                                    title="Editar" 
+                                    onclick="loadGroup(${group.id})"
+                                > 
+                                    <i class="zmdi zmdi-edit"></i>
+                                </button>
+                                <button 
+                                    class="item" 
+                                    data-toggle="tooltip" 
+                                    data-placement="top"
+                                    title="Deletar" 
+                                    onclick="deleteGroup(${group.id})"
+                                >
+                                    <i class="zmdi zmdi-delete text-danger"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="spacer"></tr>
+                    `
             }
+        }
 
-            if (id == 0) {
-                createTeam(nomeTime, listUsers, listNameUsers);
+        function insertOrUpdate(){
+            var json = formToJson("group-form");
+            
+            if(json["id-group"] == 0){
+                createGroup(json);
                 return;
             }
-            updateTeams(id, nomeTime, listUsers, listNameUsers);
+
+            updateGroup(json);
+        }
+
+        function clearForm (){
+            let f = document.getElementById("group-form");
+            f.reset();
         }
     </script>
-
 </body>
 
 </html>
