@@ -58,7 +58,7 @@ class JsonContext:
         index = self._get_registry_index(id)
 
         if index == -1:
-            raise Exception("Registry not found")
+            raise Exception("Registro não encontrado")
 
         del self._context.dataset[index]
 

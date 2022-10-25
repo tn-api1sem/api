@@ -22,15 +22,25 @@ def get_sprint_by_id(id:int):
 
 @router.post("/")
 def create_sprint(model: SprintsModel):
-    service.create(model)
-    return OK;
-
+    try:
+        service.create(model)
+        return OK
+    except Exception as e:
+        return str(e)
+    
 @router.put("/")
 def update_sprint(model: SprintsModel):
-    service.update(model)
-    return OK
+    try:
+        service.update(model)
+        return OK
+    except Exception as e:
+        return str(e)
 
 @router.delete("/{id}")
 def delete_sprint(id:int):
-    service.delete(id)
-    return OK
+    try:
+        service.delete(id)
+        return OK
+    except Exception as e:
+        return str(e)
+    
