@@ -11,7 +11,6 @@ router = APIRouter(
 )
 times_services = TimesService()
 
-
 @router.get("/")
 def get_times():
     return times_services.buscar_times()
