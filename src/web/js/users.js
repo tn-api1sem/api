@@ -40,7 +40,7 @@ let deleteUser = async (id) => {
 
     await fetch(localURL + '/api/v1/usuario/' + id, requestOptions)
         .then(response => response.text())
-        .then(result => isError(result))
+        .then(result => callbackHandler(result,'Usuario deletado com sucesso'))
         .catch(error => console.log('error', error));
 
     window.location.reload();
@@ -61,7 +61,7 @@ let createUser = async (id_perfil, login, password, email, celular) => {
 
     await fetch(localURL + "/api/v1/usuario/", requestOptions)
         .then(response => response.text())
-        .then(result => isError(result))
+        .then(result => callbackHandler(result,'Usuario cadastrado com sucesso'))
         .catch(error => console.log('error', error));
 
     window.location.reload();
@@ -82,7 +82,7 @@ let updateUsers = async (id, id_perfil, login, password, email, celular) => {
 
     await fetch(localURL + "/api/v1/usuario/", requestOptions)
         .then(response => response.text())
-        .then(result => isError(result))
+        .then(result => callbackHandler(result, 'Usuario atualizado com sucesso'))
         .catch(error => console.log('error', error));
 
 }
@@ -101,8 +101,9 @@ function createBody(id, id_perfil, login, password, email, celular){
     return raw;
 }
 
-function isError(x){
+function callbackHandler(x, sucessMessage){
     if(x == 200){
+        console.log(sucessMessage);
         window.location.reload()
         return;
     }
