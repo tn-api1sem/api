@@ -8,6 +8,7 @@ class ApiContext:
     sprints_table: JsonContext = JsonContext("sprint.json")
     
     times_table: JsonContext = JsonContext("teams.json")
+    userTeam_table: JsonContext = JsonContext("user_team.json")
 
     def __init__(self) -> None:
         pass

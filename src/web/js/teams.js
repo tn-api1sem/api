@@ -14,6 +14,25 @@ let getUsers = async () => {
     return JSON.parse(users);
 }
 
+let getProfiles = async () => {
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+
+    var profiles;
+
+    await fetch(localURL + '/api/v1/times', requestOptions)
+        .then(response => response.text())
+        .then(result => profiles = result)
+        .catch(error => console.log('error', error));
+
+    return JSON.parse(profiles);
+}
+
+
+
+
 let getTeams = async () => {
     var requestOptions = {
         method: 'GET',
