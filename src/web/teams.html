@@ -105,10 +105,8 @@
                                     <table class="table table-data2">
                                         <thead>
                                             <tr>
-                                                <th>nome</th>
+                                                <th>Nome</th>
                                                 <th>Integrantes</th>
-                                                <!--<th>celular</th>-->
-                                                <!--<th>perfil</th>-->
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -131,28 +129,68 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="createTeamModal">Cadastrar Time</h5>
+                        <h5 class="modal-title">Cadastrar Time</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <form class="modal-body" id="form-teams">
                         <div class="login-form">
-                            <input class="au-input au-input--full" type="hidden" name="id-team" id="id-team">
+                            <input class="au-input au-input--full" type="hidden" name="id" id="id" value="0">
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input class="au-input au-input--full" type="text" name="nome" id="nome"
+                                <input class="au-input au-input--full" type="text" name="times" id="times"
                                     placeholder="Nome do Time">
                             </div>
-                            <div class="form-group">
-                                <label>Integrantes</label>
-                                <select class="form-control" data-role="select-dropdown" multiple
-                                    id="combobox-profiles">
-                                    <option disabled selected value="-1"></option>
-                                </select>
+                   
+                            <div class="row">
+                                <div class="col form-group">
+                                    <label>Usuario</label>
+                                    <select 
+                                        class="form-control" 
+                                        data-role="select-dropdown" 
+                                        id="id_user" 
+                                        name="id_user"
+                                    >
+                                    </select>
+                                </div>
+                                <div class="col form-group">
+                                    <label>Perfil</label>
+                                    <select 
+                                        class="form-control" 
+                                        data-role="select-dropdown" 
+                                        id="id_profile" 
+                                        name="id_profile"
+                                    >
+                                    </select>
+                                </div>
+                                <div class="col form-group">
+                                    <label for="">&nbsp;</label>
+                                    <button 
+                                        class="btn btn-success" 
+                                        style="width: 100%;"
+                                        onclick="addUserProfile()"
+                                        type="button"
+                                    >
+                                        Adicionar
+                                    </button>
+                                </div>
                             </div>
+
+                            <table class="table table-data2">
+                                <thead>
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Perfil</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-user-profile">
+
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
+                    </form>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="button" class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
@@ -182,27 +220,36 @@
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"> </script>
-    <script src="js/sidebar.js"></script>
-
+    
     <!-- Main JS-->
     <script src="js/main.js"></script>
     <script src="js/consts.js"></script>
-    <script src="js/js-brasil.js"></script>
-
-    <script>
-        document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
-    </script>
-
+    <script src="js/sidebar.js"></script>
     <script src="js/teams.js"></script>
     <script src="js/users.js"></script>
+    <script src="js/profiles.js"></script>
 
     <script>
-        $(function () {
-            $("#combobox-profiles").select2();
+        userProfileValues = []
+
+        $(document).ready(function() {
+            //Combobox
+            $("#id_user").select2({
+                dropdownParent: $('#createTeamModal .modal-content')
+            });
+            $("#id_profile").select2({
+                dropdownParent: $('#createTeamModal .modal-content')
+            });
+            
+            //Call Functions
+            loadTeams();
+            loadComboBox();
+
+            //Load Header
+            document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
         }); 
-    </script>
 
-    <script>
+    
         async function loadTeams() {
             var teams = await getTeams();
             var tbody = document.getElementById('tbody-teams');
@@ -210,7 +257,7 @@
             for (var i = 0; i < teams.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + teams[i].times + "</td>" +
-                    "<td>" + teams[i].userName + "</td>" +
+                    "<td>" + teams[i].usuarios + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
                     "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createTeamModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadTeam(" + teams[i].id + ")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteTeam(" + teams[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
@@ -220,51 +267,89 @@
         }
 
         async function loadComboBox() {
-            var profiles = await getUsers();
-            var select = document.getElementById("combobox-profiles")
+            var users = await getUsers();
+            var select = document.getElementById("id_user")
+            for (var i = 0; i < users.length; i++) {
+                select.innerHTML += `<option value=${users[i].id}>${users[i].usuario}</option>`
+            }
 
+            var profiles = await getProfiles(); 
+            var select = document.getElementById("id_profile")
             for (var i = 0; i < profiles.length; i++) {
-                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].usuario}</option>`
+                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].perfil}</option>`
             }
         }
 
-        loadTeams();
-        loadComboBox();
-
         async function loadTeam(id) {
+            clearForm();
+            
             var team = await getTeamById(id)
-            document.getElementById('id-team').value = team.id;
-            document.getElementById('nome').value = team.times;
-            document.getElementById('combobox-profiles').value = team.id_users;
-        }
-
-        function clearForm() {
-            document.getElementById('id-team').value = 0;
-            document.getElementById('nome').value = '';
-            document.getElementById('combobox-profiles').value = '';
+            jsonToForm(team);
         }
 
         function insertOrUpdate() {
-            var id = document.getElementById('id-team').value;
-            var nomeTime = document.getElementById('nome').value;
-            var selectIntegrante = document.getElementById('combobox-profiles');
-            var selectedIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.value);
-            var selectedNameIntegrante = [...selectIntegrante.options].filter(option => option.selected).map(option => option.text);
-            console.log(selectedNameIntegrante);
-            let listUsers = [];
-            let listNameUsers = [];
-            for (i = 0; i < selectedIntegrante.length; i++) {
-                listUsers.push(parseInt(selectedIntegrante[i]));
-                listNameUsers.push(selectedNameIntegrante[i].toString());
-                console.log(listNameUsers);
-            }
+            var form = formToJson("form-teams");
 
-            if (id == 0) {
-                createTeam(nomeTime, listUsers, listNameUsers);
+            if (form['id'] == 0) {
+                createTeam(form);
                 return;
             }
-            updateTeams(id, nomeTime, listUsers, listNameUsers);
+            
+            updateTeams(form);
         }
+        
+        function addUserProfile(){
+            var user = $('#id_user option:selected')
+            var profile = $('#id_profile option:selected')
+
+            for(let userProfile of userProfileValues){
+                if(userProfile.user == user.val() && userProfile.profile == profile.val()){
+                    alert("Este usuario ja foi adicionado para este perfil.");
+                    return;
+                }
+            }
+
+            userProfileValues.push({
+                user: user.val(), 
+                profile: profile.val()
+            });
+
+            var table = document.getElementById('tbody-user-profile')
+
+            table.innerHTML += `
+                <tr id="up-${userProfileValues.length}">
+                    <td>${user.text()}</td>
+                    <td>${profile.text()}</td>
+                    <td>
+                        <button 
+                            class="item" 
+                            data-toggle="tooltip" 
+                            data-placement="top"
+                            title="Deletar" 
+                            type="button"
+                            onclick="removeUserProfile(${userProfileValues.length})" 
+                        >
+                                <i class="zmdi zmdi-delete text-danger"></i>\
+                        </button>
+                    </td>
+                </tr>
+            `
+        }
+
+        function removeUserProfile(index){
+            document.getElementById('up-'+userProfileValues.length).remove();
+            userProfileValues.splice(index-1, 1);
+        }
+    
+        function clearForm() {
+            userProfileValues = []
+            document.getElementById('tbody-user-profile').innerHTML = ""
+
+            let form = $("#form-teams");
+            form.trigger('reset')
+            $('#id_users').val(null).trigger('change');
+        }
+
     </script>
 
 </body>
