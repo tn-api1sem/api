@@ -9,7 +9,7 @@ class user_repository(object):
     def get(self):
         return self._apiContext.user_table.get_all()
 
-    def busca_id_usuario(self,id):
+    def get_by_id(self,id):
         return self._apiContext.user_table.get(id)
 
     def post_usuario(self, objectPost):

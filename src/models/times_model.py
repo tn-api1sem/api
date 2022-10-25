@@ -4,7 +4,6 @@ from pydantic import BaseModel
 
 
 class times_model(BaseModel):
-    times: str
-    id_users: list[int]
-    userName: list[str]
-    id: int
+    id: int | None
+    times: str | None
+    id_users: list[int] | None

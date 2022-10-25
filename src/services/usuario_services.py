@@ -13,7 +13,7 @@ class usuario_services(object):
         return self._user_repository.get()
 
     def buscar_id_usuario(self, id):
-        return self._user_repository.busca_id_usuario(id)
+        return self._user_repository.get_by_id(id)
 
     def create(self, model: usuario_model):
         self._validate(model)
