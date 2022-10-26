@@ -13,10 +13,10 @@ class avaliacao_services(object):
     def buscar_id_avaliacao(self, id):
         return self._avaliacao_repository.busca_id_avaliacao(id)
 
-    def post_avaliacao(self, objectToPost: times_model):
+    def post_avaliacao(self, objectToPost: avaliacao_model):
         return self._avaliacao_repository.post_avaliacao(objectToPost)
 
-    def put_avaliacao(self, objectToPut: times_model):
+    def put_avaliacao(self, objectToPut: avaliacao_model):
         return self._avaliacao_repository.put_avaliacao(objectToPut)
 
     def delete_id_avaliacao(self, id: int):

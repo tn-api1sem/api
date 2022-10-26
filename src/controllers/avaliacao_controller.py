@@ -30,6 +30,6 @@ def update_avaliacao(objectToPut:avaliacao_model):
     return OK
 
 @router.delete("/{id}")
-def delete_avaliacao(id:int):
+def delete_id_avaliacao(id:int):
     avaliacao_services.delete(id)
     return OK
