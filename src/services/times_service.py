@@ -32,7 +32,7 @@ class times_services(object):
                 team = self._times_repository.get_by_id(teamId)
                 time.times.append(team.usuario)
               #  with open("teams.json", encoding="utf-8") as arq:
-               #     time.times.append(team.usuario)
+               #     json.dump(time.times.append(team.usuario))
 
         return id_times
 
