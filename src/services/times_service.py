@@ -23,6 +23,8 @@ class times_services(object):
 
         return times
 
+# popular a tabela em um crud#
+# Aqui to fazendo a busca
     def buscar_id_times(self, id):
         id_times = self._times_repository.busca_id_times()
 
@@ -31,27 +33,18 @@ class times_services(object):
             for teamId in time.team_id:
                 team = self._times_repository.get_by_id(teamId)
                 time.times.append(team.usuario)
-              #  with open("teams.json", encoding="utf-8") as arq:
-               #     json.dump(time.times.append(team.usuario))
 
         return id_times
 
-    def buscar_id_profile(self, id):
-        id_profile = self._times_repository.busca_id_profile()
+    def post_id_times(self,id):
+        id_times = self._times_repository.pos_id_times()
 
-        for profile in id_profile:
-            profile.id_profile = []
-            for profileId in profile.id_profile:
-                profile = self._repository.get_by_id(profileId)
-                profile.id_profile.append(profile.usuario)
+        for time in id_times:
+            time.id_times = []
+            for teamId in time.team_id:
+                team = self._times_repository.get_by_id(teamId)
+                time.times.append(team.usuario)
 
-        return id_profile
+        return id_times
 
-    def post_times(self, objectToPost: times_model):
-        return self._times_repository.post_times(objectToPost)
 
-    def put_times(self, objectToPut: times_model):
-        return self._times_repository.put_times(objectToPut)
-
-    def delete_id_times(self, id: int):
-        return self ._times_repository.delete_id_times(id)
