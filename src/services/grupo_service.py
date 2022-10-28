@@ -22,7 +22,7 @@ class grupo_services(object):
         return grupo
 
     def buscar_id_grupo(self, id):
-        return self._grupo_repository.busca_id_times(id)
+        return self._grupo_repository.busca_id_grupo(id)
 
     def post_grupo(self, objectToPost: grupo_model):
         return self._grupo_repository.post_grupo(objectToPost)

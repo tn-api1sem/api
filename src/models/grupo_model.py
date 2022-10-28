@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
-class autenticacao_model(BaseModel):
+class grupo_model(BaseModel):
     usuario: str
     senha: str

@@ -1,8 +1,8 @@
 from http.client import OK
 from fastapi import APIRouter
 
-from src.models.grupo_model import GrupoModel
-from src.services.grupo_service import GrupoService
+from src.models.grupo_model import grupo_model
+from src.services.grupo_service import grupo_services as GrupoService
 
 router = APIRouter(
     prefix="/api/v1/grupo",
@@ -10,28 +10,28 @@ router = APIRouter(
     responses={404: {"description": "Not found"}},
 )
 
-service = GrupoService()
+grupo_service = GrupoService()
 
 @router.get("/")
 def get_all_grupo():
-    return service.get();
+    return grupo_service.buscar_grupo()
 
 @router.get("/{id}")
 def get_grupo_by_id(id:int):
-    return service.get_by_id(id);
+    return grupo_service.buscar_id_grupo(id);
 
 @router.post("/")
-def create_grupo(model: GrupoModel):
+def create_grupo(model: grupo_model):
     try:
-        service.create(model)
+        grupo_service.post_grupo(model)
         return OK
     except Exception as e:
         return str(e)
     
 @router.put("/")
-def update_grupo(model: GrupoModel):
+def update_grupo(model: grupo_model):
     try:
-        service.update(model)
+        grupo_service.put_grupo(model)
         return OK
     except Exception as e:
         return str(e)
@@ -39,7 +39,7 @@ def update_grupo(model: GrupoModel):
 @router.delete("/{id}")
 def delete_grupo(id:int):
     try:
-        service.delete(id)
+        grupo_service.delete_id_grupo(id)
         return OK
     except Exception as e:
         return str(e)
