@@ -12,39 +12,46 @@ class times_services(object):
     def __init__(self):
         pass
 
+
+class times_services(object):
+    _times_repository: times_repository = times_repository()
+    _usuario_repository: user_repository = user_repository()
+
+    def __init__(self):
+        pass
+
     def buscar_times(self):
-        times = self._times_repository.get();
+        return self._times_repository.get()
 
-        for time in times:
-            time.usuarios = []
-            for userId in time.id_users:
-                user = self._users_repository.get_by_id(userId)
-                time.usuarios.append(user.usuario)
-
-        return times
-
-# popular a tabela em um crud#
-# Aqui to fazendo a busca
     def buscar_id_times(self, id):
-        id_times = self._times_repository.busca_id_times()
+        return self._times_repository.busca_id_times(id)
 
-        for time in id_times:
-            time.id_times = []
-            for teamId in time.team_id:
-                team = self._times_repository.get_by_id(teamId)
-                time.times.append(team.usuario)
+    def post_times(self, objectToPost: times_model):
+        return self._times_repository.post_times(objectToPost)
 
-        return id_times
+    def put_times(self, objectToPut: times_model):
+        return self._times_repository.put_times(objectToPut)
 
-    def post_id_times(self,id):
-        id_times = self._times_repository.pos_id_times()
+    def delete_id_times(self, id: int):
+        return self ._times_repository.delete_id_times(id)
 
-        for time in id_times:
-            time.id_times = []
-            for teamId in time.team_id:
-                team = self._times_repository.get_by_id(teamId)
-                time.times.append(team.usuario)
+#inserindo a id do time e do profile
+    def create(self, id: times_model):
+        # obtem os id's que foram salvos na team.json
+        listUser = times_model.id_users
+        # percorre a lista
+        for user in listUser:
+            # busca os dados da tabela users
+            usuario = self._usuario_repository.busca_id_usuario(user)
+            # insere
+            self._usuario_repository.post_usuario(usuario)
+    #insercao do id do time
+    def create_team_id(self,id:times_model):
+        listTeamid = times_model.team_id
+        for teamId in listTeamid:
+            time_id = self._times_repository.post_id_times(teamId)
 
-        return id_times
-
-
+    def create_id_profile(self,id:times_model):
+        listProfileId = times_model.id_profile
+        for profile in listProfileId:
+            profile = self._times_repository

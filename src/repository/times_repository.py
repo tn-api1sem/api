@@ -17,6 +17,12 @@ class times_repository(object):
         self._apiContext.times_table.begin_transaction()
         self._apiContext.times_table.insert(objectPost)
         self._apiContext.times_table.commit()
+#inserindo a id do time
+    def post_id_times(self, objectPost):
+        self._apiContext.times_table.begin_transaction()
+        self._apiContext.times_table.insert(objectPost)
+        self._apiContext.times_table.commit()
+
 
     def put_times(self, objectPut):
         self._apiContext.times_table.begin_transaction()
@@ -33,6 +39,9 @@ class times_repository(object):
 #######Fazendo a insercao dos outros campo do times_model (id_users e username)
     def busca_id_users(self, id_users):
         return self._apiContext.times_table.get(id_users)
+
+    def get_username(self,username):
+        return self._apiContext.times_table.get(username)
 
 
     def post_username(self, objectPost):
