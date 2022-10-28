@@ -1,7 +1,7 @@
-# Avaliação Democratizada 360°
+<h1> Avaliação Democratizada 360°</h1>
 
-## Sobre o Projeto / Objetivo
-O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; o administrador que é responsável por gerir e cadastrar usuários básicos, esse último deve atribuir as notas e contém um dashboard para o acompanhamento das mesmas.
+# Sobre o Projeto / Objetivo
+>O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; o administrador que é responsável por gerir e cadastrar usuários básicos, esse último deve atribuir as notas e contém um dashboard para o acompanhamento das mesmas.
 
 
 
@@ -35,10 +35,22 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 
 ## Backlog
 **Primeira Sprint**
-![Sprint1](https://user-images.githubusercontent.com/97194056/194786964-e0115225-4383-4f63-9652-f6b58dcc6380.png)
+| HISTORIA | DESCRIÇÃO | PRIORIDADE |
+| :---------:| :---------: | :----------: |
+| TN-33    | Criação do banco de dados |     Alta 🔴   |
+| TN-43    | Autenticação de usuario   |     Media 🟡    |
+| TN-41    | Prototipagem de telas  |     Alta 🔴     |
+| TN-42    | Estrutura da API    |     Alta 🔴    |
+| TN-1     | Gestão de usuario   |     Alta 🔴     |
+
 
 **Segunda Sprint**
-![Sprint2](https://user-images.githubusercontent.com/97194056/194786979-6c8cc52a-f24f-493c-879f-239d103216fe.png)
+| HISTORIA | DESCRIÇÃO | PRIORIDADE |
+| :---------:| :---------: | :----------: |
+| TN-7    | Gestão - Perfil |     Media 🟡   |
+| TN-13    | Gestão - Times   |     Alta 🔴    |
+| TN-19    | Gestão - Sprints  |     Media 🟡     |
+| TN-53    | Aprimoramento do cadastro de usuario    |     Baixa 🟢    |
 
 **Do Produto** <br />
 ![Backlog](https://user-images.githubusercontent.com/97194056/194787005-c7cf4f8f-3d40-49a5-9aa6-8758d61db73a.png)
