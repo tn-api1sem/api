@@ -8,4 +8,6 @@ class avaliacaoUsuario_model(BaseModel):
     rate_id: int
     sprint_id: int
     rated_by: int
+    nota: int
+    comment: str
     id: int
