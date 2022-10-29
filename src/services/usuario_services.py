@@ -13,34 +13,30 @@ class usuario_services(object):
         return self._user_repository.get()
 
     def buscar_id_usuario(self, id):
-        return self._user_repository.busca_id_usuario(id)
+        return self._user_repository.get_by_id(id)
 
-    def post_usuario(self, objectToPost: usuario_model):
-        if self._valida_geral(objectToPost):
-            raise Exception("Insira todos os campos corretamente")
+    def create(self, model: usuario_model):
+        self._validate(model)
+        return self._user_repository.post_usuario(model)
 
-        return self._user_repository.post_usuario(objectToPost)
+    def update(self, model: usuario_model):
+        self._validate(model)
+        return self._user_repository.put_usuario(model)
 
-    def put_usuario(self, objectToPut: usuario_model):
-        if self._valida_geral(objectToPut):
-            raise Exception("Insira todos os campos corretamente")
-            
-        return self._user_repository.put_usuario(objectToPut)
-
-    def delete_id_usuario(self, id: int):
+    def delete_by_id(self, id: int):
         return self._user_repository.delete_id_usuario(id)
 
-    def _valida_geral(self, model: usuario_model):
+    def _validate(self, model: usuario_model):
         if not model.email or not model.celular or not model.usuario or not model.senha:
-            return True
+            raise Exception("Insira todos os campos")
 
         if model.id_perfil < 0:
-            return True
+            raise Exception("Insira um perfil valido")
 
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
         if not re.fullmatch(regex, model.email):
-            return True
-            
-        return False
+            raise Exception("Insira um com formato valido")
+
+        return
 
 

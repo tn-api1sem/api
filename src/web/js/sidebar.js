@@ -15,15 +15,21 @@ var sidebar = [
         "admin-only": true
     },
     {
-        "description": "Sprints",
-        "link": "sprint.html",
-        "icon": "fas fa-check-circle",
-        "admin-only": true
-    },
-    {
         "description": "Times",
         "link": "teams.html",
         "icon": "fas fa-users",
+        "admin-only": true
+    },
+    {
+        "description": "Turmas",
+        "link": "groups.html",
+        "icon": "fas fa-globe",
+        "admin-only": true
+    },
+    {
+        "description": "Sprints",
+        "link": "sprint.html",
+        "icon": "fas fa-check-circle",
         "admin-only": true
     },
     {

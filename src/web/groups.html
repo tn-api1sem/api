@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title Page-->
-    <title>Sprints</title>
+    <title>Times</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -39,7 +39,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list" id="menu-navbar">
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -84,7 +84,7 @@
                 </div>
             </header>
             <!-- HEADER DESKTOP-->
-            
+
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
@@ -92,15 +92,11 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Sprint</h3>
+                                <h3 class="title-5 m-b-35">Times</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-right ml-auto">
-                                        <button 
-                                            class="au-btn au-btn-icon au-btn--green au-btn--small" 
-                                            data-toggle="modal" 
-                                            data-target="#createsprint"
-                                            onclick="clearForm()"
-                                        >
+                                        <button class="au-btn au-btn-icon au-btn--green au-btn--small"
+                                            data-toggle="modal" data-target="#createGroupModal" onclick="clearForm()">
                                             <i class="zmdi zmdi-plus"></i>Adicionar
                                         </button>
                                     </div>
@@ -109,14 +105,13 @@
                                     <table class="table table-data2">
                                         <thead>
                                             <tr>
-                                                <th>Sprint</th>
-                                                <th>Data de Inicio</th>
-                                                <th>Data de Entrega</th>
-                                                <th>time</th>
+                                                <th>Turma</th>
+                                                <th>Líder do Grupo</th>
+                                                <th>Fake Client</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbody-sprint">
+                                        <tbody id="tbody-groups">
 
                                         </tbody>
                                     </table>
@@ -129,159 +124,178 @@
             </div>
         </div>
 
-        <!-- modal cria e altera sprint -->
-        <div class="modal fade" id="createsprint" tabindex="-1" role="dialog" aria-labelledby="createsprint"
+        <!-- Modal -->
+        <div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="createGroupModal"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="createsprint">Criar Sprint</h5>
+                        <h5 class="modal-title">Cadastrar Time</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
-                        <div class="login-form">
+                        <form id="group-form">
+                            <input class="au-input au-input--full" type="hidden" name="id-group" id="id-group">
                             <div class="form-group">
-                                <label>Nome da Sprint</label>
-                                <input class="au-input au-input--full" type="text'" name="nome" id="nome" placeholder="Ex: Projeto">
+                                <label>Turma</label>
+                                <input class="au-input au-input--full" type="text" name="group-name" id="group-name"
+                                    placeholder="Nome da Turma">
                             </div>
                             <div class="form-group">
-                                <label>Data de Inicio</label>
-                                <input class="au-input au-input--full" type="date" name="datainicio" id="datainicio" placeholder="Ex: dd/mm/aaaa">
+                                <label>Lider do Grupo</label>
+                                <select class="form-control" data-role="select-dropdown" id="combobox-gl" name="combobox-gl">
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label>Data de Entrega</label>
-                                <input class="au-input au-input--full" type="date" name="dataentrega" id="dataentrega" placeholder="Ex: dd/mm/aaaa">
-                            </div>
-                            <div class="form-group">
-                                <label>Avaliação libererada até</label>
-                                <input class="au-input au-input--full" type="date" name="dataavaliacao" id="dataavaliacao" placeholder="Ex: dd/mm/aaaa">
+                                <label>Fake Client</label>
+                                <select class="form-control" data-role="select-dropdown" id="combobox-fc" name="combobox-fc">
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Times</label>
-                                <select class="form-control" id="combobox-times" style="height: 43px;font-size: 13px">
-                                    <option disabled selected value="-1">Selecionar</option>
+                                <select class="form-control" multiple data-role="select-dropdown" id="combobox-teams" name="combobox-teams">
                                 </select>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
+    
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+
     <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
+    <script src="vendor/slick/slick.min.js"></script>
     <script src="vendor/wow/wow.min.js"></script>
     <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
+    <script src="vendor/counter-up/jquery.counterup.min.js"></script>
     <script src="vendor/circle-progress/circle-progress.min.js"></script>
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"> </script>
-    <script src="js/sidebar.js"></script>
-
+    
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script src="js/sidebar.js"></script>
     <script src="js/consts.js"></script>
-    <script src="js/js-brasil.js"></script>
-
-    <script>
-        document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
-    </script>
-
-    <script src="js/sprint.js"></script>
     <script src="js/teams.js"></script>
+    <script src="js/users.js"></script>
+    <script src="js/groups.js"></script>
 
     <script>
-        loadSprints();
-        loadComboBox();
+        $(document).ready(function() {
+            //Combobox
+            $("#combobox-gl").select2({
+                dropdownParent: $('#createGroupModal .modal-content')
+            });
+            $("#combobox-fc").select2({
+                dropdownParent: $('#createGroupModal .modal-content')
+            });
+            $("#combobox-teams").select2();
 
-        async function loadSprints() {
-            var sprints = await getSprints();
-            var times = await getTeams();
-            var tbody = document.getElementById('tbody-sprint');
+            //Call Functions
+            loadComboBox();
+            loadGroups();
+
+            //Load Header
+            document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
+        }); 
         
-            for (var i = 0; i < sprints.length; i++) {
-                tbody.innerHTML += "<tr class=\"tr-shadow\">" +
-                    "<td>" + sprints[i].name + "</td>" +
-                    "<td>" + sprints[i].start_date + "</td>" +
-                    "<td>" + sprints[i].end_date + "</td>" +
-                    "<td>" + times.find(x => x.id == sprints[i].team_id).times + "</td>" +
-                    "<td>\<div class=\"table-data-feature\">" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createsprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadSprint("+ sprints[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteSprint(" + sprints[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#notasprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"notasprint("+ +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" 
-                    "</div>\</td>" +
-                    "</tr><tr class=\"spacer\"></tr>"
+        async function loadComboBox() {
+            var users = await getUsers();
+
+            var selectGroupLeader = document.getElementById("combobox-gl")
+            var selectFakeClient = document.getElementById("combobox-fc")
+            for (let user of users) {
+                selectGroupLeader.innerHTML += `<option value=${user.id}>${user.usuario}</option>`
+                selectFakeClient.innerHTML += `<option value=${user.id}>${user.usuario}</option>`
+            }
+
+            var teams = await getTeams();
+            
+            var selectTeams = document.getElementById("combobox-teams")
+            for(let team of teams){
+                selectTeams.innerHTML += `<option value=${team.id}>${team.times}</option>`
             }
         }
 
-        async function loadComboBox(){
-            var times = await getTeams();
-            var select = document.getElementById("combobox-times")
+        async function loadGroup(id){
+            var team = await getGroupById(id);
+            jsonToForm("group-form", team);
+        }
 
-            for(var i = 0; i < times.length; i++){
-                select.innerHTML += `<option value=${times[i].id}>${times[i].times}</option>`
+        async function loadGroups() {
+            var groups = await getGroups();
+            var users = await getUsers();
+
+            var tbody = document.getElementById('tbody-groups');
+
+            for (let group of groups) {
+                tbody.innerHTML += 
+                    `
+                    <tr class="tr-shadow">
+                        <td>${group.name}</td>
+                        <td>${users[group.groupLeader].username}</td>
+                        <td>${users[group.fakeClient].username}</td>
+                        <td>
+                            <div class="table-data-feature">
+                                <button 
+                                    class="item" 
+                                    data-toggle="modal" 
+                                    data-target="#createGroupModal" 
+                                    data-placement="top"
+                                    title="Editar" 
+                                    onclick="loadGroup(${group.id})"
+                                > 
+                                    <i class="zmdi zmdi-edit"></i>
+                                </button>
+                                <button 
+                                    class="item" 
+                                    data-toggle="tooltip" 
+                                    data-placement="top"
+                                    title="Deletar" 
+                                    onclick="deleteGroup(${group.id})"
+                                >
+                                    <i class="zmdi zmdi-delete text-danger"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="spacer"></tr>
+                    `
             }
-        }
-
-        async function loadSprint(id){
-            var sprint = await getSprintsById(id)
-            document.getElementById('id-user').value = id;
-            document.getElementById('nome').value = sprint.name;
-            document.getElementById('datainicio').value = sprint.start_date;
-            document.getElementById('dataentrega').value = sprint.end_date;
-            document.getElementById('dataavaliacao').value = sprint.evaluation_range;
-            document.getElementById('combobox-times').value = sprint.team_id;
-        }
-        
-        function clearForm(){
-            document.getElementById('id-user').value = 0;
-            document.getElementById('nome').value = '';
-            document.getElementById('datainicio').value = null;
-            document.getElementById('dataentrega').value = null;
-            document.getElementById('dataavaliacao').value = null;
-            document.getElementById('combobox-times').value = -1;
         }
 
         function insertOrUpdate(){
-            var id = document.getElementById('id-user').value;
-            var nome = document.getElementById('nome').value;
-            var datainico = document.getElementById('datainicio').value;
-            var dataentrega = document.getElementById('dataentrega').value;
-            var dataavaliacao = document.getElementById('dataavaliacao').value;
-            var time = document.getElementById('combobox-times').value;
-
-            if(id == 0){
-                createSprint(nome, datainico, dataentrega, time, dataavaliacao);
+            var json = formToJson("group-form");
+            
+            if(json["id-group"] == 0){
+                createGroup(json);
                 return;
             }
 
-            updateSprint(id, nome, datainico, dataentrega, time, dataavaliacao)
+            updateGroup(json);
+        }
+
+        function clearForm (){
+            let f = document.getElementById("group-form");
+            f.reset();
         }
     </script>
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
