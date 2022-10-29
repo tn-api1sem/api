@@ -113,7 +113,11 @@
                                                         data-toggle="modal" 
                                                         data-target="#createsprint"
                                                     >
-                                                        AVALIAR
+                                                        <img 
+                                                            src="./images/img_girl.jpg"
+                                                            style="width: 26px; height:26px"
+                                                        >
+                                                        
                                                     </a>
                                                 </td>
                                             </tr>
@@ -204,7 +208,18 @@
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script>
+        notas = [
+            {id_u: 1, n:1}
+        ]
 
+        function changeNota(id_usuario, nota){
+            var n = notas.filter(x => x.id_u == id_usuario)[0]
+            n.id_u = id_usuario;
+            n.n = nota;
+        }
+    </script>
 </body>
 
 </html>
