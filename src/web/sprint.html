@@ -254,7 +254,7 @@
             </div>
         </div>
 
-        <!-- modal -->
+        <!-- modal cria e altera sprint -->
         <div class="modal fade" id="createsprint" tabindex="-1" role="dialog" aria-labelledby="createsprint"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -270,7 +270,7 @@
                         <div class="login-form">
                             <div class="form-group">
                                 <label>Nome da Sprint</label>
-                                <input class="au-input au-input--full" type="text" name="nome" id="nome" placeholder="Ex: Projeto">
+                                <input class="au-input au-input--full" type="hidden" name="nome" id="nome" placeholder="Ex: Projeto">
                             </div>
                             <div class="form-group">
                                 <label>Data de Entrega</label>
@@ -285,6 +285,43 @@
                                 <select class="form-control" id="combobox-times" style="height: 43px;font-size: 13px">
                                     <option disabled selected value="-1">Selecionar</option>
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal notas -->
+
+        <div class="modal fade" id="notasprint" tabindex="-1" role="dialog" aria-labelledby="notasprint"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="notasprint">Notas da Sprint</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
+                        <div class="login-form">
+                            <div class="form-group">
+                                <label>Nome do Participante</label>
+                                <input class="au-input au-input--full" type="hidden" name="participante" id="participante">
+                            </div>
+                            <div class="form-group">
+                                <label>Nota</label>
+                                <input class="au-input au-input--full" type="hidden" name="nota" id="nota">
+                            </div>
+                            <div class="form-group">
+                                <label>Comentario</label>
+                                <input class="au-input au-input--full" type="hidden" name="comentario" id="comentario">
                             </div>
                         </div>
                     </div>
@@ -339,7 +376,7 @@
             var sprints = await getSprints();
             var times = await getTeams();
             var tbody = document.getElementById('tbody-sprint');
-
+        
             for (var i = 0; i < sprints.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + sprints[i].name + "</td>" +
@@ -349,6 +386,7 @@
                     "<td>\<div class=\"table-data-feature\">" +
                     "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createsprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadSprint("+ sprints[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteSprint(" + sprints[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
+                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#notasprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"notasprint("+ +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" 
                     "</div>\</td>" +
                     "</tr><tr class=\"spacer\"></tr>"
             }
