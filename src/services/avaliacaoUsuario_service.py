@@ -33,8 +33,10 @@ class avaliacaoUsuario_service(object):
     def validaCadastro(self, model: avaliacaoUsuario_model):
         sprint = self._sprint_repository.get_by_id(model.sprint_id)
 
-        end_date = datetime.strptime(sprint.evaluation_range, '%Y-%m-%d')
+        end_datetime = datetime.strptime(sprint.evaluation_range, '%Y-%m-%d')
+        end_date = datetime.date(end_datetime)
+        today = datetime.date(datetime.today())
 
-        if end_date < datetime.now():
-            raise Exception("Data de fim da sprint deve ser menor que data de começo da sprint")
-            
+        if end_date < today:
+            raise Exception(
+                "A avaliação só poderá ser cadastrada durante o período de avaliação da sua respectiva sprint")
