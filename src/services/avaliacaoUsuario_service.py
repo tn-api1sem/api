@@ -31,12 +31,10 @@ class avaliacaoUsuario_service(object):
         return self._avaliacaoUsuario_repository.delete_id_avaliacaoUsuario(id)
 
     def validaCadastro(self, model: avaliacaoUsuario_model):
-        sprint = self._sprint_repository.get_by_id(
-            avaliacaoUsuario_model.sprint_id)
+        sprint = self._sprint_repository.get_by_id(model.sprint_id)
 
         end_date = datetime.strptime(sprint.evaluation_range, '%Y-%m-%d')
 
-        if end_date < datetime.now:
-            raise Exception(
-                "Data de fim da sprint deve ser menor que data de começo da sprint")
-            return
+        if end_date < datetime.now():
+            raise Exception("Data de fim da sprint deve ser menor que data de começo da sprint")
+            

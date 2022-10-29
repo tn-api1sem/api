@@ -2,9 +2,9 @@ from pydantic import BaseModel
 
 
 class avaliacaoUsuario_model(BaseModel):
-    rated_user: str
-    sprint_id: int
-    rated_by: int
-    grade: int
-    comment: str
     id: int
+    rated_user: str | None
+    sprint_id: int | None
+    rated_by: int | None
+    grade: int | None
+    comment: str | None
