@@ -7,23 +7,34 @@ class userteam_repository(object):
     def __init__(self) -> None:
         pass
 
-    def get(self):
-        return self._apiContext.times_table.get_all()
 
-    def busca_id_userteam(self, id):
-        return self._apiContext.userteam_table.get(id)
 
-    def post_times(self, objectPost):
-        self._apiContext.userteam.begin_transaction()
-        self._apiContext.userteam.insert(objectPost)
-        self._apiContext.userteam.commit()
+#######Fazendo a insercao dos outros campo do userteam_model (id_users e username)
+    def busca_id_times(self,id):
+        return self._apiContext.userTeam_table.get(id)
 
-    def put_times(self, objectPut):
-        self._apiContext.userteam.begin_transaction()
-        self._apiContext.userteam.update(objectPut)
-        self._apiContext.userteam.commit()
+    def busca_id_users(self, id_users):
+        return self._apiContext.userTeam_table.get(id_users)
 
-    def delete_id_times(self, id: int):
-        self._apiContext.userteam.begin_transaction()
-        self._apiContext.userteam.delete(id)
-        self._apiContext.userteam.commit()
+#team_id e id_profile#
+    def busca_team_id(self, team_id):
+        return self._apiContext.userTeam_table.get(team_id)
+
+
+    def post_id_profile(self, objectPost):
+        self._apiContext.userTeam_table.begin_transaction()
+        self._apiContext.userTeam_table.insert(objectPost)
+        self._apiContext.userTeam_table.commit()
+
+    def put_id_profile(self, objectPut):
+        self._apiContext.userTeam_table.begin_transaction()
+        self._apiContext.userTeam_table.update(objectPut)
+        self._apiContext.userTeam_table.commit()
+
+    def delete_id_profile(self, id: int):
+        self._apiContext.userTeam_table.begin_transaction()
+        self._apiContext.userTeam_table.delete(id)
+        self._apiContext.userTeam_table.commit()
+
+
+
