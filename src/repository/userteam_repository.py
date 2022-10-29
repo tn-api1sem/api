@@ -21,7 +21,7 @@ class userteam_repository(object):
         return self._apiContext.userTeam_table.get(team_id)
 
 
-    def post_id_profile(self, objectPost):
+    def create(self, objectPost):
         self._apiContext.userTeam_table.begin_transaction()
         self._apiContext.userTeam_table.insert(objectPost)
         self._apiContext.userTeam_table.commit()

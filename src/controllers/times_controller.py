@@ -17,9 +17,8 @@ times_services = TimesService()
 
 @router.get("/")
 def get_times():
-    return times_services.buscar_times()
     try:
-        return profile_services.get_profile()
+        return times_services.buscar_times()
     except Exception as e:
         return str(e)
 
@@ -31,17 +30,20 @@ def id_get_times(id: int):
 
 @router.post("/")
 def post_times(objectToPost: times_model):
-   times_services.post_times(objectToPost)
-   return OK
-
-
+    try:
+        times_services.post_times(objectToPost)
+        return OK
+    except Exception as e:
+        return str(e)
 
 
 @router.put("/")
 def put_times(objectToPut: times_model):
-
-    times_services.put_times(objectToPut)
-    return OK
+    try:
+        times_services.put_times(objectToPut)
+        return OK
+    except Exception as e:
+        return str(e)
 
 
 

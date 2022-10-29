@@ -1,30 +1,13 @@
 {
-    "last_index": 13,
+    "last_index": 2,
     "dataset": [
         {
-            "times": "TN",
-            "id_users": [1, 9],
-            "userName": ["admin", "usuario"],
-            "id": 7
+            "id": 1,
+            "times": "Time 1"
         },
-
         {
-            "times": "GIT ",
-            "id_users": [9],
-            "userName": ["usuario"],
-            "id": 8},
-
-        {
-            "times": "Teste12",
-            "id_users": [1, 9],
-            "userName": ["admin", "usuario"],
-            "id": 12},
-
-        {
-            "times": "Teste3",
-            "id_users": [1, 9],
-            "userName": ["admin", "usuario"],
-            "id": 13
+            "id": 2,
+            "times": "Time 2"
         }
     ]
 }
