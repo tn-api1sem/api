@@ -24,7 +24,7 @@ def id_get_avaliacaoUsuario(id: int):
 
 
 @router.post("/")
-def post_sprint(model: avaliacaoUsuario_model):
+def post_avaliacaoUsuario(model: avaliacaoUsuario_model):
     try:
         service.post_avaliacaoUsuario(model)
         return OK
