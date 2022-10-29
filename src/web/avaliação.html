@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title Page-->
-    <title>Sprints</title>
+    <title>Sprints Avaliação</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -332,78 +332,11 @@
     <script src="js/teams.js"></script>
 
     <script>
-        loadSprints();
-        loadComboBox();
-
-        async function loadSprints() {
-            var sprints = await getSprints();
-            var times = await getTeams();
-            var tbody = document.getElementById('tbody-sprint');
-        
-            for (var i = 0; i < sprints.length; i++) {
-                tbody.innerHTML += "<tr class=\"tr-shadow\">" +
-                    "<td>" + sprints[i].name + "</td>" +
-                    "<td>" + sprints[i].start_date + "</td>" +
-                    "<td>" + sprints[i].end_date + "</td>" +
-                    "<td>" + times.find(x => x.id == sprints[i].team_id).times + "</td>" +
-                    "<td>\<div class=\"table-data-feature\">" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createsprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadSprint("+ sprints[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteSprint(" + sprints[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#notasprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"notasprint("+ +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" 
-                    "</div>\</td>" +
-                    "</tr><tr class=\"spacer\"></tr>"
-            }
-        }
-
-        async function loadComboBox(){
-            var times = await getTeams();
-            var select = document.getElementById("combobox-times")
-
-            for(var i = 0; i < times.length; i++){
-                select.innerHTML += `<option value=${times[i].id}>${times[i].times}</option>`
-            }
-        }
-
-        async function loadSprint(id){
-            var sprint = await getSprintsById(id)
-            document.getElementById('id-user').value = id;
-            document.getElementById('nome').value = sprint.name;
-            document.getElementById('datainicio').value = sprint.start_date;
-            document.getElementById('dataentrega').value = sprint.end_date;
-            document.getElementById('combobox-times').value = sprint.team_id;
-        }
-
-        function clearForm(){
-            document.getElementById('id-user').value = 0;
-            document.getElementById('nome').value = '';
-            document.getElementById('datainicio').value = null;
-            document.getElementById('dataentrega').value = null;
-            document.getElementById('combobox-times').value = -1;
-        }
-
-        function insertOrUpdate(){
-            var id = document.getElementById('id-user').value;
-            var nome = document.getElementById('nome').value;
-            var datainico = document.getElementById('datainicio').value;
-            var dataentrega = document.getElementById('dataentrega').value;
-            var time = document.getElementById('combobox-times').value;
-
-            if(id == 0){
-                createSprint(nome, datainico, dataentrega, time);
-                return;
-            }
-
-            updateSprint(id, nome, datainico, dataentrega, time)
-        }
+       
     </script>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script>
-    $(function(){
-        //código para exibir os modais
-    });
-    </script>
 
 </body>
 

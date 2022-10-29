@@ -25,6 +25,12 @@ var sidebar = [
         "link": "teams.html",
         "icon": "fas fa-users",
         "admin-only": true
+    },
+    {
+        "description": "Avaliações",
+        "link": "avaliação.html",
+        "icon": "fas fa-check-circle",
+        "admin-only": false
     }
 ]
 
