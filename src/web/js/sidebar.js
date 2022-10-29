@@ -29,7 +29,7 @@ var sidebar = [
     {
         "description": "Avaliações",
         "link": "avaliação.html",
-        "icon": "fas fa-check-circle",
+        "icon": "fas fa-thumbs-up",
         "admin-only": false
     }
 ]
