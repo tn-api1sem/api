@@ -58,7 +58,7 @@ let updateGroup = async (jsonData) => {
     var requestOptions = {
         method: 'PUT',
         headers: myHeaders,
-        body: jsonData,
+        body: JSON.stringify(jsonData),
         redirect: 'follow'
     };
 
