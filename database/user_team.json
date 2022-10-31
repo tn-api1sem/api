@@ -1,4 +1,1 @@
-{
-  "last_index": 0,
-  "dataset": []
-}
+{"last_index": 26, "dataset": [{"id": 22, "id_user": 1, "id_team": 4, "id_profile": 1, "user": null, "profile": null}, {"id": 23, "id_user": 1, "id_team": 4, "id_profile": 3, "user": null, "profile": null}, {"id": 24, "id_user": 9, "id_team": 4, "id_profile": 5, "user": null, "profile": null}, {"id": 25, "id_user": 9, "id_team": 4, "id_profile": 3, "user": null, "profile": null}, {"id": 26, "id_user": 9, "id_team": 4, "id_profile": 1, "user": null, "profile": null}]}
