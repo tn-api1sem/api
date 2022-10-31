@@ -92,7 +92,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <!-- DATA TABLE -->
-                                <h3 class="title-5 m-b-35">Times</h3>
+                                <h3 class="title-5 m-b-35">Turmas</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-right ml-auto">
                                         <button class="au-btn au-btn-icon au-btn--green au-btn--small"
@@ -145,17 +145,20 @@
                             </div>
                             <div class="form-group">
                                 <label>Lider do Grupo</label>
-                                <select class="form-control" data-role="select-dropdown" id="leader_id" name="leader_id">
+                                <select class="form-control" data-role="select-dropdown" id="leader_id"
+                                    name="leader_id">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Fake Client</label>
-                                <select class="form-control" data-role="select-dropdown" id="client_id" name="client_id">
+                                <select class="form-control" data-role="select-dropdown" id="client_id"
+                                    name="client_id">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Times</label>
-                                <select class="form-control" multiple data-role="select-dropdown" id="teams" name="teams">
+                                <select class="form-control" multiple data-role="select-dropdown" id="teams"
+                                    name="teams">
                                 </select>
                             </div>
                         </form>
@@ -171,7 +174,7 @@
 
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
-    
+
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -187,7 +190,7 @@
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"> </script>
-    
+
     <!-- Main JS-->
     <script src="js/main.js"></script>
     <script src="js/sidebar.js"></script>
@@ -197,7 +200,7 @@
     <script src="js/groups.js"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             //Combobox
             $("#leader_id").select2({
                 dropdownParent: $('#createGroupModal .modal-content')
@@ -213,8 +216,8 @@
 
             //Load Header
             document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
-        }); 
-        
+        });
+
         async function loadComboBox() {
             var users = await getUsers();
 
@@ -226,14 +229,14 @@
             }
 
             var teams = await getTeams();
-            
+
             var selectTeams = document.getElementById("teams")
-            for(let team of teams){
+            for (let team of teams) {
                 selectTeams.innerHTML += `<option value=${team.id}>${team.times}</option>`
             }
         }
 
-        async function loadGroup(id){
+        async function loadGroup(id) {
             var team = await getGroupById(id);
             jsonToForm("group-form", team);
         }
@@ -243,9 +246,8 @@
             var users = await getUsers();
 
             var tbody = document.getElementById('tbody-groups');
-
             for (let group of groups) {
-                tbody.innerHTML += 
+                tbody.innerHTML +=
                     `
                     <tr class="tr-shadow">
                         <td>${group.name}</td>
@@ -280,11 +282,12 @@
             }
         }
 
-        function insertOrUpdate(){
+        function insertOrUpdate() {
             var json = formToJson("group-form");
+            console.log(json)
             json.teams = $("#teams").val().map(Number)
 
-            if(json["id"] == 0){
+            if (json["id"] == 0) {
                 createGroup(json);
                 return;
             }
@@ -292,7 +295,7 @@
             updateGroup(json);
         }
 
-        function clearForm (){
+        function clearForm() {
             let f = document.getElementById("group-form");
             f.reset();
 

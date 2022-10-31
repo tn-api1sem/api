@@ -11,7 +11,7 @@ class grupo_services(object):
         pass
 
     def buscar_grupo(self):
-        return self._grupo_repository.get(id)
+        return self._grupo_repository.get()
 
     def buscar_id_grupo(self, id):
         return self._grupo_repository.busca_id_grupo(id)
