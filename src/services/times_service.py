@@ -4,12 +4,15 @@ from ..repository.userteam_repository import userteam_repository
 from ..repository.usuario_repository import user_repository
 from ..repository.profile_repository import profille_repository
 
+
 class times_services(object):
     _times_repository: times_repository = times_repository()
     _usuario_repository: user_repository = user_repository()
+
     _userteam_repository: userteam_repository = userteam_repository()
     _profiles_repository: profille_repository = profille_repository()
     
+
     def __init__(self):
         pass
 
@@ -55,7 +58,7 @@ class times_services(object):
     def delete_id_times(self, id: int):
         self.delete_id_times(id)
         return self ._times_repository.delete_id_times(id)
-
+        
     def create_user_team(self,idGroup:int, userTeams:list[user_team_model]):
         for userTeam in userTeams:
             userTeam.id_team = idGroup
