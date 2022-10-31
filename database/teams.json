@@ -1,12 +1,13 @@
 {
-    "last_index": 4,
+    "last_index": 5,
     "dataset": [
         {
             "id": 1,
-            "times": "sss2",
-            "id_users": [
-                1
-            ]
+            "times": "sss2"
+        },
+        {
+            "id": 5,
+            "times": "Time 1"
         }
     ]
 }
