@@ -247,12 +247,14 @@
 
             var tbody = document.getElementById('tbody-groups');
             for (let group of groups) {
+                var getLeader = await getUsersById(group.leader_id)
+                var getFakeClient = await getUsersById(group.client_id)
                 tbody.innerHTML +=
                     `
                     <tr class="tr-shadow">
                         <td>${group.name}</td>
-                        <td>${users[group.groupLeader].username}</td>
-                        <td>${users[group.fakeClient].username}</td>
+                        <td>${getLeader.usuario}</td>
+                        <td>${getFakeClient.usuario}</td>
                         <td>
                             <div class="table-data-feature">
                                 <button 
