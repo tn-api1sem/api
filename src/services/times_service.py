@@ -14,10 +14,27 @@ class times_services(object):
         pass
 
     def buscar_times(self):
-        return self._times_repository.get()
+        times = self._times_repository.get();
+        return times;
 
     def buscar_id_times(self, id):
-        return self._times_repository.busca_id_times(id)
+        time = self._times_repository.busca_id_times(id);
+        user_teams = self._userteam_repository.get_user_teams_by_team_id(time.id);
+        
+        model = times_model();
+        model.id = time.id;
+        model.times = time.times;
+        model.times_model = [];
+
+        for u_t in user_teams:
+            u_t.user = self._usuario_repository.get_by_id(u_t.id_user).usuario;
+            u_t.profile = self._profiles_repository.find(u_t.id_profile).perfil
+
+            model.times_model.append(u_t);
+
+        return model;
+
+
 
     def post_times(self, model: times_model):
         modelToInsert = times_bd()
@@ -27,13 +44,30 @@ class times_services(object):
 
         self.create_user_team(modelToInsert.id, model.times_model);
 
-    def put_times(self, objectToPut: times_model):
-        return self._times_repository.put_times(objectToPut)
+    def put_times(self, model: times_model):
+        modelToInsert = times_bd()
+        modelToInsert.id = model.id;
+        modelToInsert.times = model.times;
+
+        self._times_repository.update(modelToInsert)
+        self.update_user_team(modelToInsert.id, model.times_model);
 
     def delete_id_times(self, id: int):
+        self.delete_id_times(id)
         return self ._times_repository.delete_id_times(id)
 
     def create_user_team(self,idGroup:int, userTeams:list[user_team_model]):
         for userTeam in userTeams:
-            userTeam.id_group = idGroup
+            userTeam.id_team = idGroup
             self._userteam_repository.create(userTeam)
+
+    def update_user_team(self, idTeam:int, userTeams:list[user_team_model]):
+        self.delete_id_times(idTeam)
+        for userTeam in userTeams:
+            self._userteam_repository.create(userTeam)
+
+    def delete_user_team(self, idTeam:int):
+        allUserProfiles = self._userteam_repository.get_user_teams_by_team_id(idTeam);
+
+        for userProfile in allUserProfiles:
+            self._userteam_repository.delete(userProfile.id);

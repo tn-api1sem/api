@@ -18,7 +18,7 @@ class times_repository(object):
         self._apiContext.times_table.insert(objectPost)
         self._apiContext.times_table.commit()
 
-    def put_times(self, objectPut):
+    def update(self, objectPut):
         self._apiContext.times_table.begin_transaction()
         self._apiContext.times_table.update(objectPut)
         self._apiContext.times_table.commit()
