@@ -282,9 +282,8 @@
 
         function insertOrUpdate(){
             var json = formToJson("group-form");
+            json.teams = $("#teams").val().map(Number)
 
-            console.log(json);
-            return;
             if(json["id"] == 0){
                 createGroup(json);
                 return;
@@ -296,6 +295,8 @@
         function clearForm (){
             let f = document.getElementById("group-form");
             f.reset();
+
+            document.getElementById('id').value = 0;
         }
     </script>
 </body>
