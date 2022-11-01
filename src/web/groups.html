@@ -151,8 +151,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Fake Client</label>
-                                <select class="form-control" data-role="select-dropdown" id="client_id"
-                                    name="client_id">
+                                <select class="form-control" data-role="select-dropdown" id="client_id" name="client_id">
                                 </select>
                             </div>
                             <div class="form-group">
@@ -238,7 +237,9 @@
 
         async function loadGroup(id) {
             var team = await getGroupById(id);
-            jsonToForm("group-form", team);
+            jsonToForm(team);
+            $("#client_id").change();
+            $("#leader_id").change();
         }
 
         async function loadGroups() {
@@ -286,7 +287,6 @@
 
         function insertOrUpdate() {
             var json = formToJson("group-form");
-            console.log(json)
             json.teams = $("#teams").val().map(Number)
 
             if (json["id"] == 0) {

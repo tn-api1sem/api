@@ -10,7 +10,6 @@ let userLogin = function () {
     const xml = new XMLHttpRequest();
     xml.onloadend = function () {
         if (xml.status == 200) {
-            console.log(xml.response);
             //Redirecionar
             window.localStorage.setItem('user', xml.response)
             window.location.href = 'index.html'
