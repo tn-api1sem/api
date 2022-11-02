@@ -11,6 +11,7 @@ class user_team_model(BaseModel):
 class times_bd(BaseModel):
     id: int | None
     times: str | None
+    id_group:int | None
 
 class times_model(BaseModel):
     id: int | None

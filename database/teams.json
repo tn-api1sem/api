@@ -1,1 +1,15 @@
-{"last_index": 7, "dataset": [{"id": 5, "times": "Time 1"}, {"id": 6, "times": "Time 2"}, {"id": 7, "times": "TECH NINJA"}]}
+{
+    "last_index": 9,
+    "dataset": [
+        {
+            "id": 8,
+            "times": "Teste Time 1",
+            "id_group": 8
+        },
+        {
+            "id": 9,
+            "times": "Teste Time 2",
+            "id_group": 9
+        }
+    ]
+}

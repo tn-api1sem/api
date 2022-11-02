@@ -26,7 +26,7 @@ def get_grupo_by_id(id: int):
 @router.post("/")
 def create_grupo(model: grupo_model):
     try:
-        service.post_grupo(model)
+        service.create(model)
         return OK
     except Exception as e:
         return str(e)
@@ -35,7 +35,7 @@ def create_grupo(model: grupo_model):
 @router.put("/")
 def update_grupo(model: grupo_model):
     try:
-        service.put_grupo(model)
+        service.update(model)
         return OK
     except Exception as e:
         return str(e)
