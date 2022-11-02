@@ -1,15 +1,1 @@
-{
-    "last_index": 8,
-    "dataset": [
-        {
-            "name": "Teste Turma",
-            "client_id": 1,
-            "leader_id": 11,
-            "teams": [
-                8,
-                9
-            ],
-            "id": 8
-        }
-    ]
-}
+{"last_index": 8, "dataset": []}
