@@ -69,7 +69,11 @@
 
 
 ## Equipe
-[<img src="https://avatars.githubusercontent.com/u/61194755?v=4" width=115><br><sub>Matheus Cruz Fiebig</sub>](https://github.com/matheus-fiebig) | [<img src="https://avatars.githubusercontent.com/u/97194056?v=4" width=115><br><sub>Cauã Miller dos Santos</sub>](https://github.com/cauamillersjc) | | :---: | :---: |
+
+
+[<img src="https://avatars.githubusercontent.com/u/61194755?v=4" width=115><br><sub>Matheus Cruz Fiebig</sub>](https://github.com/matheus-fiebig) 
+[<img src="https://avatars.githubusercontent.com/u/97194056?v=4" width=115><br><sub>Cauã Miller dos Santos</sub>](https://github.com/cauamillersjc)
+
 
 | **Função**        | **Nome**                      |
 | -------------     | ----------------------------- |
