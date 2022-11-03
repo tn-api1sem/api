@@ -15,8 +15,9 @@ class grupo_repository(object):
 
     def post_grupo(self, objectPost):
         self._apiContext.grupo_table.begin_transaction()
-        self._apiContext.grupo_table.insert(objectPost)
+        insertedItem = self._apiContext.grupo_table.insert(objectPost)
         self._apiContext.grupo_table.commit()
+        return insertedItem;
 
     def put_grupo(self, objectPut):
         self._apiContext.grupo_table.begin_transaction()

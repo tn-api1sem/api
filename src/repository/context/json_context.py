@@ -44,6 +44,7 @@ class JsonContext:
         self._context.last_index += 1
         data.id = self._context.last_index
         self._context.dataset.append(data)
+        return data
 
     def update(self, data):
         index = self._get_registry_index(data.id)

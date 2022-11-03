@@ -130,7 +130,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Cadastrar Time</h5>
+                        <h5 class="modal-title">Cadastrar Turmas</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -301,6 +301,7 @@
             let f = document.getElementById("group-form");
             f.reset();
 
+            $('#teams').val(null).trigger('change');
             document.getElementById('id').value = 0;
         }
     </script>

@@ -23,7 +23,9 @@ class grupo_services(object):
 
     def create(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
-        self._grupo_repository.post_grupo(grupoBd)
+        item = self._grupo_repository.post_grupo(grupoBd)
+
+        model.id = item.id;
         self.updateTeam(model);
        
     def update(self, model: grupo_model):
