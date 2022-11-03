@@ -6,7 +6,6 @@ class usuario_model(BaseModel):
     email:str | None
     usuario:str | None
     senha:str | None
-    celular:str | None
     
 
 

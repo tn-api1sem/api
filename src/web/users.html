@@ -111,7 +111,6 @@
                                             <tr>
                                                 <th>nome</th>
                                                 <th>email</th>
-                                                <th>celular</th>
                                                 <th>perfil</th>
                                                 <th></th>
                                             </tr>
@@ -154,15 +153,6 @@
                             <div class="form-group">
                                 <label>Senha</label>
                                 <input class="au-input au-input--full" type="password" name="password" id="newUserPass" placeholder="Senha">
-                            </div>
-                            <div class="form-group">
-                                <label>Celular</label>
-                                <input 
-                                    class="au-input au-input--full" 
-                                    type="text" 
-                                    name="celular" 
-                                    id="celular" 
-                                    placeholder="(XX) XXXX-XXXX">
                             </div>
                             <div class="form-group">
                                 <label>Perfil</label>
@@ -228,7 +218,6 @@
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + users[i].usuario + "</td>" +
                     "<td>" + users[i].email + "</td>" +
-                    "<td>" + users[i].celular + "</td>" +
                     "<td>" + profiles[users[i].id_perfil-1].perfil + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
                     "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadUser("+ users[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
