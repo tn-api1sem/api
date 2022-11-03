@@ -32,10 +32,10 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 | 06/11           | Terceira  |   -    |
 | 27/11           | Quarta    |   -    |
 
-
 ## Backlog
+
 **Primeira Sprint**
-![Sprint1](https://user-images.githubusercontent.com/61194755/194774698-db1e92a4-4552-4f19-be1b-6067e9da8afe.png)
+([Sprint1](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint1.md))
 
 **Segunda Sprint**
 ![Sprint2](https://user-images.githubusercontent.com/61194755/194774716-77e5e9d8-37e1-407d-8c0d-5c9e04174512.png)
@@ -46,26 +46,21 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 
 ## Tecnologias e Ferramentas
 
-<div class="box">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="40" height="40"/>
+  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="40" height="40"/>](https://www.python.org/)
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" width="40" height="40"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" width="40" height="40"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original-wordmark.svg" width="40" height="40"/> 
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" width="40" height="40"/>
-</div>
+  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/>](https://www.javascript.com/)
+  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original-wordmark.svg" width="40" height="40"/>](https://id.atlassian.com/login)
+  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" width="40" height="40"/>](https://github.com/)
+
 
 
 ## Equipe
 
-| **Função**        | **Nome**                      |
-| -------------     | ----------------------------- |
-| Product Owner     | Cauã Miller dos Santos        |
-| Scrum Master      | Matheus Cruz Fiebig           |
-| Dev Team          | Alisson dos Santos Pereira    |
-| Dev Team          | Cleandro de Oliveira Gomes    |
-| Dev Team          | Danilo Wesley da Costa Silva  |
-| Dev Team          | Felipe Fernandes Pereira      |
-| Dev Team          | Wagner de Deus Silva Junior   |
-| Dev Team          | Lucas Caetano da Silva        |
+| **Scrum Master**        | **Product Owner**    |**Dev Team**        | **Dev Team**    | **Dev Team**        | **Dev Team**    |**Dev Team**        | **Dev Team**    |
+| :-------------: | :-------------: |:-------------: | :-------------: |:-------------: | :-------------: |:-------------: | :-------------: |
+| [<img src="https://avatars.githubusercontent.com/u/61194755?v=4" width=115><br><sub>Matheus Cruz Fiebig</sub>](https://github.com/matheus-fiebig)   | [<img src="https://avatars.githubusercontent.com/u/97194056?v=4" width=115><br><sub>Cauã Miller dos Santos</sub>](https://github.com/cauamillersjc)        | [<img src="https://avatars.githubusercontent.com/u/111581261?v=4" width=115><br><sub>Alisson dos Santos Pereira</sub>](https://github.com/4l1son) | [<img src="https://avatars.githubusercontent.com/u/111552950?v=4" width=115><br><sub>Cleandro de Oliveira Gomes</sub>](https://github.com/cleandrogomes01) | [<img src="https://avatars.githubusercontent.com/u/111617208?v=4" width=115><br><sub>Danilo Wesley da Costa Silva</sub>](https://github.com/zZzidanillo) | [<img src="https://avatars.githubusercontent.com/u/111570975?v=4" width=115><br><sub>Felipe Fernandes Pereira</sub>](https://github.com/ffefas) | [<img src="https://avatars.githubusercontent.com/u/111614619?v=4" width=115><br><sub>Wagner de Deus Silva Junior</sub>](https://github.com/wdeus) | [<img src="https://avatars.githubusercontent.com/u/99774131?v=4" width=115><br><sub>Lucas Caetano da Silva</sub>](https://github.com/L0uks)
+
+
+
 
