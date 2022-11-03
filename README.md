@@ -1,7 +1,7 @@
-<h1> Avaliação Democratizada 360°</h1>
+<h1 align="center"><img src="https://user-images.githubusercontent.com/111552950/199847738-8c0270c6-1a2f-499a-891c-32838378e48d.jpg" width="400" height="400"/></h1>
 
 # Sobre o Projeto / Objetivo
->O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; o administrador que é responsável por gerir e cadastrar usuários básicos, esse último deve atribuir as notas e contém um dashboard para o acompanhamento das mesmas.
+O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; o administrador que é responsável por gerir e cadastrar usuários básicos, esse último deve atribuir as notas e contém um dashboard para o acompanhamento das mesmas.
 
 
 
