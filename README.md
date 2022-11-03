@@ -35,22 +35,12 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 
 ## Backlog
 **Primeira Sprint**
-| HISTORIA | DESCRIÇÃO | PRIORIDADE |
-| :---------:| :---------: | :----------: |
-| TN-33    | Criação do banco de dados |     Alta 🔴   |
-| TN-43    | Autenticação de usuario   |     Media 🟡    |
-| TN-41    | Prototipagem de telas  |     Alta 🔴     |
-| TN-42    | Estrutura da API    |     Alta 🔴    |
-| TN-1     | Gestão de usuario   |     Alta 🔴     |
-
+[![Sprint1](https://user-images.githubusercontent.com/111552950/199853361-b0d56b31-42cf-4fd5-a331-792df5583aaf.png)](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint1.md)
 
 **Segunda Sprint**
-| HISTORIA | DESCRIÇÃO | PRIORIDADE |
-| :---------:| :---------: | :----------: |
-| TN-7    | Gestão - Perfil |     Media 🟡   |
-| TN-13    | Gestão - Times   |     Alta 🔴    |
-| TN-19    | Gestão - Sprints  |     Media 🟡     |
-| TN-53    | Aprimoramento do cadastro de usuario    |     Baixa 🟢    |
+[![Sprint2](https://user-images.githubusercontent.com/111552950/199854520-99209e55-7751-4b9e-bd5e-52f0e5884d5c.png)](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint2.md)
+
+**Terceira Sprint**
 
 **Do Produto** <br />
 ![Backlog](https://user-images.githubusercontent.com/97194056/194787005-c7cf4f8f-3d40-49a5-9aa6-8758d61db73a.png)
