@@ -1,7 +1,7 @@
 # Sprint 3
 
 **Objetivo da Sprint**
-#
+- O objetivo dessa sprint é entregar o sistema de avaliação e melhorias.
 
 **TN-25 Gestão Avaliações**
 - O integrante de um time deve ter uma funcionalidade para avaliar a si e aos colegas de time ao final de uma sprint.
