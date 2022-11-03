@@ -22,7 +22,7 @@ class grupo_services(object):
         return grupoModel;
 
     def create(self, model: grupo_model):
-        grupoBd = self.modelToBd(model)
+        grupoBd = self._modelToBd(model)
         self._grupo_repository.post_grupo(grupoBd)
         self.updateTeam(model);
        
