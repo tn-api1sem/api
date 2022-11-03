@@ -35,7 +35,6 @@ var sidebar = [
 ]
 
 var user = JSON.parse(window.localStorage.getItem('user'));
-console.log(user)
 var sidebarElement = document.getElementById("menu-navbar");
 for (var i = 0; i < sidebar.length; i++) {
     var id = sidebar[i].link;

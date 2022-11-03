@@ -24,11 +24,11 @@ const jsonToForm = function (json){
     for (const [key, value] of Object.entries(json)) {
         if(Array.isArray(value)){
             $('#'+key)
-                .val(value)
-                .change();    
+            .val(value)
+            .change();    
             continue;
         }
-            
+        
         $('#'+key).val(value);
     }
 }

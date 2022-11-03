@@ -106,7 +106,6 @@
                                         <thead>
                                             <tr>
                                                 <th>Nome</th>
-                                                <th>Integrantes</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -257,7 +256,6 @@
             for (var i = 0; i < teams.length; i++) {
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + teams[i].times + "</td>" +
-                    "<td>" + teams[i].usuarios + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
                     "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createTeamModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadTeam(" + teams[i].id + ")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteTeam(" + teams[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
@@ -285,22 +283,32 @@
             
             var team = await getTeamById(id)
             jsonToForm(team);
+
+            for(let t of team.times_model){
+                document.getElementById('id_user').value = t.id_user
+                document.getElementById('id_profile').value = t.id_profile
+                addUserProfile()
+            }
         }
 
         function insertOrUpdate() {
             var form = formToJson("form-teams");
 
+            form.times_model = userProfileValues;
+            
             if (form['id'] == 0) {
                 createTeam(form);
                 return;
             }
             
+
             updateTeams(form);
         }
         
         function addUserProfile(){
             var user = $('#id_user option:selected')
             var profile = $('#id_profile option:selected')
+            var team = $('#id')
 
             for(let userProfile of userProfileValues){
                 if(userProfile.user == user.val() && userProfile.profile == profile.val()){
@@ -309,9 +317,11 @@
                 }
             }
 
+            teamVal = !!team.val() ? team.val() : 0
             userProfileValues.push({
-                user: user.val(), 
-                profile: profile.val()
+                id_user: parseInt(user.val()), 
+                id_team:  parseInt(teamVal),
+                id_profile: parseInt(profile.val())
             });
 
             var table = document.getElementById('tbody-user-profile')
@@ -337,7 +347,7 @@
         }
 
         function removeUserProfile(index){
-            document.getElementById('up-'+userProfileValues.length).remove();
+            document.getElementById('up-'+index).remove();
             userProfileValues.splice(index-1, 1);
         }
     

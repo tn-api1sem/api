@@ -4,6 +4,8 @@ from fastapi import APIRouter
 from ..models.usuario_model import usuario_model
 from ..services.usuario_services import usuario_services as UsuarioService
 
+
+
 router = APIRouter(
     prefix="/api/v1/usuario",
     tags=["usuario"],
