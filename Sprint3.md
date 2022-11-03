@@ -3,14 +3,14 @@
 **Objetivo da Sprint**
 - O objetivo dessa sprint é entregar o sistema de avaliação e melhorias.
 
-**TN-25 Gestão Avaliações**
+**TN-25 Gestão - Avaliações**
 - O integrante de um time deve ter uma funcionalidade para avaliar a si e aos colegas de time ao final de uma sprint.
 - O Líder do Grupo terá uma funcionalidade para avaliar todos os Lideres Técnicos do seu grupo ao final de sua sprint.
 - O Fake Client terá uma funcionalidade para avaliar todos os Product Owners da sua turma ao final de sua sprint.
 - A avaliação será de 1-5 porém na interface será exibida com a seguinte nomenclatura: Muito Ruim, Ruim, Regular, Bom, Muito Bom.
 - A avaliação só poderá ser cadastrada durante o período de avaliação da sua respectiva sprint. (TN-56)
 
-**TN-55 Gestão Grupos**
+**TN-55 Gestão - Grupos**
 - O administrador possuirá uma tela de controle para visualizar, cadastrar, editar e remover grupos. Ao criar/editar um grupo o administrador terá uma opção para visualizar os times associados a este grupo e uma segunda opção para adicionar/remover um time do grupo.
 - Ao criar um grupo será necessário definir qual usuário do sistema será Líder do Grupo e qual será Fake Client. Ao editar deverá ser possível trocar os usuários responsáveis pelas duas funções.
 - Um time pode pertencer a um único grupo.
