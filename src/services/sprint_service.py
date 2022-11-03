@@ -15,6 +15,9 @@ class SprintService(object):
     def get_by_id(self, id:int) -> SprintsModel: 
         return self.repository.get_by_id(id)
 
+    def get_sprint_finished(self, user_teams) -> SprintsModel:
+        return self.repository.get_sprint_finished(user_teams)
+
     def create(self, model: SprintsModel):
         self._validate(model);
         self.repository.create(model)
