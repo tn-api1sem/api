@@ -29,7 +29,7 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 | -------------   | --------- | -------|
 | 18/09           | Primeira  |   OK   |
 | 09/10           | Segunda   |   OK   |
-| 06/11           | Terceira  |   -    |
+| 06/11           | Terceira  |   ok   |
 | 27/11           | Quarta    |   -    |
 
 
@@ -63,6 +63,6 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 
 | **Scrum Master**        | **Product Owner**    |**Dev Team**        | **Dev Team**    | **Dev Team**        | **Dev Team**    |**Dev Team**        | **Dev Team**    |
 | :-------------: | :-------------: |:-------------: | :-------------: |:-------------: | :-------------: |:-------------: | :-------------: |
-| [<img src="https://avatars.githubusercontent.com/u/61194755?v=4" width=115><br><sub>Matheus Cruz Fiebig</sub>](https://github.com/matheus-fiebig)   | [<img src="https://avatars.githubusercontent.com/u/97194056?v=4" width=115><br><sub>Cauã Miller dos Santos</sub>](https://github.com/cauamillersjc)        | [<img src="https://avatars.githubusercontent.com/u/111581261?v=4" width=115><br><sub>Alisson dos Santos Pereira</sub>](https://github.com/4l1son) | [<img src="https://avatars.githubusercontent.com/u/111552950?v=4" width=115><br><sub>Cleandro de Oliveira Gomes</sub>](https://github.com/cleandrogomes01) | [<img src="https://avatars.githubusercontent.com/u/111617208?v=4" width=115><br><sub>Danilo Wesley da Costa Silva</sub>](https://github.com/zZzidanillo) | [<img src="https://avatars.githubusercontent.com/u/111570975?v=4" width=115><br><sub>Felipe Fernandes Pereira</sub>](https://github.com/ffefas) | [<img src="https://avatars.githubusercontent.com/u/111614619?v=4" width=115><br><sub>Wagner de Deus Silva Junior</sub>](https://github.com/wdeus) | [<img src="https://avatars.githubusercontent.com/u/99774131?v=4" width=115><br><sub>Lucas Caetano da Silva</sub>](https://github.com/L0uks)
+| [<img src="https://avatars.githubusercontent.com/u/61194755?v=4" width=115><br><sub>Matheus Cruz Fiebig</sub>](https://github.com/matheus-fiebig)   | [<img src="https://avatars.githubusercontent.com/u/97194056?v=4" width=115><br><sub>Cauã Miller dos Santos</sub>](https://github.com/cauamillersjc)        | [<img src="https://avatars.githubusercontent.com/u/111581261?v=4" width=115><br><sub>Alisson dos Santos Pereira</sub>](https://github.com/4l1son) | [<img src="https://avatars.githubusercontent.com/u/111552950?v=4" width=115><br><sub>Cleandro de Oliveira Gomes</sub>](https://github.com/cleandrogomes01) | [<img src="https://avatars.githubusercontent.com/u/111617208?v=4" width=115><br><sub>Danillo Wesley da Costa Silva</sub>](https://github.com/zZzidanillo) | [<img src="https://avatars.githubusercontent.com/u/111570975?v=4" width=115><br><sub>Felipe Fernandes Pereira</sub>](https://github.com/ffefas) | [<img src="https://avatars.githubusercontent.com/u/111614619?v=4" width=115><br><sub>Wagner de Deus Silva Junior</sub>](https://github.com/wdeus) | [<img src="https://avatars.githubusercontent.com/u/99774131?v=4" width=115><br><sub>Lucas Caetano da Silva</sub>](https://github.com/L0uks)
 
 
