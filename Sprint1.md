@@ -1,5 +1,6 @@
 # Sprint 1
 
+![sprint1](https://user-images.githubusercontent.com/111552950/199853361-b0d56b31-42cf-4fd5-a331-792df5583aaf.png)
 
 **Objetivo da Sprint**
 O objetivo dessa sprint é a criação do banco de dados (JSON), autenticação do usuário, prototipagem das telas, estrutura da api e gestão de usuários.
