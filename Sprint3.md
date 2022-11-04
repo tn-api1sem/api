@@ -1,6 +1,6 @@
 # Sprint 3
 
-![sprint3](https://user-images.githubusercontent.com/111552950/200016548-0ffca055-aaf7-4229-9a23-14f9185c8a7b.png)
+![sprint3](https://user-images.githubusercontent.com/111552950/200030205-f4722c6d-7b9e-4f11-9b2a-3149766cc784.png)
 
 
 **Objetivo da Sprint**
