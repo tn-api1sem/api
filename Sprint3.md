@@ -15,5 +15,8 @@
 - Ao criar um grupo será necessário definir qual usuário do sistema será Líder do Grupo e qual será Fake Client. Ao editar deverá ser possível trocar os usuários responsáveis pelas duas funções.
 - Um time pode pertencer a um único grupo.
 
+**TN-56 Adicionar período de avaliação no cadastro da Sprint**
+- Adicionar um campo numérico com quantidade de dias que a avaliação estará disponível ao final da sprint.
+
 **TN-57 Alterar o Perfil do Usuário para o Time**
 - A associação do perfil com o usuário devera ser feita na tela dos times.
