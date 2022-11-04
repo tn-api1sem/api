@@ -29,7 +29,7 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 | -------------   | --------- | -------|
 | 18/09           | Primeira  |   OK   |
 | 09/10           | Segunda   |   OK   |
-| 06/11           | Terceira  |   ok   |
+| 06/11           | Terceira  |   OK   |
 | 27/11           | Quarta    |   -    |
 
 
