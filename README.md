@@ -34,11 +34,10 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 
 
 ## Backlog
-**Primeira Sprint**
-[![Sprint1](https://user-images.githubusercontent.com/111552950/199853361-b0d56b31-42cf-4fd5-a331-792df5583aaf.png)](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint1.md)
 
-**Segunda Sprint**
-[![Sprint2](https://user-images.githubusercontent.com/111552950/199854520-99209e55-7751-4b9e-bd5e-52f0e5884d5c.png)](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint2.md)
+[**Primeira Sprint**](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint1.md)
+
+[**Segunda Sprint**](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint2.md)
 
 **Terceira Sprint**
 
