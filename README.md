@@ -43,8 +43,7 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 
 [**Quarta Sprint**](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint4.md)
 
-**Do Produto** <br />
-![Backlog](https://user-images.githubusercontent.com/97194056/194787005-c7cf4f8f-3d40-49a5-9aa6-8758d61db73a.png)
+[**Produto**](https://github.com/tn-api1sem/api/blob/develop-matheus/produto.md)
 
 
 ## Tecnologias e Ferramentas
