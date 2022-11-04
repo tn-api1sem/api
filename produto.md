@@ -16,5 +16,3 @@
 | TN-57    | Alterar o Perfil do Usuário para o Time |    Media 🟡  |
 | TN-31    | Dashboard - Avaliações |   Baixa 🟢    |
 | TN-32    | Dashboard - Avaliação Média |  Baixa 🟢   |
-| TN-34    | Controle de acesso |  Media 🟡   |
-
