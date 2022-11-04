@@ -3,7 +3,7 @@
 ![Sprint2](https://user-images.githubusercontent.com/111552950/199854520-99209e55-7751-4b9e-bd5e-52f0e5884d5c.png)
 
 **Objetivo da Sprint**
-O objetivo dessa sprint é definir os perfis de integrantes do time, criação de telas cada uma com sua determinada função.
+- O objetivo dessa sprint é definir os perfis de integrantes do time, criação de telas cada uma com sua determinada função.
 
 ## User Stories
 
