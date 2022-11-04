@@ -12,8 +12,8 @@
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <!-- <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all"> -->
+    <link href="vendor/font-awesome-6/css/all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
@@ -132,10 +132,7 @@
                     <div class="modal-body">
                         <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
                         <div class="login-form">
-                            <div class="form-group">
-                                <label>Nome </label>
-                                <input class="au-input au-input--full" type="hidden" name="nome" id="nome"
-                                    placeholder="Ex: Projeto">
+                            <div class="form-group" id="list-names">
                             </div>
                         </div>
                     </div>
@@ -189,6 +186,8 @@
 
 <script>
 
+    var times;
+
     notas = [
         { id_u: 1, n: 1 }
     ]
@@ -198,7 +197,7 @@
     async function loadSprints() {
         let user_id = JSON.parse(window.localStorage.getItem('user')).id;
         var sprints = await getFinishedSprints(user_id);
-        var times = await getTeams();
+        times = await getTeams();
         var tbody = document.getElementById('tbody-avaliacao');
 
         for (var i = 0; i < sprints.length; i++) {
@@ -207,17 +206,60 @@
                 "<td>" + sprints[i].end_date + "</td>" +
                 "<td>" + times.find(x => x.id == sprints[i].team_id).times + "</td>" +
                 "<td>\<div class=\"table-data-feature\">" +
-                "<button class=\"item\" data-toggle=\"modal\" data-target=\"#avaliar\" data-placement=\"top\"\title=\"Avaliar\" \">\<i class=\"fas fa-thumbs-up\"></i>\</button>"
-            "</div>\</td>" +
+                '<button class="item" data-toggle="modal" data-target="#avaliar" onclick="loadUsersTeam(' + sprints[i].team_id + ')" data-placement="top" title="Avaliar" "><i class="fas fa-thumbs-up"></i></button>' +
+                "</div>\</td>" +
                 "</tr><tr class=\"spacer\"></tr>"
         }
-
-        var profiles = await getProfiles(); 
-            var select = document.getElementById("id_profile")
-            for (var i = 0; i < profiles.length; i++) {
-                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].perfil}</option>`
-            }
     }
+
+    function loadUsersTeam(team_id) {
+        var team = times.find(x => x.id == team_id)
+
+        var listNames = document.getElementById('list-names');
+        listNames.innerHTML = "";
+
+        for (var i = 0; i < team.userName.length; i++) {
+            listNames.innerHTML += `<label>${team.userName[i]}</label>` +
+                `<button id="${team.userName[i]}-1" onclick="selectRate('${team.userName[i]}-1')" class="item"><i class="far fa-tired fa-2xl mr-2"></i> </button>` +
+                `<button id="${team.userName[i]}-2" onclick="selectRate('${team.userName[i]}-2')" class="item"> <i class="far fa-frown fa-2xl mr-2"></i> </button>` +
+                `<button id="${team.userName[i]}-3" onclick="selectRate('${team.userName[i]}-3')" class="item"> <i class="far fa-meh fa-2xl mr-2"></i> </button>` +
+                `<button id="${team.userName[i]}-4" onclick="selectRate('${team.userName[i]}-4')" class="item"> <i class="far fa-smile fa-2xl mr-2"></i> </button>` +
+                `<button id="${team.userName[i]}-5" onclick="selectRate('${team.userName[i]}-5')" class="item"> <i class="far fa-laugh fa-2xl"></i> </button>`;
+        }
+    }
+
+    function selectRate(rate_id){
+        var user = rate_id.split('-')[0];
+        var rate = rate_id.split('-')[1];
+
+        for(var i = 1; i < 6; i++){
+            if(i == rate){
+                var element = document.getElementById(rate_id);
+
+                var oldIcon = element.innerHTML;
+
+                var newIcon = element.innerHTML.replace('far', 'fas');
+
+                element.innerHTML = newIcon;
+            }
+            else{
+                var element = document.getElementById(user + '-' + i);
+
+                var oldIcon = element.innerHTML;
+
+                var newIcon = element.innerHTML.replace('fas', 'far');
+
+                element.innerHTML = newIcon;
+            }
+        }
+    }
+
+
+        // var profiles = await getProfiles(); 
+        //     var select = document.getElementById("id_profile")
+        //     for (var i = 0; i < profiles.length; i++) {
+        //         select.innerHTML += `<option option value = ${ profiles[i].id }> ${ profiles[i].perfil }</option >`
+        //     }
 
         // function updateAvaliacao(id_usuario, nota){
         //     var n = notas.filter(x => x.id_u == id_usuario)[0]
