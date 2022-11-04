@@ -1,5 +1,8 @@
 # Sprint 3
 
+![sprint3](https://user-images.githubusercontent.com/111552950/200016548-0ffca055-aaf7-4229-9a23-14f9185c8a7b.png)
+
+
 **Objetivo da Sprint**
 - O objetivo dessa sprint é entregar o sistema de avaliação e melhorias.
 
@@ -8,6 +11,9 @@
 - O Líder do Grupo terá uma funcionalidade para avaliar todos os Lideres Técnicos do seu grupo ao final de sua sprint.
 - O Fake Client terá uma funcionalidade para avaliar todos os Product Owners da sua turma ao final de sua sprint.
 - A avaliação será de 1-5 porém na interface será exibida com a seguinte nomenclatura: Muito Ruim, Ruim, Regular, Bom, Muito Bom.
+
+<h1 align="center"><img src="https://user-images.githubusercontent.com/111552950/200017394-18917af5-9fa1-4665-a284-12d99279332e.png"/></h1>
+
 - A avaliação só poderá ser cadastrada durante o período de avaliação da sua respectiva sprint. (TN-56)
 
 **TN-55 Gestão - Grupos**
