@@ -1,9 +1,9 @@
-Sprint 4
+# Sprint 4
 
 **Objetivo da Sprint**
  O objetivo dessa sprint é Dashboard
 
-** TN-31 Dashboard - Avaliações**
+ **TN-31 Dashboard - Avaliações**
 - DoR:
   - História funcional escrita
   - Protótipo das telas
