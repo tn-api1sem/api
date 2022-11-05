@@ -1,12 +1,6 @@
 {
-  "last_index": 1,
+  "last_index": 0,
   "dataset": [
-    {
-       "usuario": "usuario",
-       "perfil": "admin",
-       "user_id": 1,
-       "profile_id": 1
-    }
   ]
 
 }

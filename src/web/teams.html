@@ -288,6 +288,8 @@
                 document.getElementById('id_user').value = t.id_user
                 document.getElementById('id_profile').value = t.id_profile
                 addUserProfile()
+                $('#id_user').trigger('change');
+                $('#id_profile').trigger('change');
             }
         }
 

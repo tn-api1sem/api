@@ -3,22 +3,14 @@
   "dataset": [
     {
       "id":1,
-      "perfil":"Fake Client"
-    },
-    {
-      "id":2,
       "perfil":"Usuário"
     },
     {
-      "id":3,
-      "perfil":"Líder do Grupo"
-    },
-    {
-      "id":4,
+      "id":2,
       "perfil":"Líder Técnico"
     },
     {
-      "id":5,
+      "id":3,
       "perfil":"Product Owner"
     }
   ]

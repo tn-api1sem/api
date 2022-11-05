@@ -56,8 +56,8 @@ class times_services(object):
         self.update_user_team(modelToInsert.id, model.times_model);
 
     def delete_id_times(self, id: int):
-        self.delete_id_times(id)
-        return self ._times_repository.delete_id_times(id)
+        self.delete_user_team(id)
+        return self ._userteam_repository.delete_id_times(id)
         
     def create_user_team(self,idGroup:int, userTeams:list[user_team_model]):
         for userTeam in userTeams:
@@ -65,7 +65,7 @@ class times_services(object):
             self._userteam_repository.create(userTeam)
 
     def update_user_team(self, idTeam:int, userTeams:list[user_team_model]):
-        self.delete_id_times(idTeam)
+        self.delete_user_team(idTeam)
         for userTeam in userTeams:
             self._userteam_repository.create(userTeam)
 

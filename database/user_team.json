@@ -1,1 +1,5 @@
-{"last_index": 34, "dataset": [{"id": 22, "id_user": 1, "id_team": 4, "id_profile": 1, "user": null, "profile": null}, {"id": 23, "id_user": 1, "id_team": 4, "id_profile": 3, "user": null, "profile": null}, {"id": 24, "id_user": 9, "id_team": 4, "id_profile": 5, "user": null, "profile": null}, {"id": 25, "id_user": 9, "id_team": 4, "id_profile": 3, "user": null, "profile": null}, {"id": 26, "id_user": 9, "id_team": 4, "id_profile": 1, "user": null, "profile": null}, {"id": 27, "id_user": 9, "id_team": 5, "id_profile": 1, "user": null, "profile": null}, {"id": 28, "id_user": 1, "id_team": 6, "id_profile": 2, "user": null, "profile": null}, {"id": 29, "id_user": 1, "id_team": 7, "id_profile": 3, "user": null, "profile": null}, {"id": 30, "id_user": 9, "id_team": 7, "id_profile": 2, "user": null, "profile": null}, {"id": 31, "id_user": 1, "id_team": 8, "id_profile": 1, "user": null, "profile": null}, {"id": 32, "id_user": 9, "id_team": 9, "id_profile": 3, "user": null, "profile": null}, {"id": 33, "id_user": 9, "id_team": 10, "id_profile": 1, "user": null, "profile": null}, {"id": 34, "id_user": 11, "id_team": 11, "id_profile": 1, "user": null, "profile": null}]}
+{
+    "last_index": 0,
+    "dataset": [
+    ]
+}
