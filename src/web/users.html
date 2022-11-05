@@ -111,7 +111,6 @@
                                             <tr>
                                                 <th>nome</th>
                                                 <th>email</th>
-                                                <th>perfil</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -153,12 +152,6 @@
                             <div class="form-group">
                                 <label>Senha</label>
                                 <input class="au-input au-input--full" type="password" name="password" id="newUserPass" placeholder="Senha">
-                            </div>
-                            <div class="form-group">
-                                <label>Perfil</label>
-                                <select class="form-control" id="combobox-profiles">
-                                    <option disabled selected value="-1">Selecionar</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -218,7 +211,6 @@
                 tbody.innerHTML += "<tr class=\"tr-shadow\">" +
                     "<td>" + users[i].usuario + "</td>" +
                     "<td>" + users[i].email + "</td>" +
-                    "<td>" + profiles[users[i].id_perfil-1].perfil + "</td>" +
                     "<td>\<div class=\"table-data-feature\">" +
                     "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createUserModal\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadUser("+ users[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
                     "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteUser(" + users[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
@@ -242,8 +234,6 @@
             document.getElementById('newUserLogin').value = user.usuario;
             document.getElementById('newUserPass').value = user.senha;
             document.getElementById('email').value = user.email;
-            document.getElementById('celular').value = user.celular;
-            document.getElementById('combobox-profiles').value = user.id_perfil;
         }
 
         function clearForm(){
@@ -251,9 +241,6 @@
             document.getElementById('newUserLogin').value = '';
             document.getElementById('newUserPass').value = '';
             document.getElementById('email').value = '';
-            document.getElementById('celular').value = '';
-            
-            document.getElementById('combobox-profiles').value = '-1';
         }
         
         function insertOrUpdate(){
@@ -261,17 +248,13 @@
             var login = document.getElementById('newUserLogin').value;
             var password = document.getElementById('newUserPass').value;
             var email = document.getElementById('email').value;
-            var celular = document.getElementById('celular').value;
             
-            var selectPerfil = document.getElementById('combobox-profiles');
-            var idPerfil = selectPerfil.options[selectPerfil.selectedIndex].value;
-
             if(id == 0){
-                createUser(idPerfil, login, password, email, celular);
+                createUser(login, password, email);
                 return;
             }
 
-            updateUsers(id, idPerfil, login, password, email, celular)
+            updateUsers(id, login, password, email)
         }
     </script>
 

@@ -46,12 +46,12 @@ let deleteUser = async (id) => {
     window.location.reload();
 }
 
-let createUser = async (id_perfil, login, password, email, celular) => {
+let createUser = async ( login, password, email) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = createBody(0, id_perfil, login, password, email, celular);
-
+    var raw = createBody(0, login, password, email);
+    
     var requestOptions = {
         method: 'POST',
         headers: myHeaders,
@@ -67,11 +67,11 @@ let createUser = async (id_perfil, login, password, email, celular) => {
     window.location.reload();
 }
 
-let updateUsers = async (id, id_perfil, login, password, email, celular) => {
+let updateUsers = async (id, login, password, email) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = createBody(id, id_perfil, login, password, email, celular);
+    var raw = createBody(id, login, password, email);
 
     var requestOptions = {
         method: 'PUT',
@@ -88,13 +88,11 @@ let updateUsers = async (id, id_perfil, login, password, email, celular) => {
 }
 
 
-function createBody(id, id_perfil, login, password, email, celular){
+function createBody(id, login, password, email){
     var raw = JSON.stringify({
         "usuario": login.toString(),
         "senha": password.toString(),
         "email": email.toString(),
-        "id_perfil": parseInt(id_perfil),
-        "celular": celular,
         "id": parseInt(id)
     });
 

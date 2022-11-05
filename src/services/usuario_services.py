@@ -27,15 +27,12 @@ class usuario_services(object):
         return self._user_repository.delete_id_usuario(id)
 
     def _validate(self, model: usuario_model):
-        if not model.email or not model.celular or not model.usuario or not model.senha:
+        if not model.email or not model.usuario or not model.senha:
             raise Exception("Insira todos os campos")
-
-        if model.id_perfil < 0:
-            raise Exception("Insira um perfil valido")
 
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
         if not re.fullmatch(regex, model.email):
-            raise Exception("Insira um com formato valido")
+            raise Exception("Insira um email com formato valido")
 
         return
 
