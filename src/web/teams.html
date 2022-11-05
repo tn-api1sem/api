@@ -312,11 +312,10 @@
             var profile = $('#id_profile option:selected')
             var team = $('#id')
 
-            for(let userProfile of userProfileValues){
-                if(userProfile.user == user.val() && userProfile.profile == profile.val()){
-                    alert("Este usuario ja foi adicionado para este perfil.");
-                    return;
-                }
+            let errors = validate(user, profile);
+            if(errors.length > 0){
+                alert(errors.join("\n"))
+                return;
             }
 
             teamVal = !!team.val() ? team.val() : 0
@@ -346,6 +345,26 @@
                     </td>
                 </tr>
             `
+        }
+
+        function validate(user, profile){
+            let errors = []
+
+            for(let userProfile of userProfileValues){
+                if(userProfile.id_user == user.val() && userProfile.id_profile == profile.val()){
+                    errors.push("Este usuario ja foi adicionado para este perfil.");
+                }
+            }
+
+            if(userProfileValues.map(x => x.id_profile).includes(techLeader) && profile.val() == techLeader){
+                errors.push("Este time ja possui um Líder Técnico.");
+            }
+
+            if(userProfileValues.map(x => x.id_profile).includes(productOwner) && profile.val() == productOwner){
+                errors.push("Este time ja possui um Product Owner.");
+            }
+
+            return errors;
         }
 
         function removeUserProfile(index){

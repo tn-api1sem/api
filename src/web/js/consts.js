@@ -1,5 +1,7 @@
 const localURL = "http://127.0.0.1:8000"
 
+const techLeader = 2;
+const productOwner = 3;
 
 const formToJson = function (formId){
     var data = {};
