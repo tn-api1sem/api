@@ -5,7 +5,7 @@
 
 <h2 align="left"><b> Requisitos 🖥️</b></h2>
 <h3><b>Funcionais</b></h3>
-<p>
+<p align="left">
 - Deve possuir um controle de usuários mínimo<br>
 - Deve possuir um controle de perfis (instrutores e integrantes do time)<br>
 - Deve possuir um controle de Times<br>
@@ -17,19 +17,22 @@ individualizada.<br>
     - Instrutor Fake Client avaliando o aluno PO do Time<br>
 - Deve prover um ou mais Dashboards de acompanhamento<br>
 </p><br>
-<h3><b>Não-Funcionais</h3></b>
-- Linguagem de programação Python
-- Uso de bases de dados simples.
-- Sistema de controle de versão de código (Git)
-- Documentações
+<h3><b>Não-Funcionais</b></h3>
+<p align="left">
+- Linguagem de programação Python<br>
+- Uso de bases de dados simples.<br>
+- Sistema de controle de versão de código (Git)<br>
+- Documentações<br>
+</p><br>
 
-## Entrega das Sprints  🎯
-| Data da Entrega | Sprints   | Status |
+<h2 align="center">Entrega das Sprints  🎯</h2>
+<p align="center">| Data da Entrega | Sprints   | Status |
 | -------------   | --------- | -------|
 | 18/09           | Primeira  |   OK   |
 | 09/10           | Segunda   |   OK   |
 | 06/11           | Terceira  |   OK   |
 | 27/11           | Quarta    |   -    |
+</p>
 
 
 ## Backlog 📃
