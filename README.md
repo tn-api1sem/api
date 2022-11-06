@@ -23,7 +23,7 @@ individualizada.<br>
 - Sistema de controle de versão de código (Git)
 - Documentações
 
-## Entrega das Sprints
+## Entrega das Sprints  🎯
 | Data da Entrega | Sprints   | Status |
 | -------------   | --------- | -------|
 | 18/09           | Primeira  |   OK   |
@@ -32,7 +32,7 @@ individualizada.<br>
 | 27/11           | Quarta    |   -    |
 
 
-## Backlog
+## Backlog 📃
 
 [**Primeira Sprint**](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint1.md)
 
@@ -45,7 +45,7 @@ individualizada.<br>
 [**Produto**](https://github.com/tn-api1sem/api/blob/develop-matheus/produto.md)
 
 
-## Tecnologias e Ferramentas
+## Tecnologias e Ferramentas 🧑🏻‍💻
 
 
   [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="40" height="40"/>](https://www.python.org/)
@@ -57,7 +57,7 @@ individualizada.<br>
 
 
 
-## Equipe
+## Equipe 👥
 
 
 | **Scrum Master**        | **Product Owner**    |**Dev Team**        | **Dev Team**    | **Dev Team**        | **Dev Team**    |**Dev Team**        | **Dev Team**    |
