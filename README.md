@@ -24,14 +24,14 @@ individualizada.<br>
     - Instrutor Líder do Grupo avaliando o aluno Líder Técnico do Time<br>
     - Instrutor Fake Client avaliando o aluno PO do Time<br>
 - Deve prover um ou mais Dashboards de acompanhamento<br>
-</p><br>
+</p>
 <h3><b>Não-Funcionais</b></h3>
 <p align="left">
 - Linguagem de programação Python<br>
 - Uso de bases de dados simples.<br>
 - Sistema de controle de versão de código (Git)<br>
 - Documentações<br>
-</p><br>
+</p>
 
 <h1 align="center">Entregas 🎯</h1>
 <table align="center">
@@ -66,8 +66,7 @@ individualizada.<br>
 <td><p align="center"> - </p></td>
 </tr>
 </table>
-<h3 align="center"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/produto.md">Produto 📃</a></h3> 
-<br>
+<h3 align="center"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/produto.md">Backlog do Produto</a></h3> 
 
 <h1 align="center"> Equipe 👥</h1>
 
