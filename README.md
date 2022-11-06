@@ -1,4 +1,4 @@
-<p align="center"><img src="https://user-images.githubusercontent.com/111552950/199847738-8c0270c6-1a2f-499a-891c-32838378e48d.jpg" width="400" height="400"/></p><br>
+<p align="center"><img src="https://user-images.githubusercontent.com/111552950/199847738-8c0270c6-1a2f-499a-891c-32838378e48d.jpg" width="400" height="400"/></p>
 
 <h1 align="center">Sobre o Projeto 🎓</h1>
 <p align="center">
