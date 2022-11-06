@@ -25,42 +25,51 @@ individualizada.<br>
 - Documentações<br>
 </p><br>
 
-<h2 align="center">Entrega das Sprints  🎯</h2>
-<p align="center">| Data da Entrega | Sprints   | Status |
-| -------------   | --------- | -------|
-| 18/09           | Primeira  |   OK   |
-| 09/10           | Segunda   |   OK   |
-| 06/11           | Terceira  |   OK   |
-| 27/11           | Quarta    |   -    |
+<h1 align="center">Entregas 🎯</h1>
+<table align="center">
+<thead>
+        <th width=200px>Data da Entrega</th>
+        <th width=200px>Sprint</th>
+        <th width=200px>Backlog</th>
+        <th width=200px>Status</th>
+</thead>
+<tr>
+<td><p align="left">18/09/2022</p></td>
+<td><p align="left">Primeira</p></td>
+<td><p align="left"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint1.md">View</a></p></td>
+<td><p align="left">✅</p></td>
+</tr>
+<tr>
+<td><p align="left">09/10/2022</p></td>
+<td><p align="left">Segunda</p></td>
+<td><p align="left"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint2.md">View</a></p></td>
+<td><p align="left">✅</p></td>
+</tr>
+<tr>
+<td><p align="left">06/11/2022</p></td>
+<td><p align="left">Terceira</p></td>
+<td><p align="left"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint3.md">View</a></p></td>
+<td><p align="left">✅</p></td>
+</tr>
+<tr>
+<td><p align="left">27/11/2022</p></td>
+<td><p align="left">Quarta</p></td>
+<td><p align="left"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint4.md">View</a></p></td>
+<td><p align="left"> - </p></td>
+</tr>
+</table>
+<h2 align="center"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/produto.md">Produto 📃</a></h2> 
+<br>
+<p align="center">
+    <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/>
+    <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white"/>
+    <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white"/>
+    <img src="https://img.shields.io/badge/jira-%230A0FFF.svg?style=for-the-badge&logo=jira&logoColor=white"/>
+    <img src="https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white"/>
+    <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/>
 </p>
-
-
-## Backlog 📃
-
-[**Primeira Sprint**](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint1.md)
-
-[**Segunda Sprint**](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint2.md)
-
-[**Terceira Sprint**](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint3.md)
-
-[**Quarta Sprint**](https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint4.md)
-
-[**Produto**](https://github.com/tn-api1sem/api/blob/develop-matheus/produto.md)
-
-
-## Tecnologias e Ferramentas 🧑🏻‍💻
-
-
-  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" width="40" height="40"/>](https://www.python.org/)
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" width="40" height="40"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" width="40" height="40"/>
-  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" height="40"/>](https://www.javascript.com/)
-  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original-wordmark.svg" width="40" height="40"/>](https://id.atlassian.com/login)
-  [<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" width="40" height="40"/>](https://github.com/)
-
-
-
-## Equipe 👥
+<br>
+<h1 align="center"> Equipe 👥</h1>
 
 
 | **Scrum Master**        | **Product Owner**    |**Dev Team**        | **Dev Team**    | **Dev Team**        | **Dev Team**    |**Dev Team**        | **Dev Team**    |
