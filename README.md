@@ -1,24 +1,23 @@
-<h1 align="center"><img src="https://user-images.githubusercontent.com/111552950/199847738-8c0270c6-1a2f-499a-891c-32838378e48d.jpg" width="400" height="400"/></h1>
+<p align="center"><img src="https://user-images.githubusercontent.com/111552950/199847738-8c0270c6-1a2f-499a-891c-32838378e48d.jpg" width="400" height="400"/></p><br>
 
-# Sobre o Projeto / Objetivo
-O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; o administrador que é responsável por gerir e cadastrar usuários básicos, esse último deve atribuir as notas e contém um dashboard para o acompanhamento das mesmas.
+<h1 align="center">Sobre o Projeto 🎓</h1>
+<p align="left">O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; o administrador que é responsável por gerir e cadastrar usuários básicos, esse último deve atribuir as notas e contém um dashboard para o acompanhamento das mesmas.</p>
 
-
-
-
-## Requisitos
-**Funcionais**
-- Deve possuir um controle de usuários mínimo
-- Deve possuir um controle de perfis (instrutores e integrantes do time)
-- Deve possuir um controle de Times
-- Deve possuir um controle de Sprints, representando os ciclos de desenvolvimento a partir do qual cada integrante será avaliado
-- Deve possibilitar a realização, por um determinado integrante do Time, da avaliação dos demais integrantes, incluindo a si próprio, de forma individualizada.
-- Deve possibilitar a realização das seguintes avaliações adicionais:
-    - Instrutor Líder do Grupo avaliando o aluno Líder Técnico do Time
-    - Instrutor Fake Client avaliando o aluno PO do Time
-- Deve prover um ou mais Dashboards de acompanhamento
-
-**Não-Funcionais**
+<h2 align="left"><b> Requisitos 🖥️</b></h2>
+<h3><b>Funcionais</b></h3>
+<p>
+- Deve possuir um controle de usuários mínimo<br>
+- Deve possuir um controle de perfis (instrutores e integrantes do time)<br>
+- Deve possuir um controle de Times<br>
+- Deve possuir um controle de Sprints, representando os ciclos de desenvolvimento a partir do qual cada integrante será avaliado<br>
+- Deve possibilitar a realização, por um determinado integrante do Time, da avaliação dos demais integrantes, incluindo a si próprio, de forma
+individualizada.<br>
+- Deve possibilitar a realização das seguintes avaliações adicionais:<br>
+    - Instrutor Líder do Grupo avaliando o aluno Líder Técnico do Time<br>
+    - Instrutor Fake Client avaliando o aluno PO do Time<br>
+- Deve prover um ou mais Dashboards de acompanhamento<br>
+</p><br>
+<h3><b>Não-Funcionais</h3></b>
 - Linguagem de programação Python
 - Uso de bases de dados simples.
 - Sistema de controle de versão de código (Git)
