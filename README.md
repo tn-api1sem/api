@@ -32,70 +32,38 @@
 </p>
 <h1 align="center">Entregas 🎯</h1>
 <table align="center">
-   <thead>
-      <th width=200px>Data da Entrega</th>
-      <th width=200px>Sprint</th>
-      <th width=200px>Backlog</th>
-      <th width=200px>Status</th>
-   </thead>
-   <tr>
-      <td>
-         <p align="left">18/09/2022</p>
-      </td>
-      <td>
-         <p align="left">Primeira</p>
-      </td>
-      <td>
-         <p align="left"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint1.md">View</a></p>
-      </td>
-      <td>
-         <p align="center">✅</p>
-      </td>
-   </tr>
-   <tr>
-      <td>
-         <p align="left">09/10/2022</p>
-      </td>
-      <td>
-         <p align="left">Segunda</p>
-      </td>
-      <td>
-         <p align="left"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint2.md">View</a></p>
-      </td>
-      <td>
-         <p align="center">✅</p>
-      </td>
-   </tr>
-   <tr>
-      <td>
-         <p align="left">06/11/2022</p>
-      </td>
-      <td>
-         <p align="left">Terceira</p>
-      </td>
-      <td>
-         <p align="left"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint3.md">View</a></p>
-      </td>
-      <td>
-         <p align="center">✅</p>
-      </td>
-   </tr>
-   <tr>
-      <td>
-         <p align="left">27/11/2022</p>
-      </td>
-      <td>
-         <p align="left">Quarta</p>
-      </td>
-      <td>
-         <p align="left"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/Sprint4.md">View</a></p>
-      </td>
-      <td>
-         <p align="center"> - </p>
-      </td>
-   </tr>
+<thead>
+        <th width=200px>Data da Entrega</th>
+        <th width=200px>Sprint</th>
+        <th width=200px>Backlog</th>
+        <th width=200px>Status</th>
+</thead>
+<tr>
+<td><p align="left">18/09/2022</p></td>
+<td><p align="left">Primeira</p></td>
+<td><p align="left"><a href="https://github.com/tn-api1sem/api/blob/master/Sprint1.md">View</a></p></td>
+<td><p align="center">✅</p></td>
+</tr>
+<tr>
+<td><p align="left">09/10/2022</p></td>
+<td><p align="left">Segunda</p></td>
+<td><p align="left"><a href="https://github.com/tn-api1sem/api/blob/master/Sprint2.md">View</a></p></td>
+<td><p align="center">✅</p></td>
+</tr>
+<tr>
+<td><p align="left">06/11/2022</p></td>
+<td><p align="left">Terceira</p></td>
+<td><p align="left"><a href="https://github.com/tn-api1sem/api/blob/master/Sprint3.md">View</a></p></td>
+<td><p align="center">✅</p></td>
+</tr>
+<tr>
+<td><p align="left">27/11/2022</p></td>
+<td><p align="left">Quarta</p></td>
+<td><p align="left"><a href="https://github.com/tn-api1sem/api/blob/master/Sprint4.md">View</a></p></td>
+<td><p align="center"> - </p></td>
+</tr>
 </table>
-<h3 align="center"><a href="https://github.com/tn-api1sem/api/blob/develop-matheus/produto.md">Backlog do Produto</a></h3>
+<h3 align="center"><a href="https://github.com/tn-api1sem/api/blob/master/produto.md">Backlog do Produto</a></h3> 
 
 <h1 align="center"> Equipe 👥</h1>
 
