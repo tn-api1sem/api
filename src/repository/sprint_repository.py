@@ -21,7 +21,7 @@ class SprintsRepository(object):
 
         for sprint in sprints:
             for team in user_teams:
-                if sprint.team_id == team.id and sprint.end_date < str(date.today()):
+                if sprint.team_id == team and sprint.end_date < str(date.today()):
                     finished_sprints.append(sprint)
 
         return finished_sprints

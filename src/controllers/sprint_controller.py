@@ -28,11 +28,12 @@ def get_sprint_finished(user_id: int):
     user_teams = []
 
     for team in teams:
-        for user in team.id_users:
-            if user == user_id:
-                user_teams.append(team)
+        t = times.buscar_id_times(team.id);
+        for timesModel in t.times_model:
+            if user_id == timesModel.id_user:
+                user_teams.append(team.id)
 
-    return service.get_sprint_finished(user_teams)
+    return service.get_sprint_finished(list(dict.fromkeys(user_teams)))
 
 @router.post("/")
 def create_sprint(model: SprintsModel):
