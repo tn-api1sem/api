@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
     "last_index": 15,
     "dataset": [
@@ -28,6 +27,3 @@
         }
     ]
 }
-=======
-{"last_index": 9, "dataset": [{"id": 8, "times": "Teste Time 1", "id_group": 0}, {"id": 9, "times": "Teste Time 2", "id_group": 0}]}
->>>>>>> origin/develop
