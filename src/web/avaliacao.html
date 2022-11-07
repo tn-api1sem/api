@@ -140,7 +140,7 @@
                         <button type="button" style="height: 35px; width: 65px; font-size: 13px;"
                             class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <button type="button" style="height: 35px; width: 65px; font-size: 13px;"
-                            class="btn btn-primary" onclick="insertOrUpdate()">Salvar</button>
+                            class="btn btn-primary" onclick="newAvaliacao()">Avaliar</button>
                     </div>
                 </div>
             </div>
@@ -188,9 +188,7 @@
 
     var times;
 
-    notas = [
-        { id_u: 1, n: 1 }
-    ]
+    var avaliacoes = [];
 
     loadSprints();
 
@@ -199,61 +197,84 @@
         var sprints = await getFinishedSprints(user_id);
         times = await getTeams();
         var tbody = document.getElementById('tbody-avaliacao');
+        var today = new Date().toLocaleDateString('sv').replaceAll('-', '');
 
         for (var i = 0; i < sprints.length; i++) {
-            tbody.innerHTML += "<tr class=\"tr-shadow\">" +
-                "<td>" + sprints[i].name + "</td>" +
-                "<td>" + sprints[i].end_date + "</td>" +
-                "<td>" + times.find(x => x.id == sprints[i].team_id).times + "</td>" +
-                "<td>\<div class=\"table-data-feature\">" +
-                '<button class="item" data-toggle="modal" data-target="#avaliar" onclick="loadUsersTeam(' + sprints[i].team_id + ')" data-placement="top" title="Avaliar" "><i class="fas fa-thumbs-up"></i></button>' +
-                "</div>\</td>" +
-                "</tr><tr class=\"spacer\"></tr>"
+            if (sprints[i].evaluation_range.replaceAll('-', '') >= today) {
+                tbody.innerHTML += "<tr class=\"tr-shadow\">" +
+                    "<td>" + sprints[i].name + "</td>" +
+                    "<td>" + sprints[i].end_date + "</td>" +
+                    "<td>" + times.find(x => x.id == sprints[i].team_id).times + "</td>" +
+                    "<td>\<div class=\"table-data-feature\">" +
+                    '<button class="item" data-toggle="modal" data-target="#avaliar" onclick="loadUsersTeam(' + sprints[i].team_id + ', ' + sprints[i].id + ')" data-placement="top" title="Avaliar" "><i class="fas fa-thumbs-up"></i></button>' +
+                    "</div>\</td>" +
+                    "</tr><tr class=\"spacer\"></tr>"
+            }
         }
     }
 
-    function loadUsersTeam(team_id) {
+    function loadUsersTeam(team_id, sprint_id) {
         var team = times.find(x => x.id == team_id)
 
         var listNames = document.getElementById('list-names');
         listNames.innerHTML = "";
 
+        console.log(team);
+
         for (var i = 0; i < team.userName.length; i++) {
             listNames.innerHTML += `<label>${team.userName[i]}</label>` +
-                `<button id="${team.userName[i]}-1" onclick="selectRate('${team.userName[i]}-1')" class="item"><i class="far fa-tired fa-2xl mr-2"></i> </button>` +
-                `<button id="${team.userName[i]}-2" onclick="selectRate('${team.userName[i]}-2')" class="item"> <i class="far fa-frown fa-2xl mr-2"></i> </button>` +
-                `<button id="${team.userName[i]}-3" onclick="selectRate('${team.userName[i]}-3')" class="item"> <i class="far fa-meh fa-2xl mr-2"></i> </button>` +
-                `<button id="${team.userName[i]}-4" onclick="selectRate('${team.userName[i]}-4')" class="item"> <i class="far fa-smile fa-2xl mr-2"></i> </button>` +
-                `<button id="${team.userName[i]}-5" onclick="selectRate('${team.userName[i]}-5')" class="item"> <i class="far fa-laugh fa-2xl"></i> </button>`;
+                `<button id="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-${sprint_id}')" class="item"><i class="far fa-tired fa-2xl mr-2"></i> </button>` +
+                `<button id="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-${sprint_id}')" class="item"> <i class="far fa-frown fa-2xl mr-2"></i> </button>` +
+                `<button id="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-${sprint_id}')" class="item"> <i class="far fa-meh fa-2xl mr-2"></i> </button>` +
+                `<button id="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-${sprint_id}')" class="item"> <i class="far fa-smile fa-2xl mr-2"></i> </button>` +
+                `<button id="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-${sprint_id}')" class="item"> <i class="far fa-laugh fa-2xl"></i> </button>`;
         }
     }
 
-    function selectRate(rate_id){
-        var user = rate_id.split('-')[0];
-        var rate = rate_id.split('-')[1];
+    function selectRate(rate_info) {
+        var user = rate_info.split('-')[0];
+        var rate = rate_info.split('-')[1];
+        var sprint = rate_info.split('-')[2];
 
-        for(var i = 1; i < 6; i++){
-            if(i == rate){
-                var element = document.getElementById(rate_id);
+        if (avaliacoes.length > 0) {
+            if (avaliacoes[0].sprint != sprint) {
+                avaliacoes = [];
+            }
+        }
 
+        for (var i = 0; i < avaliacoes.length; i++) {
+            if (avaliacoes[i].user == user) {
+                avaliacoes.splice(i, 1);
+            }
+        }
+
+        avaliacoes.push({ user: user, rate: rate, sprint: sprint });
+
+        console.log(avaliacoes);
+
+        for (var i = 1; i < 6; i++) {
+            if (i == rate) {
+                var element = document.getElementById(rate_info);
                 var oldIcon = element.innerHTML;
-
                 var newIcon = element.innerHTML.replace('far', 'fas');
-
                 element.innerHTML = newIcon;
             }
-            else{
-                var element = document.getElementById(user + '-' + i);
-
+            else {
+                var element = document.getElementById(user + '-' + i + '-' + sprint);
                 var oldIcon = element.innerHTML;
-
                 var newIcon = element.innerHTML.replace('fas', 'far');
-
                 element.innerHTML = newIcon;
             }
         }
     }
 
+    async function newAvaliacao() {
+        var rated_by = JSON.parse(window.localStorage.getItem('user')).id;
+
+        for (var i = 0; i < avaliacoes.length; i++) {
+            var response = await createAvaliacao(avaliacoes[i].user, avaliacoes[i].sprint, rated_by, avaliacoes[i].rate, '');
+        }
+    }
 
         // var profiles = await getProfiles(); 
         //     var select = document.getElementById("id_profile")

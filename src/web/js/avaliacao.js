@@ -60,11 +60,11 @@ let deleteAvaliacao = async (id) => {
     window.location.reload();
 }
 
-let createAvaliacao = async (id, rated_user, sprint_id, rated_by, comment) => {
+let createAvaliacao = async (rated_user, sprint_id, rated_by, grade, comment) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = createBody(0, id, rated_user, sprint_id, rated_by, comment)
+    var raw = createBody(0, rated_user, sprint_id, rated_by, grade, comment)
 
     var requestOptions = {
         method: 'POST',
@@ -73,9 +73,9 @@ let createAvaliacao = async (id, rated_user, sprint_id, rated_by, comment) => {
         redirect: 'follow'
     };
 
-    await fetch(localURL + "/api/v1/avaliacao/", requestOptions)
+    await fetch(localURL + "/api/v1/avaliacaoUsuario/", requestOptions)
     .then(response => response.text())
-    .then(result => callbackHandler(result, 'Avaliação efetuado com sucesso'))
+    .then(result => callbackHandler(result, 'Avaliacao efetuada com sucesso'))
     .catch(error => console.log('error', error))
 
     window.location.reload();
@@ -101,12 +101,13 @@ let updateAvaliacao = async (id, rated_user, sprint_id, rated_by, comment) => {
 }
 
 
-function createBody(id, rated_user, sprint_id, rated_by, comment){
+function createBody(id, rated_user, sprint_id, rated_by, grade, comment){
     return JSON.stringify({
         "id": id,
         "rated_user": rated_user.toString(),
         "sprint_id": sprint_id.toString(),
         "rated_by" : rated_by.toString(),
+        "grade" : grade,
         "comment": comment.toString(),
     });
 }
