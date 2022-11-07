@@ -13,12 +13,22 @@ class times_repository(object):
     def busca_id_times(self, id):
         return self._apiContext.times_table.get(id)
 
+    def findTeamByGroup(self, idGroup:int):
+        times = self.get();
+
+        timesNoGrupo = [];
+        for time in times:
+            if time.id_group == idGroup:
+                timesNoGrupo.append(time)
+
+        return timesNoGrupo
+
     def post_times(self, objectPost):
         self._apiContext.times_table.begin_transaction()
         self._apiContext.times_table.insert(objectPost)
         self._apiContext.times_table.commit()
 
-    def put_times(self, objectPut):
+    def update(self, objectPut):
         self._apiContext.times_table.begin_transaction()
         self._apiContext.times_table.update(objectPut)
         self._apiContext.times_table.commit()

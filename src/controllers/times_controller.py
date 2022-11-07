@@ -23,7 +23,7 @@ def get_times():
 
 
 @router.get("/{id}")
-def id_get_times(id: int):
+def get_time_by_id(id: int):
     return times_services.buscar_id_times(id)
 
 

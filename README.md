@@ -1,4 +1,4 @@
-# Avaliação Democratizada 360°
+<h1 align="center"> Avaliação Democratizada 360° </h1> 
 
 ## Sobre o Projeto / Objetivo
 O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; o administrador que é responsável por gerir e cadastrar usuários básicos, esse último deve atribuir as notas e contém um dashboard para o acompanhamento das mesmas.
@@ -68,3 +68,4 @@ O projeto se baseia numa Avaliação técnica 360°. Possuímos dois usuários; 
 | Dev Team          | Felipe Fernandes Pereira      |
 | Dev Team          | Wagner de Deus Silva Junior   |
 | Dev Team          | Lucas Caetano da Silva        |
+

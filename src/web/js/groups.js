@@ -1,4 +1,4 @@
-let groupUrl = localURL + '/api/v1/usuario/';
+let groupUrl = localURL + '/api/v1/grupo/';
 
 let getGroups = async () => {
     var requestOptions = {
@@ -13,7 +13,7 @@ let getGroups = async () => {
         .then(result => groups = result)
         .catch(error => console.log('error', error));
 
-    return JSON.parse(users);
+    return JSON.parse(groups);
 }
 
 let getGroupById = async (id) => {
@@ -24,7 +24,7 @@ let getGroupById = async (id) => {
 
     var group;
 
-    await fetch(groupUrl+id, requestOptions)
+    await fetch(groupUrl + id, requestOptions)
         .then(response => response.text())
         .then(result => group = result)
         .catch(error => console.log('error', error));
@@ -39,7 +39,7 @@ let createGroup = async (jsonData) => {
     var requestOptions = {
         method: 'POST',
         headers: myHeaders,
-        body: jsonData,
+        body: JSON.stringify(jsonData),
         redirect: 'follow'
     };
 
@@ -58,7 +58,7 @@ let updateGroup = async (jsonData) => {
     var requestOptions = {
         method: 'PUT',
         headers: myHeaders,
-        body: jsonData,
+        body: JSON.stringify(jsonData),
         redirect: 'follow'
     };
 
@@ -77,14 +77,14 @@ let deleteGroup = async (id) => {
 
     await fetch(groupUrl + id, requestOptions)
         .then(response => response.text())
-        .then(result => callbackHandler(result,'Grupo deletado com sucesso'))
+        .then(result => callbackHandler(result, 'Grupo deletado com sucesso'))
         .catch(error => console.log('error', error));
 
     window.location.reload();
 }
 
-function callbackHandler(x, sucessMessage){
-    if(x == 200){
+function callbackHandler(x, sucessMessage) {
+    if (x == 200) {
         console.log(sucessMessage);
         window.location.reload()
         return;

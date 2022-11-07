@@ -7,31 +7,34 @@ class userteam_repository(object):
     def __init__(self) -> None:
         pass
 
+    def get_all(self):
+        return self._apiContext.userTeam_table.get_all();
 
+    def get_user_teams_by_team_id(self, team_id):
+        userTeams = self.get_all();
 
-#######Fazendo a insercao dos outros campo do userteam_model (id_users e username)
-    def busca_id_times(self,id):
-        return self._apiContext.userTeam_table.get(id)
+        returnObject = []
+        for userTeam in userTeams:
 
-    def busca_id_users(self, id_users):
-        return self._apiContext.userTeam_table.get(id_users)
+            if userTeam.id_team != team_id:
+                continue
 
-#team_id e id_profile#
-    def busca_team_id(self, team_id):
-        return self._apiContext.userTeam_table.get(team_id)
+            returnObject.append(userTeam);
+        
+        return returnObject;
 
-
+    
     def create(self, objectPost):
         self._apiContext.userTeam_table.begin_transaction()
         self._apiContext.userTeam_table.insert(objectPost)
         self._apiContext.userTeam_table.commit()
 
-    def put_id_profile(self, objectPut):
+    def update(self, objectPut):
         self._apiContext.userTeam_table.begin_transaction()
         self._apiContext.userTeam_table.update(objectPut)
         self._apiContext.userTeam_table.commit()
 
-    def delete_id_profile(self, id: int):
+    def delete(self, id: int):
         self._apiContext.userTeam_table.begin_transaction()
         self._apiContext.userTeam_table.delete(id)
         self._apiContext.userTeam_table.commit()
