@@ -3,6 +3,7 @@ from fastapi import APIRouter
 
 from src.models.sprints_model import SprintsModel
 from src.services.sprint_service import SprintService
+from ..services.times_service import times_services as TimesService
 
 router = APIRouter(
     prefix="/api/v1/sprint",
@@ -11,14 +12,27 @@ router = APIRouter(
 )
 
 service = SprintService()
+times = TimesService()
 
 @router.get("/")
 def get_all_sprint():
-    return service.get();
+    return service.get()
 
 @router.get("/{id}")
 def get_sprint_by_id(id:int):
     return service.get_by_id(id);
+
+@router.get("/finished/{user_id}")
+def get_sprint_finished(user_id: int):
+    teams = times.buscar_times()
+    user_teams = []
+
+    for team in teams:
+        for user in team.id_users:
+            if user == user_id:
+                user_teams.append(team)
+
+    return service.get_sprint_finished(user_teams)
 
 @router.post("/")
 def create_sprint(model: SprintsModel):

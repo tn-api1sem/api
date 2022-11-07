@@ -31,6 +31,12 @@ var sidebar = [
         "link": "sprint.html",
         "icon": "fas fa-check-circle",
         "admin-only": true
+    },
+    {
+        "description": "Avaliações",
+        "link": "avaliacao.html",
+        "icon": "fas fa-thumbs-up",
+        "admin-only": false
     }
 ]
 
