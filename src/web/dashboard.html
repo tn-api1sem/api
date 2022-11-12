@@ -125,11 +125,26 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/consts.js"></script>
 
     <script>
         var user = JSON.parse(window.localStorage.getItem('user')).usuario;
         document.getElementById('username').innerHTML = user;
-
+        loadUserRate();
+        let grades = [];
+        async function loadUserRate() {
+            console.log("Entrou");
+            i = 0;
+            var userRate = await getUserRates();
+            console.log(userRate[i].grade);
+            for (let rate of userRate) {
+                console.log(rate.grade);
+                grades.push(rate.grade);
+                i++;
+            }
+            console.log(grades);
+        }
         //Team chart
         var ctx = document.getElementById("team-chart");
         if (ctx) {
@@ -137,11 +152,11 @@
             var myChart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                    labels: ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4"],
                     type: 'line',
                     defaultFontFamily: 'Poppins',
                     datasets: [{
-                        data: [0, 7, 3, 5, 2, 10, 7],
+                        data: grades,
                         label: "Expense",
                         backgroundColor: 'rgba(0,103,255,.15)',
                         borderColor: 'rgba(0,103,255,0.5)',
