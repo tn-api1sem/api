@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list" id="menu-navbar">
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <!-- Search -->
+
+                            <form class="form-header invisible" action="" method="POST">
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
+                                <button class="au-btn--submit" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
+                            </form>
+
+                            <!-- Search -->
+                            <div class="header-button">
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu" style="cursor: default">
+                                        <div class="content">
+                                            <a class="js-acc-btn" href="#" id="username"></a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="account-dropdown__footer">
+                                                <a href="login.html">
+                                                    <i class="zmdi zmdi-power"></i>Sair</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="col-lg-6">
+                    <div class="au-card m-b-30">
+                        <div class="au-card-inner">
+                            <h3 class="title-2 m-b-40">Team Commits</h3>
+                            <canvas id="team-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="js/sidebar.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+
+    <script>
+        var user = JSON.parse(window.localStorage.getItem('user')).usuario;
+        document.getElementById('username').innerHTML = user;
+
+        //Team chart
+        var ctx = document.getElementById("team-chart");
+        if (ctx) {
+            ctx.height = 150;
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                    type: 'line',
+                    defaultFontFamily: 'Poppins',
+                    datasets: [{
+                        data: [0, 7, 3, 5, 2, 10, 7],
+                        label: "Expense",
+                        backgroundColor: 'rgba(0,103,255,.15)',
+                        borderColor: 'rgba(0,103,255,0.5)',
+                        borderWidth: 3.5,
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointBorderColor: 'transparent',
+                        pointBackgroundColor: 'rgba(0,103,255,0.5)',
+                    },]
+                },
+                options: {
+                    responsive: true,
+                    tooltips: {
+                        mode: 'index',
+                        titleFontSize: 12,
+                        titleFontColor: '#000',
+                        bodyFontColor: '#000',
+                        backgroundColor: '#fff',
+                        titleFontFamily: 'Poppins',
+                        bodyFontFamily: 'Poppins',
+                        cornerRadius: 3,
+                        intersect: false,
+                    },
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            fontFamily: 'Poppins',
+                        },
+
+
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            gridLines: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            scaleLabel: {
+                                display: false,
+                                labelString: 'Month'
+                            },
+                            ticks: {
+                                fontFamily: "Poppins"
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            gridLines: {
+                                display: false,
+                                drawBorder: false
+                            },
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Value',
+                                fontFamily: "Poppins"
+                            },
+                            ticks: {
+                                fontFamily: "Poppins"
+                            }
+                        }]
+                    },
+                    title: {
+                        display: false,
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
+<!-- end document-->
