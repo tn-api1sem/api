@@ -250,8 +250,6 @@
 
         avaliacoes.push({ user: user, rate: rate, sprint: sprint });
 
-        console.log(avaliacoes);
-
         for (var i = 1; i < 6; i++) {
             if (i == rate) {
                 var element = document.getElementById(rate_info);
@@ -272,8 +270,11 @@
         var rated_by = JSON.parse(window.localStorage.getItem('user')).id;
 
         for (var i = 0; i < avaliacoes.length; i++) {
-            var response = await createAvaliacao(avaliacoes[i].user, avaliacoes[i].sprint, rated_by, avaliacoes[i].rate, '');
+            avaliacoes[i].rated_by = rated_by;
+            avaliacoes[i].user = parseInt(avaliacoes[i].user); 
         }
+
+        await createAvaliacao(avaliacoes);
     }
 
         // var profiles = await getProfiles(); 

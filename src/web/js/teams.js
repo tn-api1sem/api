@@ -37,8 +37,6 @@ let deleteTeam = async (id) => {
         redirect: 'follow'
     };
 
-    console.log(id);
-
     await fetch(localURL + '/api/v1/times/' + id, requestOptions)
         .then(response => response.text())
         .then(result => callbackHandler(result, 'Time deletado com sucesso'))

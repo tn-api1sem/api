@@ -60,11 +60,11 @@ let deleteAvaliacao = async (id) => {
     window.location.reload();
 }
 
-let createAvaliacao = async (rated_user, sprint_id, rated_by, grade, comment) => {
+let createAvaliacao = async (avaliacoes) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = createBody(0, rated_user, sprint_id, rated_by, grade, comment)
+    var raw = JSON.stringify(avaliacoes)
 
     var requestOptions = {
         method: 'POST',
@@ -73,6 +73,9 @@ let createAvaliacao = async (rated_user, sprint_id, rated_by, grade, comment) =>
         redirect: 'follow'
     };
 
+    console.log(raw);
+
+    return;
     await fetch(localURL + "/api/v1/avaliacaoUsuario/", requestOptions)
     .then(response => response.text())
     .then(result => callbackHandler(result, 'Avaliacao efetuada com sucesso'))
@@ -81,11 +84,11 @@ let createAvaliacao = async (rated_user, sprint_id, rated_by, grade, comment) =>
     window.location.reload();
 }
 
-let updateAvaliacao = async (id, rated_user, sprint_id, rated_by, comment) => {
+let updateAvaliacao = async (avaliacoes) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-type", "application/json");
 
-    var raw = createBody(id, rated_user, sprint_id, rated_by, comment)
+    var raw = JSON.stringify(avaliacoes);
 
     var requestOptions = {
         method: 'PUT',
@@ -98,18 +101,6 @@ let updateAvaliacao = async (id, rated_user, sprint_id, rated_by, comment) => {
     .then(response => response.text())
     .then(result => callbackHandler(result, 'Atualização realizada com sucesso'))
     .catch(error => console.log('error', error));
-}
-
-
-function createBody(id, rated_user, sprint_id, rated_by, grade, comment){
-    return JSON.stringify({
-        "id": id,
-        "rated_user": rated_user.toString(),
-        "sprint_id": sprint_id.toString(),
-        "rated_by" : rated_by.toString(),
-        "grade" : grade,
-        "comment": comment.toString(),
-    });
 }
 
 function callbackHandler(response, successMessage){
