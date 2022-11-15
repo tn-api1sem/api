@@ -87,13 +87,25 @@
 
             <!-- MAIN CONTENT-->
             <div class="main-content">
-                <div class="col-lg-6">
-                    <div class="au-card m-b-30">
-                        <div class="au-card-inner">
-                            <h3 class="title-2 m-b-40">Team Commits</h3>
-                            <canvas id="team-chart"></canvas>
-                        </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Times</label>
+                        <select class="form-control" data-role="select-dropdown" id="id_team" name="id_user">
+                        </select>
                     </div>
+                    <div class="col form-group">
+                        <label>Soft Skils</label>
+                        <select class="form-control" data-role="select-dropdown" id="id_softSkil" name="id_profile">
+                        </select>
+                    </div>
+                    <div class="col form-group">
+                        <label for="">&nbsp;</label>
+                        <button class="btn btn-success" style="width: 100%;" onclick="getDashboard()" type="button">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+                <div class="container" id="dashboardContainer">
                 </div>
             </div>
             <!-- END MAIN CONTENT-->
@@ -121,111 +133,165 @@
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js"></script>
-    <script src="js/sidebar.js"></script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
-    <script src="js/dashboard.js"></script>
     <script src="js/consts.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/teams.js"></script>
 
     <script>
         var user = JSON.parse(window.localStorage.getItem('user')).usuario;
-        document.getElementById('username').innerHTML = user;
-        loadUserRate();
-        let grades = [];
-        async function loadUserRate() {
-            console.log("Entrou");
-            i = 0;
-            var userRate = await getUserRates();
-            console.log(userRate[i].grade);
-            for (let rate of userRate) {
-                console.log(rate.grade);
-                grades.push(rate.grade);
-                i++;
-            }
-            console.log(grades);
-        }
-        //Team chart
-        var ctx = document.getElementById("team-chart");
-        if (ctx) {
-            ctx.height = 150;
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4"],
-                    type: 'line',
-                    defaultFontFamily: 'Poppins',
-                    datasets: [{
-                        data: grades,
-                        label: "Expense",
-                        backgroundColor: 'rgba(0,103,255,.15)',
-                        borderColor: 'rgba(0,103,255,0.5)',
-                        borderWidth: 3.5,
-                        pointStyle: 'circle',
-                        pointRadius: 5,
-                        pointBorderColor: 'transparent',
-                        pointBackgroundColor: 'rgba(0,103,255,0.5)',
-                    },]
-                },
-                options: {
-                    responsive: true,
-                    tooltips: {
-                        mode: 'index',
-                        titleFontSize: 12,
-                        titleFontColor: '#000',
-                        bodyFontColor: '#000',
-                        backgroundColor: '#fff',
-                        titleFontFamily: 'Poppins',
-                        bodyFontFamily: 'Poppins',
-                        cornerRadius: 3,
-                        intersect: false,
-                    },
-                    legend: {
-                        display: false,
-                        position: 'top',
-                        labels: {
-                            usePointStyle: true,
-                            fontFamily: 'Poppins',
-                        },
+        var userId = JSON.parse(window.localStorage.getItem('user')).id;
 
+        $(document).ready(function () {
+            //Combobox
+            $("#id_team").select2();
+            $("#id_softSkil").select2();
 
-                    },
-                    scales: {
-                        xAxes: [{
-                            display: true,
-                            gridLines: {
-                                display: false,
-                                drawBorder: false
-                            },
-                            scaleLabel: {
-                                display: false,
-                                labelString: 'Month'
-                            },
-                            ticks: {
-                                fontFamily: "Poppins"
-                            }
-                        }],
-                        yAxes: [{
-                            display: true,
-                            gridLines: {
-                                display: false,
-                                drawBorder: false
-                            },
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Value',
-                                fontFamily: "Poppins"
-                            },
-                            ticks: {
-                                fontFamily: "Poppins"
-                            }
-                        }]
-                    },
-                    title: {
-                        display: false,
-                    }
+            //Call Functions
+            //loadTeams();
+            loadComboBox();
+
+            //Load Header
+            document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
+        });
+        carregarDashboard();
+
+        async function loadComboBox() {
+            //mostra apenas os times na qual o usuario logado faz parte
+            var select = document.getElementById("id_team");
+            var userTeams = await getUserTeamByIdUser(userId);
+            var idsTeam = []
+            var teams = []
+            for (let userTeam of userTeams) {
+                if (idsTeam.length == 0) {
+                    idsTeam.push(userTeam.id_team)
+                } else if (idsTeam.includes(userTeam.id_team) == false) {
+                    idsTeam.push(userTeam.id_team)
                 }
-            });
+            }
+            for (let teamId of idsTeam) {
+                team = await getTeamById(teamId);
+                teams.push(team)
+            }
+            for (var i = 0; i < teams.length; i++) {
+                select.innerHTML += `<option value=${teams[i].id}>${teams[i].times}</option>`
+            }
+
+            // FAZER O MESMO ESQUEMA DO DE CIMA, SÓ QUE AGORA BUSCANDO LISTAR AS SOFT SKILS
+            /*
+            var profiles = await getProfiles();
+            var select = document.getElementById("id_softSkil")
+            for (var i = 0; i < profiles.length; i++) {
+                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].perfil}</option>`
+            }
+            */
+        }
+
+        function carregarDashboard() {
+
+        }
+
+        function getDashboard() {
+            console.log('ENTROU');
+            let dashboard_container = document.querySelector("#dashboardContainer");
+            dashboard_container.innerHTML = "";
+            let dash_container = `<div class="col-lg-6">
+                                                <div class="au-card m-b-30">
+                                                    <div class="au-card-inner">
+                                                        <h3 class="title-2 m-b-40">TESTONHO</h3>
+                                                        <canvas id="team-chart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>`;
+            dashboard_container.innerHTML += dash_container;
+
+            var team = $('#id_team option:selected')
+            var softSkil = $('#id_softSkil option:selected')
+            //Team chart
+            var ctx = document.getElementById("team-chart");
+            if (ctx) {
+                ctx.height = 150;
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4"],
+                        type: 'line',
+                        defaultFontFamily: 'Poppins',
+                        datasets: [{
+                            data: [0, 1, 2, 3],
+                            label: "Expense",
+                            backgroundColor: 'rgba(0,103,255,.15)',
+                            borderColor: 'rgba(0,103,255,0.5)',
+                            borderWidth: 3.5,
+                            pointStyle: 'circle',
+                            pointRadius: 5,
+                            pointBorderColor: 'transparent',
+                            pointBackgroundColor: 'rgba(0,103,255,0.5)',
+                        },]
+                    },
+                    options: {
+                        responsive: true,
+                        tooltips: {
+                            mode: 'index',
+                            titleFontSize: 12,
+                            titleFontColor: '#000',
+                            bodyFontColor: '#000',
+                            backgroundColor: '#fff',
+                            titleFontFamily: 'Poppins',
+                            bodyFontFamily: 'Poppins',
+                            cornerRadius: 3,
+                            intersect: false,
+                        },
+                        legend: {
+                            display: false,
+                            position: 'top',
+                            labels: {
+                                usePointStyle: true,
+                                fontFamily: 'Poppins',
+                            },
+
+
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                gridLines: {
+                                    display: false,
+                                    drawBorder: false
+                                },
+                                scaleLabel: {
+                                    display: false,
+                                    labelString: 'Month'
+                                },
+                                ticks: {
+                                    fontFamily: "Poppins"
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                gridLines: {
+                                    display: false,
+                                    drawBorder: false
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Value',
+                                    fontFamily: "Poppins"
+                                },
+                                ticks: {
+                                    fontFamily: "Poppins"
+                                }
+                            }]
+                        },
+                        title: {
+                            display: false,
+                        }
+                    }
+                });
+            }
         }
 
     </script>

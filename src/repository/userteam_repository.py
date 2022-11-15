@@ -8,10 +8,10 @@ class userteam_repository(object):
         pass
 
     def get_all(self):
-        return self._apiContext.userTeam_table.get_all();
+        return self._apiContext.userTeam_table.get_all()
 
     def get_user_teams_by_team_id(self, team_id):
-        userTeams = self.get_all();
+        userTeams = self.get_all()
 
         returnObject = []
         for userTeam in userTeams:
@@ -19,11 +19,23 @@ class userteam_repository(object):
             if userTeam.id_team != team_id:
                 continue
 
-            returnObject.append(userTeam);
-        
-        return returnObject;
+            returnObject.append(userTeam)
 
-    
+        return returnObject
+
+    def get_user_teams_by_user_id(self, user_id):
+        userTeams = self.get_all()
+
+        returnObject = []
+        for userTeam in userTeams:
+
+            if userTeam.id_user != user_id:
+                continue
+
+            returnObject.append(userTeam)
+
+        return returnObject
+
     def create(self, objectPost):
         self._apiContext.userTeam_table.begin_transaction()
         self._apiContext.userTeam_table.insert(objectPost)
@@ -38,6 +50,3 @@ class userteam_repository(object):
         self._apiContext.userTeam_table.begin_transaction()
         self._apiContext.userTeam_table.delete(id)
         self._apiContext.userTeam_table.commit()
-
-
-

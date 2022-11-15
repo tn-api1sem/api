@@ -1,15 +1,15 @@
-let getUserRates = async () => {
+let getUserTeamByIdUser = async (id) => {
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
     };
 
-    var teams;
+    var userTeams;
 
-    await fetch(localURL + '/api/v1/avaliacaoUsuario/', requestOptions)
+    await fetch(localURL + '/api/v1/dashboard/' + id, requestOptions)
         .then(response => response.text())
-        .then(result => teams = result)
+        .then(result => userTeams = result)
         .catch(error => console.log('error', error));
 
-    return JSON.parse(teams);
+    return JSON.parse(userTeams);
 }
