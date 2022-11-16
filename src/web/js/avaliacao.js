@@ -73,9 +73,7 @@ let createAvaliacao = async (avaliacoes) => {
         redirect: 'follow'
     };
 
-    console.log(raw);
-
-    return;
+    
     await fetch(localURL + "/api/v1/avaliacaoUsuario/", requestOptions)
     .then(response => response.text())
     .then(result => callbackHandler(result, 'Avaliacao efetuada com sucesso'))
