@@ -1,8 +1,9 @@
+
 from http.client import OK
 from fastapi import APIRouter
 
-from src.models.grupo_model import grupo_model
-from src.services.grupo_service import grupo_services as GrupoService
+from ..models.grupo_model import grupo_model
+from ..services.grupo_service import grupo_services as GrupoService
 
 router = APIRouter(
     prefix="/api/v1/grupo",

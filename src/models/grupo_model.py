@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 
 class grupo_model(BaseModel):
-    id: int | None
+    id: int  | None
     name: str | None
     client_id: int | None
     leader_id: int | None

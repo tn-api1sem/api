@@ -1,4 +1,4 @@
-from src.repository.context.api_context import ApiContext
+from ..repository.context.api_context import ApiContext
 
 
 class times_repository(object):
@@ -20,6 +20,7 @@ class times_repository(object):
         for time in times:
             if time.id_group == idGroup:
                 timesNoGrupo.append(time)
+
 
         return timesNoGrupo
 

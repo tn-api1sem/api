@@ -1,6 +1,7 @@
 from ftplib import all_errors
 from tokenize import group
-from ..models.grupo_model import grupo_bd, grupo_model
+from ..models.grupo_model import grupo_model
+from ..models.grupo_model import grupo_bd
 from ..repository.grupo_repository import grupo_repository
 from ..repository.times_repository import times_repository
 
@@ -36,18 +37,28 @@ class grupo_services(object):
         for team in teams:
             team.id_group = 0;
             self._teamsRepository.update(team);
-        
+
         self.updateTeam(model)
 
     def updateTeam(self, model: grupo_model):
         allTeams = self._teamsRepository.get();
         for team in allTeams:
             for groupTeam in model.teams:
-                if(team.id != groupTeam):
+                if team.id != groupTeam:
                     continue
-                
+
+
                 team.id_group = model.id;
                 self._teamsRepository.update(team)
+
+    def valid_teamingroup(self, id:int):
+        team_id = self._teamsRepository.get(id)
+        group_id = self._grupo_repository.get(id)
+        for time in team_id:
+            for group in group_id:
+                if time == group:
+                    raise Exception("Existe um time associado a este grupo");
+        return self._teamsRepository.findTeamByGroup()
 
     def delete_id_grupo(self, id: int):
         allTeams = self._teamsRepository.get();        
