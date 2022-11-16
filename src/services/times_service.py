@@ -1,4 +1,4 @@
-from ..models.times_model import times_bd, times_model,user_team_model
+from ..models.times_model import times_bd, times_get_response, times_model,user_team_model
 from ..repository.times_repository import times_repository
 from ..repository.userteam_repository import userteam_repository
 from ..repository.usuario_repository import user_repository
@@ -17,16 +17,28 @@ class times_services(object):
         times = self._times_repository.get();
         profiles = self._profiles_repository.get();
 
+        timeResponseList = [];
+
         for time in times:
+            timeResponse = self.mapToTimeResponse(time)
             userTeams = self._userteam_repository.get_user_teams_by_team_id(time.id)
-            time.userName = [];
-            time.id_users = [];
             for userTeam in userTeams:
                 user = self._usuario_repository.get_by_id(userTeam.id_user);
-                time.userName.append(user.usuario + '[' + profiles[userTeam.id_profile-1].perfil + ']')
-                time.id_users.append(user.id)
+                timeResponse.userName.append(user.usuario + '[' + profiles[userTeam.id_profile-1].perfil + ']')
+                timeResponse.id_users.append(user.id)
 
-        return times;
+            timeResponseList.append(timeResponse)
+
+        return timeResponseList;
+
+    def mapToTimeResponse(self, time):
+        timeResponse  = times_get_response()
+        timeResponse.id = time.id
+        timeResponse.id_group = time.id_group
+        timeResponse.times = time.times
+        timeResponse.userName = []
+        timeResponse.id_users = []
+        return timeResponse
 
     def buscar_id_times(self, id):
         time = self._times_repository.busca_id_times(id);
@@ -63,9 +75,9 @@ class times_services(object):
         self._times_repository.update(modelToInsert)
         self.update_user_team(modelToInsert.id, model.times_model);
 
-    def delete_id_times(self, id: int):
+    def delete(self, id: int):
         self.delete_user_team(id)
-        return self ._userteam_repository.delete_id_times(id)
+        return self ._times_repository.delete_id_times(id)
         
     def create_user_team(self,idGroup:int, userTeams:list[user_team_model]):
         for userTeam in userTeams:
