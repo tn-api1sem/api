@@ -1,1 +1,23 @@
-{"last_index": 3, "dataset": [{"id": 1, "email": "admin@admin.com", "usuario": "admin", "senha": "admin"}, {"id": 2, "email": "usuario@email.com", "usuario": "usuario", "senha": "usuario"}, {"id": 3, "email": "usuario_teste@teste.com", "usuario": "usuario_teste", "senha": "usuario_teste"}]}
+{
+    "last_index": 3,
+    "dataset": [
+        {
+            "id": 1,
+            "email": "admin@admin.com",
+            "usuario": "admin",
+            "senha": "admin"
+        },
+        {
+            "id": 2,
+            "email": "usuario@email.com",
+            "usuario": "usuario",
+            "senha": "usuario"
+        },
+        {
+            "id": 3,
+            "email": "usuario_teste@teste.com",
+            "usuario": "usuario_teste",
+            "senha": "usuario_teste"
+        }
+    ]
+}
