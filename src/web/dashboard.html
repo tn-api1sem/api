@@ -144,6 +144,14 @@
     <script>
         var user = JSON.parse(window.localStorage.getItem('user')).usuario;
         var userId = JSON.parse(window.localStorage.getItem('user')).id;
+        var grades = [];//dados que vão aparecer no gráfico
+        loadUserRate(grades);
+        async function loadUserRate(grades) {
+            var userRate = await getUserRates();
+            for (let rate of userRate) {
+                grades.push(rate.grade);
+            }
+        }
 
         $(document).ready(function () {
             //Combobox
@@ -157,7 +165,6 @@
             //Load Header
             document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
         });
-        carregarDashboard();
 
         async function loadComboBox() {
             //mostra apenas os times na qual o usuario logado faz parte
@@ -190,12 +197,8 @@
             */
         }
 
-        function carregarDashboard() {
-
-        }
-
+        // função para exibir o dashboard após executar o botão 'BUSCAR'
         function getDashboard() {
-            console.log('ENTROU');
             let dashboard_container = document.querySelector("#dashboardContainer");
             dashboard_container.innerHTML = "";
             let dash_container = `<div class="col-lg-6">
@@ -210,6 +213,11 @@
 
             var team = $('#id_team option:selected')
             var softSkil = $('#id_softSkil option:selected')
+            //mostra os dados do dashboard de acordo com informações do banco
+            showDashboard(grades);
+        }
+        function showDashboard(grades) {
+            console.log(grades);
             //Team chart
             var ctx = document.getElementById("team-chart");
             if (ctx) {
@@ -221,7 +229,7 @@
                         type: 'line',
                         defaultFontFamily: 'Poppins',
                         datasets: [{
-                            data: [0, 1, 2, 3],
+                            data: grades,
                             label: "Expense",
                             backgroundColor: 'rgba(0,103,255,.15)',
                             borderColor: 'rgba(0,103,255,0.5)',
