@@ -12,7 +12,9 @@ softSkillsService = SoftSkillsService()
 
 @router.get("/")
 def get_all():
-    return  softSkillsService.get_all()
+    softskills = softSkillsService.get_all();
+    return  softskills
+    
 
 
 

@@ -8,5 +8,5 @@ class SoftSkillsService(object):
         pass
 
     def get_all(self):
-        return self.get_all();
+        return self._repository.get_all();
 

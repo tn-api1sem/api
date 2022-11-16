@@ -6,5 +6,5 @@ class SoftSkillsRepository(object):
     def __init__(self) -> None:
         pass
 
-    def get(self):
+    def get_all(self):
         return self._apiContext.softSkills_table.get_all()
