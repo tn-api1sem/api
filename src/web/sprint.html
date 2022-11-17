@@ -166,11 +166,6 @@
                                         <option disabled selected value="-1">Selecionar</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label>Softskills</label>
-                                    <select class="form-control" multiple id="softskills" name="softskills" style="height: 43px;font-size: 13px">
-                                    </select>
-                                </div>
                             </div>
                         </form>
                     </div>
@@ -210,16 +205,11 @@
     <script src="js/consts.js"></script>
     <script src="js/sprint.js"></script>
     <script src="js/teams.js"></script>
-    <script src="js/softskills.js"></script>
 
 <script>
         document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
         loadSprints();
         loadComboBox();
-
-        $("#softskills").select2({
-                dropdownParent: $('#createsprint .modal-content')
-        });
 
         async function loadSprints() {
             var sprints = await getSprints();
@@ -270,12 +260,6 @@
             for(var i = 0; i < times.length; i++){
                 selectTeams.innerHTML += `<option value=${times[i].id}>${times[i].times}</option>`
             }
-            
-            var softSkills = await getSoftSkills();
-            var selectSoftSkills = document.getElementById("softskills")
-            for(var i = 0; i < softSkills.length; i++){
-                selectSoftSkills.innerHTML += `<option value=${softSkills[i].id}>${softSkills[i].description}</option>`
-            }
         }
 
         async function loadSprint(id){
@@ -285,9 +269,6 @@
 
         function insertOrUpdate(){
             var json = formToJson("sprint-form");
-            
-            console.log(json);
-            return;
 
             if(json["id"] == 0){
                 createSprint(json);
