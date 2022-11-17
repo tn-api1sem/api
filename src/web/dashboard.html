@@ -144,7 +144,7 @@
     <script>
         var user = JSON.parse(window.localStorage.getItem('user')).usuario;
         var userId = JSON.parse(window.localStorage.getItem('user')).id;
-        var grades = [];//dados que vão aparecer no gráfico
+        var grades = [];//dados que vão aparecer no gráfico.
         loadUserRate(grades);
         async function loadUserRate(grades) {
             var userRate = await getUserRates();
