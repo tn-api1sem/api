@@ -1619,9 +1619,7 @@ section {
 
 .menu-sidebar__content {
     position: relative;
-    height: -webkit-calc(100vh - 75px);
-    height: -moz-calc(100vh - 75px);
-    height: calc(100vh - 75px);
+    height: 100%;
 }
 
 .navbar-sidebar {

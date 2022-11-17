@@ -69,3 +69,15 @@ var el = document.getElementById(pageHtml)
 el.classList.add('active'); 
 
 
+var url = window.location.href;
+console.log(url)
+sidebarElement.innerHTML += `
+    <li>
+        <img src="${url}/../images/logo.png" style="
+            width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        ">
+    </li>
+`
