@@ -22,13 +22,20 @@ class grupo_services(object):
         grupoModel = self._bdToModel(grupo, teams)    
         return grupoModel;
 
-    def create(self, model: grupo_model):
+    def create(self,model: grupo_model):
         grupoBd = self._modelToBd(model)
         item = self._grupo_repository.post_grupo(grupoBd)
 
         model.id = item.id;
         self.updateTeam(model);
-       
+
+
+
+        times_em_grupo= self._teamsRepository.findTeamByGroup(grupoBd)
+        for time in times_em_grupo:
+            if time.id == times_em_grupo:
+                raise Exception("Existe um time associado a este grupo");
+
     def update(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
         self._grupo_repository.put_grupo(grupoBd)
@@ -39,6 +46,9 @@ class grupo_services(object):
             self._teamsRepository.update(team);
 
         self.updateTeam(model)
+
+
+
 
     def updateTeam(self, model: grupo_model):
         allTeams = self._teamsRepository.get();
@@ -51,14 +61,6 @@ class grupo_services(object):
                 team.id_group = model.id;
                 self._teamsRepository.update(team)
 
-    def valid_teamingroup(self, id:int):
-        team_id = self._teamsRepository.get(id)
-        group_id = self._grupo_repository.get(id)
-        for time in team_id:
-            for group in group_id:
-                if time == group:
-                    raise Exception("Existe um time associado a este grupo");
-        return self._teamsRepository.findTeamByGroup()
 
     def delete_id_grupo(self, id: int):
         allTeams = self._teamsRepository.get();        
