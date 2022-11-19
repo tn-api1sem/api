@@ -144,14 +144,8 @@
     <script>
         var user = JSON.parse(window.localStorage.getItem('user')).usuario;
         var userId = JSON.parse(window.localStorage.getItem('user')).id;
-        var grades = [];//dados que vão aparecer no gráfico.
-        loadUserRate(grades);
-        async function loadUserRate(grades) {
-            var userRate = await getUserRates();
-            for (let rate of userRate) {
-                grades.push(rate.grade);
-            }
-        }
+        var grades = []
+        var team;
 
         $(document).ready(function () {
             //Combobox
@@ -159,8 +153,8 @@
             $("#id_softSkil").select2();
 
             //Call Functions
-            //loadTeams();
             loadComboBox();
+            loadDataForDashboard(grades);
 
             //Load Header
             document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
@@ -181,7 +175,9 @@
             }
             for (let teamId of idsTeam) {
                 team = await getTeamById(teamId);
-                teams.push(team)
+                if (team != null) {
+                    teams.push(team)
+                }
             }
             for (var i = 0; i < teams.length; i++) {
                 select.innerHTML += `<option value=${teams[i].id}>${teams[i].times}</option>`
@@ -197,6 +193,36 @@
             */
         }
 
+        async function loadDataForDashboard(grades) {
+            //var team = $('#id_team option:selected');
+            //var sprint = $('#id_softSkil option:selected')
+            var sprint = 1
+
+            var countRates = 0
+            var grade1 = 0
+            var grade2 = 0
+            var grade3 = 0
+            var grade4 = 0
+            var grade5 = 0
+
+            var userRates = await getUserRatesByIdSprint(sprint);
+            for (let userRate of userRates) {
+                if (userRate.rated_user == userId) {
+                    grade1 += userRate.grade01
+                    grade2 += userRate.grade02
+                    grade3 += userRate.grade03
+                    grade4 += userRate.grade04
+                    grade5 += userRate.grade05
+                    countRates += 1
+                }
+            }
+            grades.push(grade1 / countRates)
+            grades.push(grade2 / countRates)
+            grades.push(grade3 / countRates)
+            grades.push(grade4 / countRates)
+            grades.push(grade5 / countRates)
+        }
+
         // função para exibir o dashboard após executar o botão 'BUSCAR'
         function getDashboard() {
             let dashboard_container = document.querySelector("#dashboardContainer");
@@ -204,20 +230,17 @@
             let dash_container = `  <div class="col-lg-6">
                                         <div class="au-card m-b-30">
                                             <div class="au-card-inner">
-                                                <h3 class="title-2 m-b-40">Rader chart</h3>
+                                                <h3 class="title-2 m-b-40">Dashboard</h3>
                                                 <canvas id="radarChart"></canvas>
                                             </div>
                                         </div>
                                     </div>`;
             dashboard_container.innerHTML += dash_container;
 
-            // esta variavel esta retornando o id do time selecionado
-            var team = $('#id_team option:selected')
-
-            var softSkil = $('#id_softSkil option:selected')
             //mostra os dados do dashboard de acordo com informações do banco
             showDashboard(grades);
         }
+
         function showDashboard(grades) {
             //radar chart
             var ctx = document.getElementById("radarChart");
@@ -226,22 +249,15 @@
                 var myChart = new Chart(ctx, {
                     type: 'radar',
                     data: {
-                        labels: ["Empatia", "Organização", "Estudo", "Liderança", "Pro atividade"],
+                        labels: ["Trabalho em equipe", "Iniciativa e Proatividade", "Autodidaxia", "Entrega de resultados", "Competência Técnica"],
                         defaultFontFamily: 'Poppins',
                         datasets: [
                             {
                                 label: "My First dataset",
-                                data: [65, 59, 66, 45, 56, 55, 40],
+                                data: grades,
                                 borderColor: "rgba(0, 123, 255, 0.6)",
                                 borderWidth: "1",
                                 backgroundColor: "rgba(0, 123, 255, 0.4)"
-                            },
-                            {
-                                label: "My Second dataset",
-                                data: [28, 12, 40, 19, 63, 27, 87],
-                                borderColor: "rgba(0, 123, 255, 0.7",
-                                borderWidth: "1",
-                                backgroundColor: "rgba(0, 123, 255, 0.5)"
                             }
                         ]
                     },
