@@ -90,12 +90,12 @@
                 <div class="row">
                     <div class="col form-group">
                         <label>Times</label>
-                        <select class="form-control" data-role="select-dropdown" id="id_team" name="id_user">
+                        <select class="form-control" data-role="select-dropdown" id="id_team" name="id_team">
                         </select>
                     </div>
                     <div class="col form-group">
                         <label>Sprint</label>
-                        <select class="form-control" data-role="select-dropdown" id="id_softSkil" name="id_profile">
+                        <select class="form-control" data-role="select-dropdown" id="id_sprint" name="id_sprint">
                         </select>
                     </div>
                     <div class="col form-group">
@@ -145,16 +145,14 @@
         var user = JSON.parse(window.localStorage.getItem('user')).usuario;
         var userId = JSON.parse(window.localStorage.getItem('user')).id;
         var grades = []
-        var team;
 
         $(document).ready(function () {
             //Combobox
             $("#id_team").select2();
-            $("#id_softSkil").select2();
+            $("#id_sprint").select2();
 
             //Call Functions
             loadComboBox();
-            loadDataForDashboard(grades);
 
             //Load Header
             document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
@@ -193,9 +191,8 @@
             */
         }
 
-        async function loadDataForDashboard(grades) {
-            //var team = $('#id_team option:selected');
-            //var sprint = $('#id_softSkil option:selected')
+        async function loadDataForDashboard(grades, team, sprint) {
+
             var sprint = 1
 
             var countRates = 0
@@ -221,6 +218,9 @@
             grades.push(grade3 / countRates)
             grades.push(grade4 / countRates)
             grades.push(grade5 / countRates)
+
+            //mostra os dados do dashboard de acordo com informações do banco
+            showDashboard(grades);
         }
 
         // função para exibir o dashboard após executar o botão 'BUSCAR'
@@ -237,8 +237,10 @@
                                     </div>`;
             dashboard_container.innerHTML += dash_container;
 
-            //mostra os dados do dashboard de acordo com informações do banco
-            showDashboard(grades);
+            var team = $('#id_team option:selected');
+            var sprint = $('#id_sprint option:selected');
+
+            loadDataForDashboard(grades, team.val(), sprint.val());
         }
 
         function showDashboard(grades) {
