@@ -1,7 +1,7 @@
 from ftplib import all_errors
 from tokenize import group
 from ..models.grupo_model import grupo_model,grupo_bd
-
+from ..models.times_model import times_bd
 from ..repository.grupo_repository import grupo_repository
 from ..repository.times_repository import times_repository
 
@@ -22,25 +22,20 @@ class grupo_services(object):
         grupoModel = self._bdToModel(grupo, teams)    
         return grupoModel;
 
-    def create(self,model: grupo_model,idTimes:int,idGroups:int):
+    def create(self,model: grupo_model):
         grupoBd = self._modelToBd(model)
+        timeBd = self._timeToBD(model)
         item = self._grupo_repository.post_grupo(grupoBd)
-
         model.id = item.id;
-        self.updateTeam(model);
-        #validacao de grupo de criado
-        #Recebendo a id de um time inteiro
-        #Recebdendo uma lista de times com id(ineteira)dentro de um grupo
-        times = self._teamsRepository.busca_id_times(idTimes)
-        times_em_grupo= self._teamsRepository.findTeamByGroup(idGroups)
-        #verificacao dessas inserções
-        #para um time que esteja inseirido no times_em_grupo
-        #se este time for igual a meus times , signica que ja esta asssociado a um grupo
+
+        times = self._grupo_repository.busca_id_grupo(grupoBd.id)
+        times_em_grupo = self._teamsRepository.findTeamByGroup(timeBd.id_group)
         for time in times_em_grupo:
             if time == times:
-                 raise Exception("Existe um time associado a este grupo");
+                raise Exception("Existe um time associado a este grupo")
+        self.updateTeam(model);
 
-
+###o de cima
 
     def update(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
@@ -76,6 +71,11 @@ class grupo_services(object):
                 raise Exception("Existe um time associado a este grupo, por favor atulize-o antes de excluir");
 
         return self ._grupo_repository.delete_id_grupo(id)
+
+    def _timeToBD(self,model):
+        timeBd = times_bd();
+        timeBd.id_group = model.id_group
+        return timeBd
 
     def _modelToBd(self, model):
         grupoBd = grupo_bd();
