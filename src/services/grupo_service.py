@@ -1,8 +1,10 @@
 from ftplib import all_errors
 from tokenize import group
 from ..models.grupo_model import grupo_model,grupo_bd
+
 from ..models.times_model import times_bd
 from ..repository.grupo_repository import grupo_repository
+from ..repository.times_repository import times_repository
 from ..repository.times_repository import times_repository
 
 
@@ -22,20 +24,23 @@ class grupo_services(object):
         grupoModel = self._bdToModel(grupo, teams)    
         return grupoModel;
 
-    def create(self,model: grupo_model):
+    def create(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
-        timeBd = self._timeToBD(model)
         item = self._grupo_repository.post_grupo(grupoBd)
+        times_em_grupo = self._teamsRepository.findTeamByGroup(grupoBd.id)
+        grupo = self._grupo_repository.busca_id_grupo(item.id)
         model.id = item.id;
+        item.id=grupo.id
 
-        times = self._grupo_repository.busca_id_grupo(grupoBd.id)
-        times_em_grupo = self._teamsRepository.findTeamByGroup(timeBd.id_group)
         for time in times_em_grupo:
-            if time == times:
-                raise Exception("Existe um time associado a este grupo")
+            if time.id_group == grupo.id:
+                return ("Existe um time associado a este grupo")
         self.updateTeam(model);
 
-###o de cima
+
+        #verificacao dessas """"""inserções""""""
+        # para um """""'time"""""" que esteja """""""""""inseirido""""""""' no times_em_grupo
+        # se este time for igual a meus times , signica que ja esta asssociado a um grupo
 
     def update(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
@@ -43,6 +48,7 @@ class grupo_services(object):
 
         teams = self._teamsRepository.findTeamByGroup(model.id);
         for team in teams:
+
             team.id_group = 0;
             self._teamsRepository.update(team);
 
@@ -57,6 +63,8 @@ class grupo_services(object):
             for groupTeam in model.teams:
                 if team.id != groupTeam:
                     continue
+                else:
+                    return 'error'
 
 
                 team.id_group = model.id;
@@ -72,10 +80,6 @@ class grupo_services(object):
 
         return self ._grupo_repository.delete_id_grupo(id)
 
-    def _timeToBD(self,model):
-        timeBd = times_bd();
-        timeBd.id_group = model.id_group
-        return timeBd
 
     def _modelToBd(self, model):
         grupoBd = grupo_bd();

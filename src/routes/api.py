@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from ..controllers import sprint_controller, autenticacao_controller, usuario_controller, times_controller, profile_controler, avaliacaoUsuario_controller, grupo_controller
+from api.src.controllers import sprint_controller, autenticacao_controller, usuario_controller, times_controller, profile_controler, avaliacaoUsuario_controller, grupo_controller
 
 router = APIRouter()
 router.include_router(autenticacao_controller.router)
