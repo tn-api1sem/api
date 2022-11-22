@@ -25,16 +25,19 @@ class grupo_services(object):
         return grupoModel;
 
     def create(self, model: grupo_model):
+
         grupoBd = self._modelToBd(model)
-        item = self._grupo_repository.post_grupo(grupoBd)
         times_em_grupo = self._teamsRepository.findTeamByGroup(grupoBd.id)
-        grupo = self._grupo_repository.busca_id_grupo(item.id)
-        model.id = item.id;
-        item.id=grupo.id
+        grupo = self._grupo_repository.busca_id_grupo(grupoBd.id)
+        grupo_id=self._grupo_repository.get(grupo.get('id'))
+
 
         for time in times_em_grupo:
-            if time.id_group == grupo.id:
-                return ("Existe um time associado a este grupo")
+            if time == grupo_id:
+                raise Exception("Este time ja esta associado a este grupo");
+
+        item = self._grupo_repository.post_grupo(grupoBd)
+        model.id = item.id;
         self.updateTeam(model);
 
 
