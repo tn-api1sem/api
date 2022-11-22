@@ -63,6 +63,25 @@ let createSprint = async (json) => {
     window.location.reload();
 }
 
+let createSprintForGroup = async (json) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(json),
+        redirect: 'follow'
+    };
+
+    await fetch(localURL + "/api/v1/sprint/createForGroup", requestOptions)
+    .then(response => response.text())
+    .then(result => callbackHandler(result, 'Cadastro efetuado com sucesso'))
+    .catch(error => console.log('error', error))
+
+    window.location.reload();
+}
+
 let updateSprint = async (json) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-type", "application/json");

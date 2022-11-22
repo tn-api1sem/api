@@ -42,6 +42,14 @@ def create_sprint(model: SprintsModel):
         return OK
     except Exception as e:
         return str(e)
+
+@router.post("/createForGroup")
+def create_sprint_frou_group(model: SprintsModel):
+    try:
+        service.create_for_group(model)
+        return OK
+    except Exception as e:
+        return str(e)
     
 @router.put("/")
 def update_sprint(model: SprintsModel):

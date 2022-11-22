@@ -165,10 +165,10 @@
                                     Cadastrar para
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item">
-                                                <button id="timesC" class="btn btn-link nav-link active" type="button" onclick="changeType()">Times</button>
+                                                <button id="timesC" class="btn btn-link nav-link active" type="button" onclick="changeType('team')">Times</button>
                                             </li>
                                             <li class="nav-item">
-                                                <button id="turmasC" class="btn btn-link nav-link" type="button" onclick="changeType()">Turmas</button>
+                                                <button id="turmasC" class="btn btn-link nav-link" type="button" onclick="changeType('group')">Turmas</button>
                                             </li>
                                         </ul>
                                         <div class="form-group m-t-10">
@@ -217,6 +217,7 @@
     <script src="js/consts.js"></script>
     <script src="js/sprint.js"></script>
     <script src="js/teams.js"></script>
+    <script src="js/groups.js"></script>
 
 <script>
         document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
@@ -224,7 +225,7 @@
         var isTeamChoosed = true;
         
         loadSprints();
-        loadComboBox();
+        loadComboTeams();
 
         async function loadSprints() {
             var sprints = await getSprints();
@@ -268,24 +269,41 @@
             }
         }
 
-        async function loadComboBox(){
+        async function loadComboTeams(){
             var times = await getTeams();
             
             var selectTeams = document.getElementById("team_id")
+            selectTeams.innerHTML = ''
             for(var i = 0; i < times.length; i++){
                 selectTeams.innerHTML += `<option value=${times[i].id}>${times[i].times}</option>`
+            }
+        }
+
+        async function loadComboGroups(){
+            var groups = await getGroups();
+            
+            var selectTeams = document.getElementById("team_id")
+            selectTeams.innerHTML = ''
+            for(var i = 0; i < groups.length; i++){
+                selectTeams.innerHTML += `<option value=${groups[i].id}>${groups[i].name}</option>`
             }
         }
 
         async function loadSprint(id){
             var sprint = await getSprintsById(id)
             jsonToForm(sprint);
+
+            document.getElementById('turmasC').classList.add('disabled')
         }
 
         function insertOrUpdate(){
             var json = formToJson("sprint-form");
 
             if(json["id"] == 0){
+                if(!isTeamChoosed) {
+                    createSprintForGroup(json)
+                    return;
+                }
                 createSprint(json);
                 return;
             }
@@ -293,17 +311,19 @@
             updateSprint(json)
         }
 
-        function changeType(){
-            isTeamChoosed = !isTeamChoosed;
+        async function changeType(nav){
+            isTeamChoosed = nav == 'team';
             
-            if(isTeamChoosed){
+            if(!isTeamChoosed){
+                await loadComboGroups();
                 document.getElementById('timesC').classList.remove('active')
                 document.getElementById('turmasC').classList.add('active')
                 return;
             }
             
-            document.getElementById('timesC').classList.add('active')
+            await loadComboTeams();
             document.getElementById('turmasC').classList.remove('active')
+            document.getElementById('timesC').classList.add('active')
 
         }
 
@@ -313,6 +333,10 @@
 
             $('#teams').val(null).trigger('change');
             document.getElementById('id').value = 0;
+
+            
+            document.getElementById('turmasC').classList.remove('disabled')
+            $('#timesC').tab('show')
         }
     </script>
 

@@ -8,3 +8,5 @@ class SprintsModel(BaseModel):
     end_date: str | None
     team_id: int | None    
     evaluation_range: str | None
+
+    

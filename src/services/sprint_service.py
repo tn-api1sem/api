@@ -1,10 +1,12 @@
 from datetime import datetime
 from src.models.sprints_model import SprintsModel
 from src.repository.sprint_repository import SprintsRepository
+from src.repository.times_repository import times_repository as TeamRepository
 
 
 class SprintService(object):
     repository:SprintsRepository = SprintsRepository()
+    team_repository:TeamRepository = TeamRepository()
     
     def __init__(self) -> None:
         pass
@@ -21,6 +23,16 @@ class SprintService(object):
     def create(self, model: SprintsModel):
         self._validate(model);
         self.repository.create(model)
+        return
+
+    def create_for_group(self, model: SprintsModel):
+        teams = self.team_repository.findTeamByGroup(model.team_id) #é o id do grupo, fica mais facil no front
+
+        for team in teams:
+            model.team_id = team.id;
+            self._validate(model);
+            self.repository.create(model)
+            
         return
 
     def update(self, model: SprintsModel):
