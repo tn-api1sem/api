@@ -160,12 +160,24 @@
                                     <label>Avaliação libererada até</label>
                                     <input class="au-input au-input--full" type="date" name="evaluation_range" id="evaluation_range" placeholder="Ex: dd/mm/aaaa">
                                 </div>
-                                <div class="form-group">
-                                    <label>Times</label>
-                                    <select class="form-control" id="team_id" name="team_id" style="height: 43px;font-size: 13px">
-                                        <option disabled selected value="-1">Selecionar</option>
-                                    </select>
+
+                                <div class="container m-t-30">
+                                    Cadastrar para
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item">
+                                                <button id="timesC" class="btn btn-link nav-link active" type="button" onclick="changeType()">Times</button>
+                                            </li>
+                                            <li class="nav-item">
+                                                <button id="turmasC" class="btn btn-link nav-link" type="button" onclick="changeType()">Turmas</button>
+                                            </li>
+                                        </ul>
+                                        <div class="form-group m-t-10">
+                                            <select class="form-control" id="team_id" name="team_id" style="height: 43px;font-size: 13px">
+                                                <option disabled selected value="-1">Selecionar</option>
+                                            </select>
+                                        </div>
                                 </div>
+                                
                             </div>
                         </form>
                     </div>
@@ -208,6 +220,9 @@
 
 <script>
         document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
+        
+        var isTeamChoosed = true;
+        
         loadSprints();
         loadComboBox();
 
@@ -276,6 +291,20 @@
             }
 
             updateSprint(json)
+        }
+
+        function changeType(){
+            isTeamChoosed = !isTeamChoosed;
+            
+            if(isTeamChoosed){
+                document.getElementById('timesC').classList.remove('active')
+                document.getElementById('turmasC').classList.add('active')
+                return;
+            }
+            
+            document.getElementById('timesC').classList.add('active')
+            document.getElementById('turmasC').classList.remove('active')
+
         }
 
         function clearForm(){
