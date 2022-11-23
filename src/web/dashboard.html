@@ -182,27 +182,19 @@
             }
 
             // FAZER O MESMO ESQUEMA DO DE CIMA, SÓ QUE AGORA BUSCANDO LISTAR AS SPRINT
-            var team = $('#id_team option:selected')
-            var select = document.getElementById("id_sprint");
-            var sprints = await getSprintByIdTeam(team);
-            var idsSprint = []
-            var sprint = []
+            var team = $('#id_team option:selected').trigger('change')
+            var idTeam = parseInt(team.val())
+            var selectSprint = document.getElementById("id_sprint");
+            var sprints = await getSprintByIdTeam(idTeam);
 
-
-
-
-            /*
-            var profiles = await getProfiles();
-            var select = document.getElementById("id_softSkil")
-            for (var i = 0; i < profiles.length; i++) {
-                select.innerHTML += `<option value=${profiles[i].id}>${profiles[i].perfil}</option>`
+            for (var i = 0; i < teams.length; i++) {
+                selectSprint.innerHTML += `<option value=${sprints[i].id}>${sprints[i].name}</option>`
             }
-            */
         }
 
         async function loadDataForDashboard(grades, team, sprint) {
 
-            var sprint = 1
+            //var sprint = 1
 
             var countRates = 0
             var grade1 = 0
