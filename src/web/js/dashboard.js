@@ -14,20 +14,20 @@ let getUserTeamByIdUser = async (id) => {
     return JSON.parse(userTeams);
 }
 
-let getUserRates = async () => {
+let getUserRatesByIdSprint = async (id) => {
     var requestOptions = {
         method: 'GET',
         redirect: 'follow'
     };
 
-    var teams;
+    var userRates;
 
-    await fetch(localURL + '/api/v1/avaliacaoUsuario/', requestOptions)
+    await fetch(localURL + '/api/v1/dashboard/userRates/' + id, requestOptions)
         .then(response => response.text())
-        .then(result => teams = result)
+        .then(result => userRates = result)
         .catch(error => console.log('error', error));
 
-    return JSON.parse(teams);
+    return JSON.parse(userRates);
 }
 
 let getSprintByIdTeam = async () => {
@@ -38,9 +38,11 @@ let getSprintByIdTeam = async () => {
 
     var teams;
 
-    await fetch(localURL + '/api/v1/dashboard/', requestOptions)
+    await fetch(localURL + '/api/v1/dashboard/' + id, requestOptions)
         .then(response => response.text())
         .then(result => teams = result)
         .catch(error => console.log('error', error));
 
     return JSON.parse(teams);
+
+}
