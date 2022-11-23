@@ -29,3 +29,18 @@ let getUserRates = async () => {
 
     return JSON.parse(teams);
 }
+
+let getSprintByIdTeam = async () => {
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+
+    var teams;
+
+    await fetch(localURL + '/api/v1/dashboard/', requestOptions)
+        .then(response => response.text())
+        .then(result => teams = result)
+        .catch(error => console.log('error', error));
+
+    return JSON.parse(teams);

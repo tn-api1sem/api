@@ -95,7 +95,7 @@
                     </div>
                     <div class="col form-group">
                         <label>Sprint</label>
-                        <select class="form-control" data-role="select-dropdown" id="id_softSkil" name="id_profile">
+                        <select class="form-control" data-role="select-dropdown" id="id_sprint" name="id_profile">
                         </select>
                     </div>
                     <div class="col form-group">
@@ -187,7 +187,16 @@
                 select.innerHTML += `<option value=${teams[i].id}>${teams[i].times}</option>`
             }
 
-            // FAZER O MESMO ESQUEMA DO DE CIMA, SÓ QUE AGORA BUSCANDO LISTAR AS SOFT SKILS
+            // FAZER O MESMO ESQUEMA DO DE CIMA, SÓ QUE AGORA BUSCANDO LISTAR AS SPRINT
+            var team = $('#id_team option:selected')
+            var select = document.getElementById("id_sprint");
+            var sprints = await getSprintByIdTeam(team);
+            var idsSprint = []
+            var sprint = []
+
+
+
+
             /*
             var profiles = await getProfiles();
             var select = document.getElementById("id_softSkil")
