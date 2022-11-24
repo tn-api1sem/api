@@ -1,6 +1,8 @@
 
+
 from ..repository.usuario_repository import user_repository
 from ..models.usuario_model import usuario_model
+from ..
 import re
 
 class usuario_services(object):
@@ -36,4 +38,10 @@ class usuario_services(object):
 
         return
 
+    def _contar_id(self,id:int):
+        cont = 0
+        for id in user_repository:
+            if id == int:
+                cont = cont + 1
+                return cont
 

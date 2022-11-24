@@ -23,9 +23,12 @@ class avaliacaoUsuario_service(object):
         rates = self._avaliacaoUsuario_repository.get();
 
         sprintsAlreadyRated = [];
-        
-        
-        
+
+        for a in rates:
+           if  userId == a.rated_by:
+               sprintsAlreadyRated.append(self._sprint_repository.get_by_id(int(a.sprint_id)))
+
+
         return sprintsAlreadyRated;
 
     def post_avaliacaoUsuario(self, model: avaliacaoUsuario_model):

@@ -4,6 +4,7 @@ from datetime import date
 class SprintsRepository(object):
     _apiContext: ApiContext
 
+
     def __init__(self) -> None:
         self._apiContext = ApiContext()
         pass
