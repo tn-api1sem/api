@@ -47,7 +47,7 @@
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
-        <div class="page-container">
+        <div class="container page-container">
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
                 <div class="section__content section__content--p30">
@@ -104,8 +104,8 @@
                             Buscar
                         </button>
                     </div>
-                    <div class="container" id="dashboardContainer">
-                    </div>
+                </div>
+                <div id="dashboardContainer" style="display: block; margin:auto">
                 </div>
             </div>
             <!-- END MAIN CONTENT-->
@@ -221,7 +221,7 @@
         function getDashboard() {
             let dashboard_container = document.querySelector("#dashboardContainer");
             dashboard_container.innerHTML = "";
-            let dash_container = `  <div class="col-lg-6">
+            let dash_container = `  <div class="col-sm-10" style="margin:auto;">
                                         <div class="au-card m-b-30">
                                             <div class="au-card-inner">
                                                 <h3 class="title-2 m-b-40">Dashboard</h3>
