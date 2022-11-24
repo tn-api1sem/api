@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from src.repository.grupo_repository import grupo_repository
 from ..models.avaliacaoUsuario_model import avaliacaoUsuario_model
 from ..repository.avaliacaoUsuario_repository import avaliacaoUsuario_repository
 from ..repository.sprint_repository import SprintsRepository
@@ -7,7 +9,7 @@ from ..repository.sprint_repository import SprintsRepository
 class avaliacaoUsuario_service(object):
     _avaliacaoUsuario_repository: avaliacaoUsuario_repository = avaliacaoUsuario_repository()
     _sprint_repository: SprintsRepository = SprintsRepository()
-
+    
     def __init__(self):
         pass
 
@@ -16,6 +18,15 @@ class avaliacaoUsuario_service(object):
 
     def buscar_id_avaliacaoUsuario(self, id):
         return self._avaliacaoUsuario_repository.buscar_id_avaliacaoUsuario(id)
+
+    def get_already_rated_sprints(self, userId):
+        rates = self._avaliacaoUsuario_repository.get();
+
+        sprintsAlreadyRated = [];
+        
+        
+        
+        return sprintsAlreadyRated;
 
     def post_avaliacaoUsuario(self, model: avaliacaoUsuario_model):
         self.validaCadastro(model)
