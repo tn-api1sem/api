@@ -90,7 +90,7 @@
                 <div class="row">
                     <div class="col form-group">
                         <label>Times</label>
-                        <select class="form-control" data-role="select-dropdown" id="id_team" name="id_team">
+                        <select class="form-control" data-role="select-dropdown" onchange="loadSprintByTeam()" id="id_team" name="id_team">
                         </select>
                     </div>
                     <div class="col form-group">
@@ -140,6 +140,7 @@
     <script src="js/sidebar.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="js/teams.js"></script>
+    <script src="js/sprint.js"></script>
 
     <script>
         var user = JSON.parse(window.localStorage.getItem('user')).usuario;
@@ -181,15 +182,7 @@
                 select.innerHTML += `<option value=${teams[i].id}>${teams[i].times}</option>`
             }
 
-            // FAZER O MESMO ESQUEMA DO DE CIMA, SÓ QUE AGORA BUSCANDO LISTAR AS SPRINT
-            var team = $('#id_team option:selected').trigger('change')
-            var idTeam = parseInt(team.val())
-            var selectSprint = document.getElementById("id_sprint");
-            var sprints = await getSprintByIdTeam(idTeam);
-
-            for (var i = 0; i < teams.length; i++) {
-                selectSprint.innerHTML += `<option value=${sprints[i].id}>${sprints[i].name}</option>`
-            }
+            await loadSprintByTeam();
         }
 
         async function loadDataForDashboard(grades, team, sprint) {
@@ -284,6 +277,16 @@
 
         }
 
+        async function loadSprintByTeam(){
+            var team = document.getElementById('id_team').value
+            var sprints = await getSprintByIdTeam(+team);
+            
+            var selectSprint = document.getElementById("id_sprint");
+            selectSprint.innerHTML = '';
+            for (var i = 0; i < sprints.length; i++) {
+                selectSprint.innerHTML += `<option value=${sprints[i].id}>${sprints[i].name}</option>`
+            }
+        }
     </script>
 
 </body>
