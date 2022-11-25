@@ -60,7 +60,7 @@
 <td><p align="left">27/11/2022</p></td>
 <td><p align="left">Quarta</p></td>
 <td><p align="left"><a href="https://github.com/tn-api1sem/api/blob/master/Sprint4.md">View</a></p></td>
-<td><p align="center"> - </p></td>
+<td><p align="center">✅</p></td>
 </tr>
 </table>
 <h3 align="center"><a href="https://github.com/tn-api1sem/api/blob/master/produto.md">Backlog do Produto</a></h3> 
@@ -68,8 +68,8 @@
 <h1 align="center"> Equipe 👥</h1>
 
 
-| **Scrum Master**        | **Product Owner**    |**Dev Team**        | **Dev Team**    | **Dev Team**        | **Dev Team**    |**Dev Team**        | **Dev Team**    |
-| :-------------: | :-------------: |:-------------: | :-------------: |:-------------: | :-------------: |:-------------: | :-------------: |
-| [<img src="https://avatars.githubusercontent.com/u/61194755?v=4" width=115><br><sub>Matheus Cruz Fiebig</sub>](https://github.com/matheus-fiebig)   | [<img src="https://avatars.githubusercontent.com/u/97194056?v=4" width=115><br><sub>Cauã Miller dos Santos</sub>](https://github.com/cauamillersjc)        | [<img src="https://avatars.githubusercontent.com/u/111581261?v=4" width=115><br><sub>Alisson dos Santos Pereira</sub>](https://github.com/4l1son) | [<img src="https://avatars.githubusercontent.com/u/111552950?v=4" width=115><br><sub>Cleandro de Oliveira Gomes</sub>](https://github.com/cleandrogomes01) | [<img src="https://avatars.githubusercontent.com/u/111617208?v=4" width=115><br><sub>Danillo Wesley da Costa Silva</sub>](https://github.com/zZzidanillo) | [<img src="https://avatars.githubusercontent.com/u/111570975?v=4" width=115><br><sub>Felipe Fernandes Pereira</sub>](https://github.com/ffefas) | [<img src="https://avatars.githubusercontent.com/u/111614619?v=4" width=115><br><sub>Wagner de Deus Silva Junior</sub>](https://github.com/wdeus) | [<img src="https://avatars.githubusercontent.com/u/99774131?v=4" width=115><br><sub>Lucas Caetano da Silva</sub>](https://github.com/L0uks)
+| **Scrum Master**        | **Product Owner**    |**Dev Team**        | **Dev Team**    | **Dev Team**        |**Dev Team**        | **Dev Team**    |
+| :-------------: | :-------------: |:-------------: | :-------------: |:-------------: |:-------------: | :-------------: |
+| [<img src="https://avatars.githubusercontent.com/u/61194755?v=4" width=115><br><sub>Matheus Cruz Fiebig</sub>](https://github.com/matheus-fiebig)   | [<img src="https://avatars.githubusercontent.com/u/97194056?v=4" width=115><br><sub>Cauã Miller dos Santos</sub>](https://github.com/cauamillersjc)        | [<img src="https://avatars.githubusercontent.com/u/111581261?v=4" width=115><br><sub>Alisson dos Santos Pereira</sub>](https://github.com/4l1son) | [<img src="https://avatars.githubusercontent.com/u/111552950?v=4" width=115><br><sub>Cleandro de Oliveira Gomes</sub>](https://github.com/cleandrogomes01) | [<img src="https://avatars.githubusercontent.com/u/111617208?v=4" width=115><br><sub>Danillo Wesley da Costa Silva</sub>](https://github.com/zZzidanillo) | [<img src="https://avatars.githubusercontent.com/u/111614619?v=4" width=115><br><sub>Wagner de Deus Silva Junior</sub>](https://github.com/wdeus) | [<img src="https://avatars.githubusercontent.com/u/99774131?v=4" width=115><br><sub>Lucas Caetano da Silva</sub>](https://github.com/L0uks)
 
 
