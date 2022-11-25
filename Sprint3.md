@@ -10,10 +10,15 @@
 - O integrante de um time deve ter uma funcionalidade para avaliar a si e aos colegas de time ao final de uma sprint.
 - O Líder do Grupo terá uma funcionalidade para avaliar todos os Lideres Técnicos do seu grupo ao final de sua sprint.
 - O Fake Client terá uma funcionalidade para avaliar todos os Product Owners da sua turma ao final de sua sprint.
+- Eu como líder do grupo quero que sejam utilizadas essas 5 Soft skills.
+  - Trabalho em equipe, cooperação e descentralização de conhecimento.
+  - Iniciativa e proatividade
+  - Autodidaxia e agregação de conhecimento ao grupo
+  - Entrega de resultados e participação efetiva no projeto.
+  - Competência Técnica
+  
 - A avaliação será de 1-5 porém na interface será exibida com a seguinte nomenclatura: Muito Ruim, Ruim, Regular, Bom, Muito Bom.
-
-<h1 align="center"><img src="https://user-images.githubusercontent.com/111552950/200017394-18917af5-9fa1-4665-a284-12d99279332e.png"/></h1>
-
+- Será avaliado na escala de likert e as respostas traduzidas para valores numéricos, para serem trabalhados no Dashboard.
 - A avaliação só poderá ser cadastrada durante o período de avaliação da sua respectiva sprint. (TN-56)
 
 **TN-55 Gestão - Grupos**
