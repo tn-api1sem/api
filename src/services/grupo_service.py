@@ -25,25 +25,19 @@ class grupo_services(object):
         return grupoModel;
 
     def create(self, model: grupo_model):
-
         grupoBd = self._modelToBd(model)
-        times_em_grupo = self._teamsRepository.findTeamByGroup(grupoBd.id)
-        grupo = self._grupo_repository.busca_id_grupo(grupoBd.id)
-        grupo_id=self._grupo_repository.get(grupo.get('id'))
-
-
-        for time in times_em_grupo:
-            if time == grupo_id:
-                raise Exception("Este time ja esta associado a este grupo");
+        for time in grupoBd:
+            grupo = self._grupo_repository.busca_id_grupo(grupoBd.id)
+            times = self._teamsRepository.busca_id_times(grupoBd.id)
+            if time != 0 and times != grupo:
+                raise Exception("Existe um time associado a este grupo, por favor atulize-o ")
 
         item = self._grupo_repository.post_grupo(grupoBd)
         model.id = item.id;
         self.updateTeam(model);
-
-
         #verificacao dessas """"""inserções""""""
-        # para um """""'time"""""" que esteja """""""""""inseirido""""""""' no times_em_grupo
-        # se este time for igual a meus times , signica que ja esta asssociado a um grupo
+        # para um """""'time"""""" que esteja """""""""""inseirido""""""""' em um grupo
+        # se este time for igual a meus grupo , diferente de algo novo , signica que ja esta cadatrado e esta asssociado a um grupo
 
     def update(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
