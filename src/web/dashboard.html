@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list" id="menu-navbar">
+
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="container page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <!-- Search -->
+
+                            <form class="form-header invisible" action="" method="POST">
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
+                                <button class="au-btn--submit" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
+                            </form>
+
+                            <!-- Search -->
+                            <div class="header-button">
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu" style="cursor: default">
+                                        <div class="content">
+                                            <a class="js-acc-btn" href="#" id="username"></a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="account-dropdown__footer">
+                                                <a href="login.html">
+                                                    <i class="zmdi zmdi-power"></i>Sair</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="row">
+                    <div class="col form-group">
+                        <label>Times</label>
+                        <select class="form-control" data-role="select-dropdown" onchange="loadSprintByTeam()"
+                            id="id_team" name="id_team">
+                        </select>
+                    </div>
+                    <div class="col form-group">
+                        <label>Sprint</label>
+                        <select class="form-control" data-role="select-dropdown" id="id_sprint" name="id_sprint">
+                        </select>
+                    </div>
+                    <div class="col form-group">
+                        <label for="">&nbsp;</label>
+                        <button class="btn btn-success" style="width: 100%;" onclick="getDashboard()" type="button">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+                <div id="dashboardContainer" style="display: block; margin:auto">
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+    <script src="js/consts.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/teams.js"></script>
+    <script src="js/sprint.js"></script>
+
+    <script>
+        var user = JSON.parse(window.localStorage.getItem('user')).usuario;
+        var userId = JSON.parse(window.localStorage.getItem('user')).id;
+        var grades = []
+
+        $(document).ready(function () {
+            //Combobox
+            $("#id_team").select2();
+            $("#id_sprint").select2();
+
+            //Call Functions
+            loadComboBox();
+
+            //Load Header
+            document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
+        });
+
+        async function loadComboBox() {
+            //mostra apenas os times na qual o usuario logado faz parte
+            var select = document.getElementById("id_team");
+            var userTeams = await getUserTeamByIdUser(userId);
+            var idsTeam = []
+            var teams = []
+            for (let userTeam of userTeams) {
+                if (idsTeam.length == 0) {
+                    idsTeam.push(userTeam.id_team)
+                } else if (idsTeam.includes(userTeam.id_team) == false) {
+                    idsTeam.push(userTeam.id_team)
+                }
+            }
+            for (let teamId of idsTeam) {
+                team = await getTeamById(teamId);
+                if (team != null) {
+                    teams.push(team)
+                }
+            }
+            for (var i = 0; i < teams.length; i++) {
+                select.innerHTML += `<option value=${teams[i].id}>${teams[i].times}</option>`
+            }
+
+            await loadSprintByTeam();
+        }
+
+        async function loadDataForDashboard(grades, team, sprint) {
+
+            //var sprint = 1
+
+            var countRates = 0
+            var grade1 = 0
+            var grade2 = 0
+            var grade3 = 0
+            var grade4 = 0
+            var grade5 = 0
+
+            console.log(sprint)
+            var userRates = await getUserRatesByIdSprint(sprint);
+            console.log(userRates)
+            for (let userRate of userRates) {
+                if (userRate.rated_user == userId) {
+                    grade1 += userRate.grade01
+                    grade2 += userRate.grade02
+                    grade3 += userRate.grade03
+                    grade4 += userRate.grade04
+                    grade5 += userRate.grade05
+                    countRates += 1
+                }
+            }
+            grades.push(grade1 / countRates)
+            grades.push(grade2 / countRates)
+            grades.push(grade3 / countRates)
+            grades.push(grade4 / countRates)
+            grades.push(grade5 / countRates)
+
+            //mostra os dados do dashboard de acordo com informações do banco
+            showDashboard(grades);
+        }
+
+        // função para exibir o dashboard após executar o botão 'BUSCAR'
+        function getDashboard() {
+            let dashboard_container = document.querySelector("#dashboardContainer");
+            dashboard_container.innerHTML = "";
+            let dash_container = `  <div class="col-sm-10" style="margin:auto;">
+                                        <div class="au-card m-b-30">
+                                            <div class="au-card-inner">
+                                                <h3 class="title-2 m-b-40">Dashboard</h3>
+                                                <canvas id="radarChart"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>`;
+            dashboard_container.innerHTML += dash_container;
+
+            var team = $('#id_team option:selected');
+            var sprint = $('#id_sprint option:selected');
+
+            loadDataForDashboard(grades, team.val(), sprint.val());
+        }
+
+        function showDashboard(grades) {
+            //radar chart
+            var ctx = document.getElementById("radarChart");
+            if (ctx) {
+                ctx.height = 200;
+                var myChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ["Trabalho em equipe", "Iniciativa e Proatividade", "Autodidaxia", "Entrega de resultados", "Competência Técnica"],
+                        defaultFontFamily: 'Poppins',
+                        datasets: [
+                            {
+                                label: "Pontuação Média",
+                                data: grades,
+                                borderColor: "rgba(0, 123, 255, 0.6)",
+                                borderWidth: "1",
+                                backgroundColor: "rgba(0, 123, 255, 0.4)"
+                            }
+                        ]
+                    },
+                    options: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                fontFamily: 'Poppins'
+                            }
+
+                        },
+                        scale: {
+                            ticks: {
+                                beginAtZero: true,
+                                fontFamily: "Poppins"
+                            }
+                        }
+                    }
+                });
+            }
+
+        }
+
+        async function loadSprintByTeam() {
+            var team = document.getElementById('id_team').value
+            var sprints = await getSprintByIdTeam(+team);
+
+            var selectSprint = document.getElementById("id_sprint");
+            selectSprint.innerHTML = '';
+            for (var i = 0; i < sprints.length; i++) {
+                selectSprint.innerHTML += `<option value=${sprints[i].id}>${sprints[i].name}</option>`
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+<!-- end document-->

@@ -34,7 +34,7 @@ class usuario_services(object):
 
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
         if not re.fullmatch(regex, model.email):
-            raise Exception("Insira um email com formato valido")
+            raise Exception("Insira um email com formato valido. Ex: xxxx@xxxxx.xxx")
 
         return
 

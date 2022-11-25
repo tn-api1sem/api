@@ -13,6 +13,13 @@ class times_bd(BaseModel):
     times: str | None
     id_group:int | None
 
+class times_get_response(BaseModel):
+    id: int | None
+    times: str | None
+    id_group:int | None
+    userName: list[str] | None
+    id_users: list[int] | None
+    
 class times_model(BaseModel):
     id: int | None
     times: str | None

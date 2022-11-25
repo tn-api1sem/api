@@ -27,3 +27,16 @@ class avaliacaoUsuario_repository(object):
         self._apiContext.avaliacaoUsuario_table.begin_transaction()
         self._apiContext.avaliacaoUsuario_table.delete(id)
         self._apiContext.avaliacaoUsuario_table.commit()
+
+    def get_user_rates_by_sprint_id(self, sprint_id):
+        userRates = self.get()
+
+        returnObject = []
+        for userRate in userRates:
+
+            if userRate.sprint_id != sprint_id:
+                continue
+
+            returnObject.append(userRate)
+
+        return returnObject
