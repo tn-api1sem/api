@@ -188,8 +188,6 @@
 
         async function loadDataForDashboard(grades, team, sprint) {
 
-            //var sprint = 1
-
             var countRates = 0
             var grade1 = 0
             var grade2 = 0
@@ -222,6 +220,7 @@
 
         // função para exibir o dashboard após executar o botão 'BUSCAR'
         function getDashboard() {
+            grades = []
             let dashboard_container = document.querySelector("#dashboardContainer");
             dashboard_container.innerHTML = "";
             let dash_container = `  <div class="col-sm-10" style="margin:auto;">
