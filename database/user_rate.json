@@ -4,7 +4,7 @@
         {
             "id": 1,
             "rated_user": "1",
-            "sprint_id": 1,
+            "sprint_id": 2,
             "rated_by": 2,
             "grade01": 1,
             "grade02": 2,
@@ -16,7 +16,7 @@
         {
             "id": 2,
             "rated_user": "1",
-            "sprint_id": 1,
+            "sprint_id": 2,
             "rated_by": 2,
             "grade01": 5,
             "grade02": 2,

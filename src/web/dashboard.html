@@ -90,7 +90,8 @@
                 <div class="row">
                     <div class="col form-group">
                         <label>Times</label>
-                        <select class="form-control" data-role="select-dropdown" onchange="loadSprintByTeam()" id="id_team" name="id_team">
+                        <select class="form-control" data-role="select-dropdown" onchange="loadSprintByTeam()"
+                            id="id_team" name="id_team">
                         </select>
                     </div>
                     <div class="col form-group">
@@ -196,7 +197,9 @@
             var grade4 = 0
             var grade5 = 0
 
+            console.log(sprint)
             var userRates = await getUserRatesByIdSprint(sprint);
+            console.log(userRates)
             for (let userRate of userRates) {
                 if (userRate.rated_user == userId) {
                     grade1 += userRate.grade01
@@ -249,7 +252,7 @@
                         defaultFontFamily: 'Poppins',
                         datasets: [
                             {
-                                label: "My First dataset",
+                                label: "Pontuação Média",
                                 data: grades,
                                 borderColor: "rgba(0, 123, 255, 0.6)",
                                 borderWidth: "1",
@@ -277,10 +280,10 @@
 
         }
 
-        async function loadSprintByTeam(){
+        async function loadSprintByTeam() {
             var team = document.getElementById('id_team').value
             var sprints = await getSprintByIdTeam(+team);
-            
+
             var selectSprint = document.getElementById("id_sprint");
             selectSprint.innerHTML = '';
             for (var i = 0; i < sprints.length; i++) {
