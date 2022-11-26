@@ -1,5 +1,4 @@
-from api.src.repository.context.api_context import ApiContext
-
+from .context.api_context import ApiContext
 
 class grupo_repository(object):
     _apiContext: ApiContext = ApiContext()

@@ -26,23 +26,28 @@ class grupo_services(object):
 
     def create(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
-        for time in grupoBd:
-            grupo = self._grupo_repository.busca_id_grupo(grupoBd.id)
-            times = self._teamsRepository.busca_id_times(grupoBd.id)
-            if time != 0 and times != grupo:
-                raise Exception("Existe um time associado a este grupo, por favor atulize-o ")
+        self._validate(model)
 
         item = self._grupo_repository.post_grupo(grupoBd)
         model.id = item.id;
         self.updateTeam(model);
-        #verificacao dessas """"""inserções""""""
-        # para um """""'time"""""" que esteja """""""""""inseirido""""""""' em um grupo
-        # se este time for igual a meus grupo , diferente de algo novo , signica que ja esta cadatrado e esta asssociado a um grupo
+
+    def _validate(self, model):
+        for teamId in model.teams:
+            teamObject = self._teamsRepository.busca_id_times(teamId)
+            
+            if teamObject.id_group == model.id:
+                continue;
+
+            if (teamObject.id_group != 0 and teamObject.id_group != None):
+                group = self.buscar_id_grupo(teamObject.id_group)
+                raise Exception("O time "+ teamObject.times + " já está associado ao grupo " + group.name + ", por favor retire a relação antes de atribui-lo de novo.")
 
     def update(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
-        self._grupo_repository.put_grupo(grupoBd)
+        self._validate(model);
 
+        self._grupo_repository.put_grupo(grupoBd)
         teams = self._teamsRepository.findTeamByGroup(model.id);
         for team in teams:
             if team.id_group != model.id:
@@ -53,19 +58,13 @@ class grupo_services(object):
 
         self.updateTeam(model)
 
-
-
-
     def updateTeam(self, model: grupo_model):
         allTeams = self._teamsRepository.get();
         for team in allTeams:
             for groupTeam in model.teams:
-                if team.id != groupTeam:
+                if(team.id != groupTeam):
                     continue
-                else:
-                    return 'error'
-
-
+                
                 team.id_group = model.id;
                 self._teamsRepository.update(team)
 
