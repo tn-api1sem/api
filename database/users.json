@@ -1,5 +1,5 @@
 {
-    "last_index": 3,
+    "last_index": 2,
     "dataset": [
         {
             "id": 1,
@@ -12,12 +12,6 @@
             "email": "usuario@email.com",
             "usuario": "usuario",
             "senha": "usuario"
-        },
-        {
-            "id": 3,
-            "email": "usuario_teste@teste.com",
-            "usuario": "usuario_teste",
-            "senha": "usuario_teste"
         }
     ]
 }

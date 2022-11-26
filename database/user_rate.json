@@ -1,29 +1,4 @@
 {
-    "last_index": 2,
-    "dataset": [
-        {
-            "id": 1,
-            "rated_user": "1",
-            "sprint_id": 2,
-            "rated_by": 2,
-            "grade01": 1,
-            "grade02": 2,
-            "grade03": 3,
-            "grade04": 4,
-            "grade05": 5,
-            "comment": ""
-        },
-        {
-            "id": 2,
-            "rated_user": "1",
-            "sprint_id": 2,
-            "rated_by": 2,
-            "grade01": 5,
-            "grade02": 2,
-            "grade03": 3,
-            "grade04": 4,
-            "grade05": 5,
-            "comment": ""
-        }
-    ]
-}
+    "last_index": 0,
+    "dataset": []
+  }
