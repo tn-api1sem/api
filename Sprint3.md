@@ -10,7 +10,7 @@
 - O integrante de um time deve ter uma funcionalidade para avaliar a si e aos colegas de time ao final de uma sprint.
 - O Líder do Grupo terá uma funcionalidade para avaliar todos os Lideres Técnicos do seu grupo ao final de sua sprint.
 - O Fake Client terá uma funcionalidade para avaliar todos os Product Owners da sua turma ao final de sua sprint.
-- Eu como líder do grupo quero que sejam utilizadas essas 5 Soft skills.
+- Serão utilizadas essas 5 Soft skills para avaliação.
   - Trabalho em equipe, cooperação e descentralização de conhecimento.
   - Iniciativa e proatividade
   - Autodidaxia e agregação de conhecimento ao grupo
