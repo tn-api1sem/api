@@ -1,1 +1,2 @@
-{"last_index": 6, "dataset": [{"id": 4, "times": "Alpha", "id_group": 1}, {"id": 5, "times": "Beta", "id_group": 1}]}
+{"last_index": 6, "dataset": [{"id": 4, "times": "Alpha", "id_group": null}, {"id": 5, "times": "Beta", "id_group": 1}]}
+

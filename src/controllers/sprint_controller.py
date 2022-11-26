@@ -14,6 +14,8 @@ router = APIRouter(
 service = SprintService()
 times = TimesService()
 
+
+
 @router.get("/")
 def get_all_sprint():
     return service.get()
@@ -66,4 +68,3 @@ def delete_sprint(id:int):
         return OK
     except Exception as e:
         return str(e)
-    
