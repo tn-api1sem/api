@@ -1,8 +1,9 @@
+
 from http.client import OK
 from fastapi import APIRouter
-
-from src.models.grupo_model import grupo_model
-from src.services.grupo_service import grupo_services as GrupoService
+from  ..models.times_model import times_bd
+from ..models.grupo_model import grupo_model
+from ..services.grupo_service import grupo_services as GrupoService
 
 router = APIRouter(
     prefix="/api/v1/grupo",
@@ -30,7 +31,6 @@ def create_grupo(model: grupo_model):
         return OK
     except Exception as e:
         return str(e)
-
 
 @router.put("/")
 def update_grupo(model: grupo_model):

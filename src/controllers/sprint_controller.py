@@ -1,8 +1,8 @@
 from http.client import OK
 from fastapi import APIRouter
 
-from src.models.sprints_model import SprintsModel
-from src.services.sprint_service import SprintService
+from ..models.sprints_model import SprintsModel
+from ..services.sprint_service import SprintService
 from ..services.times_service import times_services as TimesService
 
 router = APIRouter(
