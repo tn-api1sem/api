@@ -30,6 +30,23 @@ let getFinishedSprints = async (user_id) => {
     return JSON.parse(sprints);
 }
 
+let getAlreadyRatedSprints = async (user_id) => {
+    var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+    };
+
+    var sprints;
+
+    await fetch(localURL + `/api/v1/avaliacaoUsuario/already-rated/${user_id}`, requestOptions)
+    .then(response => response.text())
+    .then(result => sprints = result)
+    .catch(error => console.log('error', error));
+
+    return JSON.parse(sprints);
+}
+
+
 let getAvaliacaoById = async (id) => {
     var requestOptions = {
         method: 'GET',

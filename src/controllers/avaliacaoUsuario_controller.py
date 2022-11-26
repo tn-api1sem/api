@@ -22,7 +22,7 @@ def get_avaliacaoUsuario():
 def id_get_avaliacaoUsuario(id: int):
     return service.buscar_id_avaliacaoUsuario(id)
 
-@router.get('/already-rated/{id}')
+@router.get('/already-rated/{userId}')
 def get_already_rated_sprints(userId: int):
     return service.get_already_rated_sprints(userId);
 

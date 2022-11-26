@@ -23,10 +23,13 @@ class avaliacaoUsuario_service(object):
         rates = self._avaliacaoUsuario_repository.get();
 
         sprintsAlreadyRated = [];
+        sprintsIds = []
 
         for a in rates:
-           if  userId == a.rated_by:
-               sprintsAlreadyRated.append(self._sprint_repository.get_by_id(int(a.sprint_id)))
+           if  userId == a.rated_by and a.sprint_id not in sprintsIds:
+                sprint = self._sprint_repository.get_by_id(int(a.sprint_id));
+                sprintsAlreadyRated.append(sprint)
+                sprintsIds.append(sprint.id)
 
 
         return sprintsAlreadyRated;

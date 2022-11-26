@@ -133,7 +133,6 @@
         <div class="main-content">
           <div class="section__content section__content--p30">
             <div class="container-fluid">
-
               <!-- SPRINTS PARA AVALIAR -->
               <div class="row">
                 <div class="col-md-12">
@@ -157,8 +156,8 @@
                 </div>
               </div>
 
-              <br>
-              <br>
+              <br />
+              <br />
 
               <!-- SPRINTS JA FINALIZADAS -->
               <div class="row">
@@ -173,7 +172,6 @@
                           <th>Sprint</th>
                           <th>Data de Entrega</th>
                           <th>Time</th>
-                          <th></th>
                         </tr>
                       </thead>
                       <tbody id="tbody-avaliacao-finalizada"></tbody>
@@ -286,6 +284,7 @@
     var avaliacoes = [];
 
     loadSprints();
+    loadAlreadyRatedSprints();
 
     async function loadSprints() {
       let user_id = JSON.parse(window.localStorage.getItem("user")).id;
@@ -316,6 +315,26 @@
             "</div>\</td>" +
             '</tr><tr class="spacer"></tr>';
         }
+      }
+    }
+
+    async function loadAlreadyRatedSprints() {
+      let userId = JSON.parse(window.localStorage.getItem("user")).id;
+      let alreadyRated = await getAlreadyRatedSprints(userId);
+
+      times = await getTeams()
+
+      var tbody = document.getElementById("tbody-avaliacao-finalizada");
+      var today = new Date().toLocaleDateString("sv").replaceAll("-", "");
+
+      for (var i = 0; i < alreadyRated.length; i++) {
+        tbody.innerHTML +=
+          '<tr class="tr-shadow">' +
+            "<td>" + alreadyRated[i].name + "</td>" +
+            "<td>" + alreadyRated[i].end_date + "</td>" +
+            "<td>" + times.find((x) => x.id == alreadyRated[i].team_id).times + "</td>" +
+          '</tr>' + 
+          '<tr class="spacer"></tr>';
       }
     }
 
@@ -401,7 +420,9 @@
         .getElementsByTagName("label").length;
 
       if (numberOfParticipants != avaliacoesToPush.length) {
-        errors.push("Atenção! É necessário avaliar todos os integrantes do time.");
+        errors.push(
+          "Atenção! É necessário avaliar todos os integrantes do time."
+        );
       }
 
       return errors;
