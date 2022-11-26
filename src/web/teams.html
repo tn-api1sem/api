@@ -298,12 +298,10 @@
 
             form.times_model = userProfileValues;
             
-            console.log(form);
             if (form['id'] == 0) {
                 createTeam(form);
                 return;
             }
-
             updateTeams(form);
         }
         
@@ -360,7 +358,6 @@
                 errors.push("Este time ja possui um Líder Técnico.");
             }
 
-            console.log(userProfileValues);
             if(userProfileValues.map(x => x.id_profile).includes(productOwner) && profile.val() == productOwner){
                 errors.push("Este time ja possui um Product Owner.");
             }
