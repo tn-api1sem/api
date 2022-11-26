@@ -45,7 +45,9 @@ class grupo_services(object):
 
         teams = self._teamsRepository.findTeamByGroup(model.id);
         for team in teams:
-
+            if team.id_group != model.id:
+                continue;
+                
             team.id_group = 0;
             self._teamsRepository.update(team);
 

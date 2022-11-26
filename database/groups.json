@@ -1,1 +1,1 @@
-{"last_index": 3, "dataset": [{"id": 1, "name": "Teste Turma 1", "client_id": 1, "leader_id": 2}, {"id": 2, "name": "Teste Turma usuario_teste", "client_id": 1, "leader_id": 1}, {"id": 3, "name": null, "client_id": null, "leader_id": null}, {"id": 11, "name": "testec", "client_id": 58, "leader_id": null}, {"id": 12, "name": "testec", "client_id": 58, "leader_id": null}]}
+{"last_index": 3, "dataset": [{"id": 1, "name": "Turma Alfabeto", "client_id": 3, "leader_id": 1}, {"id": 3, "name": "Teste", "client_id": 2, "leader_id": 1}]}

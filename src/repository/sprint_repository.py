@@ -4,6 +4,7 @@ from datetime import date
 class SprintsRepository(object):
     _apiContext: ApiContext
 
+
     def __init__(self) -> None:
         self._apiContext = ApiContext()
         pass
@@ -41,4 +42,15 @@ class SprintsRepository(object):
         self._apiContext.sprints_table.delete(id)
         self._apiContext.sprints_table.commit()
 
+    def get_sprint_by_id_team(self, team_id):
+        sprints = self.get()
 
+        returnObject = []
+        for sprint in sprints:
+
+            if sprint.team_id != team_id:
+                continue
+
+            returnObject.append(sprint)
+
+        return returnObject
