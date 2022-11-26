@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from src.repository.grupo_repository import grupo_repository
 from ..models.avaliacaoUsuario_model import avaliacaoUsuario_model
 from ..repository.avaliacaoUsuario_repository import avaliacaoUsuario_repository
 from ..repository.sprint_repository import SprintsRepository
@@ -30,7 +29,6 @@ class avaliacaoUsuario_service(object):
                 sprint = self._sprint_repository.get_by_id(int(a.sprint_id));
                 sprintsAlreadyRated.append(sprint)
                 sprintsIds.append(sprint.id)
-
 
         return sprintsAlreadyRated;
 

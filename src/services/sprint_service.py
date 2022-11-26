@@ -17,8 +17,19 @@ class SprintService(object):
     def get_by_id(self, id:int) -> SprintsModel: 
         return self.repository.get_by_id(id)
 
-    def get_sprint_finished(self, user_teams) -> SprintsModel:
-        return self.repository.get_sprint_finished(user_teams)
+    def get_sprint_finished(self, user_teams, ratedSprints) -> SprintsModel:
+        sprintsFinished = self.repository.get_sprint_finished(user_teams)
+        
+        allIds = []
+        for ratedSprint in ratedSprints:
+            allIds.append(ratedSprint.id)
+
+        returnSprints = []
+        for sprintF in sprintsFinished:
+            if sprintF.id not in allIds:
+                returnSprints.append(sprintF)
+
+        return returnSprints;
 
     def create(self, model: SprintsModel):
         self._validate(model);

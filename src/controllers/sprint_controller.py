@@ -1,6 +1,8 @@
 from http.client import OK
 from fastapi import APIRouter
 
+from src.services.avaliacaoUsuario_service import avaliacaoUsuario_service
+
 from ..models.sprints_model import SprintsModel
 from ..services.sprint_service import SprintService
 from ..services.times_service import times_services as TimesService
@@ -35,7 +37,11 @@ def get_sprint_finished(user_id: int):
             if user_id == timesModel.id_user:
                 user_teams.append(team.id)
 
-    return service.get_sprint_finished(list(dict.fromkeys(user_teams)))
+    a = avaliacaoUsuario_service();
+    sprintsRated = a.get_already_rated_sprints(user_id);
+
+    r = service.get_sprint_finished(list(dict.fromkeys(user_teams)), sprintsRated);
+    return r;
 
 @router.post("/")
 def create_sprint(model: SprintsModel):
@@ -46,7 +52,7 @@ def create_sprint(model: SprintsModel):
         return str(e)
 
 @router.post("/createForGroup")
-def create_sprint_frou_group(model: SprintsModel):
+def create_sprint_from_group(model: SprintsModel):
     try:
         service.create_for_group(model)
         return OK
