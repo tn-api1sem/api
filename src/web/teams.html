@@ -336,7 +336,7 @@
                             data-placement="top"
                             title="Deletar" 
                             type="button"
-                            onclick="removeUserProfile(${userProfileValues.length})" 
+                            onclick="removeUserProfile(${userProfileValues.length},${user.val()},${profile.val()})" 
                         >
                                 <i class="zmdi zmdi-delete text-danger"></i>\
                         </button>
@@ -365,9 +365,16 @@
             return errors;
         }
 
-        function removeUserProfile(index){
-            document.getElementById('up-'+index).remove();
-            userProfileValues.splice(index-1, 1);
+        function removeUserProfile(id, userId, profileId){
+            document.getElementById('up-'+id).remove();
+
+            let i = 0
+            for(i; i < userProfileValues.length; i++){
+                if (userProfileValues[i].id_user == userId && userProfileValues[i].id_profile == profileId)
+                    break;
+            }
+                
+            userProfileValues.splice(i, 1);
         }
     
         function clearForm() {
