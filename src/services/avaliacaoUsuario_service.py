@@ -17,6 +17,9 @@ class avaliacaoUsuario_service(object):
     def buscar_id_avaliacaoUsuario(self, id):
         return self._avaliacaoUsuario_repository.buscar_id_avaliacaoUsuario(id)
 
+    def buscar_sprint_id_avaliacaoUsuario(self, sprint_id):
+        return self._avaliacaoUsuario_repository.buscar_sprint_id_avaliacaoUsuario(sprint_id)
+
     def post_avaliacaoUsuario(self, model: avaliacaoUsuario_model):
         self.validaCadastro(model)
         self._avaliacaoUsuario_repository.post_avaliacaoUsuario(model)
