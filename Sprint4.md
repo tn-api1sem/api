@@ -7,7 +7,7 @@
 - O objetivo dessa sprint é Dashboard e atualização da mensagem de validação de e-mail.
 
  **TN-31 Dashboard - Avaliações**
-  - O usuário terá acesso ao Dashboard, para que seja possível acompanhar as suas notas.
+  - Eu como usuario quero ter acesso ao dashboard, para que seja possível acompanhar as notas.
   
 - DoR:
   - História funcional escrita
@@ -21,7 +21,7 @@
   - Atualização do código fonte em devlop
 
 **TN-32 Dashboard - Avaliação Média**
- - O usuário terá acesso ao Dashboard, para que seja possível acompanhar as suas notas.
+ - Eu como usuário quero ter acesso ao dashboard, para que seja possível acompanhar as notas.
 
 - DoR:
   - História funcional escrita
