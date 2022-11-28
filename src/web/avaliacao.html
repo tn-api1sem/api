@@ -116,6 +116,31 @@
                                 <!-- END DATA TABLE -->
                             </div>
                         </div>
+
+                        <br />
+                        <br />
+
+                      <!-- SPRINTS JA FINALIZADAS -->
+                      <div class="row">
+                        <div class="col-md-12">
+                          <!-- DATA TABLE -->
+                          <h3 class="title-5 m-b-35">Sprints já Avaliadas</h3>
+                          <div class="table-data__tool"></div>
+                          <div class="table-responsive table-responsive-data2">
+                            <table class="table table-data2">
+                              <thead>
+                                <tr>
+                                  <th>Sprint</th>
+                                  <th>Data de Entrega</th>
+                                  <th>Time</th>
+                                </tr>
+                              </thead>
+                              <tbody id="tbody-avaliacao-finalizada"></tbody>
+                            </table>
+                          </div>
+                          <!-- END DATA TABLE -->
+                        </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -197,6 +222,7 @@
     var avaliacoes = [];
 
     loadSprints();
+    loadAlreadyRatedSprints();
 
     async function loadSprints() {
         let user_id = JSON.parse(window.localStorage.getItem('user')).id;
@@ -233,24 +259,6 @@
 
         avaliacoes = [];
         qtdAvaliacoes = team.userName.length * 5;
-
-        // for (var i = 0; i < team.userName.length; i++) {
-        //     listNames.innerHTML += `<label>${team.userName[i]}</label><div class="form-control form-check-inline mb-3">` +
-        //         `<input class="form-check-input" type="radio" value="1" id="${team.id_users[i]}-1-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-${sprint_id}')" class="item"></input>` +
-        //         `<label class="form-check-label" for="${team.id_users[i]}-1-${sprint_id}">Muito Ruim</label>` +
-
-        //         `<input class="form-check-input" type="radio" value="2" id="${team.id_users[i]}-2-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-${sprint_id}')" class="item"></input>` +
-        //         `<label class="form-check-label" for="${team.id_users[i]}-2-${sprint_id}">Ruim</label>` +
-
-        //         `<input class="form-check-input" type="radio" value="3" id="${team.id_users[i]}-3-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-${sprint_id}')" class="item"></input>` +
-        //         `<label class="form-check-label" for="${team.id_users[i]}-3-${sprint_id}">Regular</label>` +
-
-        //         `<input class="form-check-input" type="radio" value="4" id="${team.id_users[i]}-4-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-${sprint_id}')" class="item"></input>` +
-        //         `<label class="form-check-label" for="${team.id_users[i]}-4-${sprint_id}">Bom</label>` +
-
-        //         `<input class="form-check-input" type="radio" value="5" id="${team.id_users[i]}-5-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-${sprint_id}')" class="item"></input>` +
-        //         `<label class="form-check-label" for="${team.id_users[i]}-5-${sprint_id}">Muito Bom</label></div>`;
-        // }
 
         for (var i = 0; i < team.userName.length; i++) {
             listNames.innerHTML += `
@@ -520,17 +528,25 @@
         }
     }
 
-        // var profiles = await getProfiles(); 
-        //     var select = document.getElementById("id_profile")
-        //     for (var i = 0; i < profiles.length; i++) {
-        //         select.innerHTML += `<option option value = ${ profiles[i].id }> ${ profiles[i].perfil }</option >`
-        //     }
+    async function loadAlreadyRatedSprints() {
+      let userId = JSON.parse(window.localStorage.getItem("user")).id;
+      let alreadyRated = await getAlreadyRatedSprints(userId);
 
-        // function updateAvaliacao(id_usuario, nota){
-        //     var n = notas.filter(x => x.id_u == id_usuario)[0]
-        //     n.id_u = id_usuario;
-        //     n.n = nota;
-        // }
+      times = await getTeams()
+
+      var tbody = document.getElementById("tbody-avaliacao-finalizada");
+      var today = new Date().toLocaleDateString("sv").replaceAll("-", "");
+
+      for (var i = 0; i < alreadyRated.length; i++) {
+        tbody.innerHTML +=
+          '<tr class="tr-shadow">' +
+            "<td>" + alreadyRated[i].name + "</td>" +
+            "<td>" + alreadyRated[i].end_date + "</td>" +
+            "<td>" + times.find((x) => x.id == alreadyRated[i].team_id).times + "</td>" +
+          '</tr>' + 
+          '<tr class="spacer"></tr>';
+      }
+    }
 
 </script>
 
