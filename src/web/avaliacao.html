@@ -513,19 +513,7 @@
     }
 
     async function newAvaliacao() {
-        for (var i = 0; i < avaliacoes.length; i++) {
-            var response = await createAvaliacao(
-                avaliacoes[i].rated_user,
-                avaliacoes[i].sprint_id,
-                avaliacoes[i].rated_by,
-                avaliacoes[i].grade01,
-                avaliacoes[i].grade02,
-                avaliacoes[i].grade03,
-                avaliacoes[i].grade04,
-                avaliacoes[i].grade05,
-                avaliacoes[i].comment
-            );
-        }
+        var response = await createAvaliacao(avaliacoes);
     }
 
     async function loadAlreadyRatedSprints() {
