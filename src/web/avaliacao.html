@@ -211,6 +211,7 @@
 
 <script src="js/avaliacao.js"></script>]
 <script src="js/teams.js"></script>
+<script src="js/groups.js"></script>
 
 <script>
 
@@ -245,145 +246,415 @@
         }
     }
 
-    function loadUsersTeam(team_id, sprint_id) {
+    async function loadUsersTeam(team_id, sprint_id) {
         document.getElementById('btnAvaliar').disabled = true;
-
+ 
         var team = times.find(x => x.id == team_id)
-
+ 
         var listNames = document.getElementById('list-names');
         listNames.innerHTML = "";
-
+ 
         console.log(team);
-
+ 
         team.userName = team.userName.reduce(function (a, b) { if (a.indexOf(b) < 0) a.push(b); return a; }, []);
-
+ 
         avaliacoes = [];
         qtdAvaliacoes = team.userName.length * 5;
-
+ 
+        var group = await getGroupById(team.id_group);
+        var userId = Number(JSON.parse(window.localStorage.getItem('user')).id);
+ 
         for (var i = 0; i < team.userName.length; i++) {
-            listNames.innerHTML += `
-                <div class="wrap">
-                    <h3 class="likert-header">${team.userName[i]}</h3>
-                    <h6 class="likert-header mt-2">Trabalho em equipe, cooperação e descentralização de conhecimento</h6>
-                    <ul class='likert'>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-1-${sprint_id}')">
-                            <label>Muito ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-2-${sprint_id}')">
-                            <label>Ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-3-${sprint_id}')">
-                            <label>Regular</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-4-${sprint_id}')">
-                            <label>Bom</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-5-${sprint_id}')">
-                            <label>Muito bom</label>
-                        </li>
-                    </ul>
-                    <h6 class="likert-header mt-2">Iniciativa e proatividade</h6>
-                    <ul class='likert'>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-1-${sprint_id}')">
-                            <label>Muito ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-2-${sprint_id}')">
-                            <label>Ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-3-${sprint_id}')">
-                            <label>Regular</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-4-${sprint_id}')">
-                            <label>Bom</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-5-${sprint_id}')">
-                            <label>Muito bom</label>
-                        </li>
-                    </ul>
-                    <h6 class="likert-header mt-2">Autodidaxia e agregação de conhecimento ao grupo </h6>
-                    <ul class='likert'>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-1-${sprint_id}')">
-                            <label>Muito ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-2-${sprint_id}')">
-                            <label>Ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-3-${sprint_id}')">
-                            <label>Regular</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-4-${sprint_id}')">
-                            <label>Bom</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-5-${sprint_id}')">
-                            <label>Muito bom</label>
-                        </li>
-                    </ul>
-                    <h6 class="likert-header mt-2">Entrega de resultados e participação efetiva no projeto </h6>
-                    <ul class='likert'>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-1-${sprint_id}')">
-                            <label>Muito ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-2-${sprint_id}')">
-                            <label>Ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-3-${sprint_id}')">
-                            <label>Regular</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-4-${sprint_id}')">
-                            <label>Bom</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-5-${sprint_id}')">
-                            <label>Muito bom</label>
-                        </li>
-                    </ul>
-                    <h6 class="likert-header mt-2">Competência Técnica </h6>
-                    <ul class='likert'>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-1-${sprint_id}')">
-                            <label>Muito ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-2-${sprint_id}')">
-                            <label>Ruim</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-3-${sprint_id}')">
-                            <label>Regular</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-4-${sprint_id}')">
-                            <label>Bom</label>
-                        </li>
-                        <li>
-                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-5-${sprint_id}')">
-                            <label>Muito bom</label>
-                        </li>
-                    </ul>
-                </div>
-            `;
+            
+            if (userId == group.client_id) {
+                if (team.userName[i].includes('[Product Owner]')) {
+                    qtdAvaliacoes = 5;
+                    listNames.innerHTML += `
+                    <div class="wrap">
+                        <h3 class="likert-header">${team.userName[i]}</h3>
+                        <h6 class="likert-header mt-2">Trabalho em equipe, cooperação e descentralização de conhecimento</h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Iniciativa e proatividade</h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Autodidaxia e agregação de conhecimento ao grupo </h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Entrega de resultados e participação efetiva no projeto </h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Competência Técnica </h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+                    </div>
+                `;
+                }
+            }
+ 
+            if (userId == group.leader_id) {
+                if (team.userName[i].includes('[Líder Técnico]')) {
+                    qtdAvaliacoes = 5;
+                    listNames.innerHTML += `
+                    <div class="wrap">
+                        <h3 class="likert-header">${team.userName[i]}</h3>
+                        <h6 class="likert-header mt-2">Trabalho em equipe, cooperação e descentralização de conhecimento</h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Iniciativa e proatividade</h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Autodidaxia e agregação de conhecimento ao grupo </h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Entrega de resultados e participação efetiva no projeto </h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Competência Técnica </h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+                    </div>
+                `;
+                }
+            }
+ 
+            if (userId != group.leader_id && userId != group.client_id) {
+                listNames.innerHTML += `
+                    <div class="wrap">
+                        <h3 class="likert-header">${team.userName[i]}</h3>
+                        <h6 class="likert-header mt-2">Trabalho em equipe, cooperação e descentralização de conhecimento</h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Iniciativa e proatividade</h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Autodidaxia e agregação de conhecimento ao grupo </h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Entrega de resultados e participação efetiva no projeto </h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+ 
+                        <h6 class="likert-header mt-2">Competência Técnica </h6>
+                        <ul class='likert'>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-1-${sprint_id}')">
+                                <label>Muito ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-2-${sprint_id}')">
+                                <label>Ruim</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-3-${sprint_id}')">
+                                <label>Regular</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-4-${sprint_id}')">
+                                <label>Bom</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-5-${sprint_id}')">
+                                <label>Muito bom</label>
+                            </li>
+                        </ul>
+                    </div>
+                `;
+            }
         }
     }
-
+   
     function selectRate(rate_info) {
         var user = rate_info.split('-')[0];
         var criterion = rate_info.split('-')[1];
