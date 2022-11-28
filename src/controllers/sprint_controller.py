@@ -46,7 +46,13 @@ def get_sprint_finished(user_id: int):
 
     for sprint in sprints:
         avaliacoes = avaliacoesService.buscar_sprint_id_avaliacaoUsuario(sprint.id)
-        if len(avaliacoes) > 0:
+
+        usersRated = []
+        for avaliacao in avaliacoes:
+            if avaliacao.rated_by == user_id:
+                usersRated.append(user_id);
+
+        if len(avaliacoes) > 0 and user_id in usersRated:
             sprints.remove(sprint)
 
     return sprints
