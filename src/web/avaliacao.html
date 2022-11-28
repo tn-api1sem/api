@@ -397,24 +397,24 @@
                 exists = true;
 
                 if (criterion == 1) {
-                    lastGrade = avaliacoes[i].grade1;
-                    avaliacoes[i].grade1 = rate;
+                    lastGrade = avaliacoes[i].grade01;
+                    avaliacoes[i].grade01 = rate;
                 }
                 else if (criterion == 2) {
-                    lastGrade = avaliacoes[i].grade2;
-                    avaliacoes[i].grade2 = rate;
+                    lastGrade = avaliacoes[i].grade02;
+                    avaliacoes[i].grade02 = rate;
                 }
                 else if (criterion == 3) {
-                    lastGrade = avaliacoes[i].grade3;
-                    avaliacoes[i].grade3 = rate;
+                    lastGrade = avaliacoes[i].grade03;
+                    avaliacoes[i].grade03 = rate;
                 }
                 else if (criterion == 4) {
-                    lastGrade = avaliacoes[i].grade4;
-                    avaliacoes[i].grade4 = rate;
+                    lastGrade = avaliacoes[i].grade04;
+                    avaliacoes[i].grade04 = rate;
                 }
                 else if (criterion == 5) {
-                    lastGrade = avaliacoes[i].grade5;
-                    avaliacoes[i].grade5 = rate;
+                    lastGrade = avaliacoes[i].grade05;
+                    avaliacoes[i].grade05 = rate;
                 }
 
                 if (lastGrade == null) {
@@ -431,11 +431,11 @@
                     rated_user: user,
                     sprint_id: sprint,
                     rated_by: rated_by,
-                    grade1: rate,
-                    grade2: null,
-                    grade3: null,
-                    grade4: null,
-                    grade5: null,
+                    grade01: rate,
+                    grade02: null,
+                    grade03: null,
+                    grade04: null,
+                    grade05: null,
                     comment: ''
                 });
             }
@@ -445,11 +445,11 @@
                     rated_user: user,
                     sprint_id: sprint,
                     rated_by: rated_by,
-                    grade1: null,
-                    grade2: rate,
-                    grade3: null,
-                    grade4: null,
-                    grade5: null,
+                    grade01: null,
+                    grade02: rate,
+                    grade03: null,
+                    grade04: null,
+                    grade05: null,
                     comment: ''
                 });
             }
@@ -459,11 +459,11 @@
                     rated_user: user,
                     sprint_id: sprint,
                     rated_by: rated_by,
-                    grade1: null,
-                    grade2: null,
-                    grade3: rate,
-                    grade4: null,
-                    grade5: null,
+                    grade01: null,
+                    grade02: null,
+                    grade03: rate,
+                    grade04: null,
+                    grade05: null,
                     comment: ''
                 });
             }
@@ -473,11 +473,11 @@
                     rated_user: user,
                     sprint_id: sprint,
                     rated_by: rated_by,
-                    grade1: null,
-                    grade2: null,
-                    grade3: null,
-                    grade4: rate,
-                    grade5: null,
+                    grade01: null,
+                    grade02: null,
+                    grade03: null,
+                    grade04: rate,
+                    grade05: null,
                     comment: ''
                 });
             }
@@ -487,11 +487,11 @@
                     rated_user: user,
                     sprint_id: sprint,
                     rated_by: rated_by,
-                    grade1: null,
-                    grade2: null,
-                    grade3: null,
-                    grade4: null,
-                    grade5: rate,
+                    grade01: null,
+                    grade02: null,
+                    grade03: null,
+                    grade04: null,
+                    grade05: rate,
                     comment: ''
                 });
             }
@@ -510,11 +510,11 @@
                 avaliacoes[i].rated_user,
                 avaliacoes[i].sprint_id,
                 avaliacoes[i].rated_by,
-                avaliacoes[i].grade1,
-                avaliacoes[i].grade2,
-                avaliacoes[i].grade3,
-                avaliacoes[i].grade4,
-                avaliacoes[i].grade5,
+                avaliacoes[i].grade01,
+                avaliacoes[i].grade02,
+                avaliacoes[i].grade03,
+                avaliacoes[i].grade04,
+                avaliacoes[i].grade05,
                 avaliacoes[i].comment
             );
         }
