@@ -42,7 +42,7 @@ def get_sprint_finished(user_id: int):
     avaliacaoService = avaliacaoUsuario_service();
     sprintsRated = avaliacaoService.get_already_rated_sprints(user_id);
 
-    sprints = service.get_sprint_finished(list(dict.fromkeys(user_teams)), sprintsRated)
+    sprints = service.get_sprint_finished(user_id, list(dict.fromkeys(user_teams)), sprintsRated)
 
     for sprint in sprints:
         avaliacoes = avaliacoesService.buscar_sprint_id_avaliacaoUsuario(sprint.id)

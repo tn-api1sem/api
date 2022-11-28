@@ -24,6 +24,15 @@ class grupo_services(object):
         grupoModel = self._bdToModel(grupo, teams)    
         return grupoModel;
 
+    def get_groups_by_leaders_id(self, userId):
+        allGroups = self._grupo_repository.get_groups_by_leaders_id(userId)
+
+        returnGroups = []
+        for group in allGroups:
+            returnGroups.append(self.buscar_id_grupo(group.id))
+
+        return returnGroups
+
     def create(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
         self._validate(model)
