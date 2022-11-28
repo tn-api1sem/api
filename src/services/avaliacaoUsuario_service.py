@@ -31,6 +31,9 @@ class avaliacaoUsuario_service(object):
                 sprintsIds.append(sprint.id)
 
         return sprintsAlreadyRated;
+        
+    def buscar_sprint_id_avaliacaoUsuario(self, sprint_id):
+        return self._avaliacaoUsuario_repository.buscar_sprint_id_avaliacaoUsuario(sprint_id)
 
     def post_avaliacaoUsuario(self, model: avaliacaoUsuario_model):
         self.validaCadastro(model)

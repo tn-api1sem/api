@@ -6,6 +6,7 @@ from src.services.avaliacaoUsuario_service import avaliacaoUsuario_service
 from ..models.sprints_model import SprintsModel
 from ..services.sprint_service import SprintService
 from ..services.times_service import times_services as TimesService
+from ..services.avaliacaoUsuario_service import avaliacaoUsuario_service as AvaliacaoUsuarioService
 
 router = APIRouter(
     prefix="/api/v1/sprint",
@@ -15,6 +16,7 @@ router = APIRouter(
 
 service = SprintService()
 times = TimesService()
+avaliacoesService = AvaliacaoUsuarioService()
 
 
 
@@ -37,11 +39,19 @@ def get_sprint_finished(user_id: int):
             if user_id == timesModel.id_user:
                 user_teams.append(team.id)
 
-    a = avaliacaoUsuario_service();
-    sprintsRated = a.get_already_rated_sprints(user_id);
+    avaliacaoService = avaliacaoUsuario_service();
+    sprintsRated = avaliacaoService.get_already_rated_sprints(user_id);
 
-    r = service.get_sprint_finished(list(dict.fromkeys(user_teams)), sprintsRated);
-    return r;
+    sprints = service.get_sprint_finished(list(dict.fromkeys(user_teams)), sprintsRated)
+
+    for sprint in sprints:
+        avaliacoes = avaliacoesService.buscar_sprint_id_avaliacaoUsuario(sprint.id)
+        if len(avaliacoes) > 0:
+            sprints.remove(sprint)
+
+    return sprints
+
+
 
 @router.post("/")
 def create_sprint(model: SprintsModel):

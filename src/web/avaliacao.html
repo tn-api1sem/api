@@ -1,432 +1,538 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    />
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Required meta tags-->
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title Page-->
     <title>Sprints Avaliação</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all" />
+    <link href="css/font-face.css" rel="stylesheet" media="all">
     <!-- <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all"> -->
-    <link
-      href="vendor/font-awesome-6/css/all.min.css"
-      rel="stylesheet"
-      media="all"
-    />
-    <link
-      href="vendor/mdi-font/css/material-design-iconic-font.min.css"
-      rel="stylesheet"
-      media="all"
-    />
+    <link href="vendor/font-awesome-6/css/all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link
-      href="vendor/bootstrap-4.1/bootstrap.min.css"
-      rel="stylesheet"
-      media="all"
-    />
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link
-      href="vendor/animsition/animsition.min.css"
-      rel="stylesheet"
-      media="all"
-    />
-    <link
-      href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css"
-      rel="stylesheet"
-      media="all"
-    />
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all" />
-    <link
-      href="vendor/css-hamburgers/hamburgers.min.css"
-      rel="stylesheet"
-      media="all"
-    />
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all" />
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all" />
-    <link
-      href="vendor/perfect-scrollbar/perfect-scrollbar.css"
-      rel="stylesheet"
-      media="all"
-    />
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all" />
-  </head>
+    <link href="css/theme.css" rel="stylesheet" media="all">
 
-  <body class="animsition">
+    <link href="css/avaliacao.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
     <div class="page-wrapper">
-      <!-- MENU SIDEBAR-->
-      <aside class="menu-sidebar d-none d-lg-block">
-        <div class="menu-sidebar__content js-scrollbar1">
-          <nav class="navbar-sidebar">
-            <ul class="list-unstyled navbar__list" id="menu-navbar"></ul>
-          </nav>
-        </div>
-      </aside>
-      <!-- END MENU SIDEBAR-->
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list" id="menu-navbar">
 
-      <!-- PAGE CONTAINER-->
-      <div class="page-container">
-        <!-- HEADER DESKTOP-->
-        <header class="header-desktop">
-          <div class="section__content section__content--p30">
-            <div class="container-fluid">
-              <div class="header-wrap">
-                <form
-                  class="form-header invisible"
-                  action=""
-                  method="POST"
-                  id="form"
-                >
-                  <input
-                    class="au-input au-input--xl"
-                    type="text"
-                    name="search"
-                    placeholder="Search for datas &amp; reports..."
-                  />
-                  <button class="au-btn--submit" type="submit">
-                    <i class="zmdi zmdi-search"></i>
-                  </button>
-                </form>
-                <!-- Header -->
-                <div class="header-button">
-                  <div class="account-wrap">
-                    <div
-                      class="account-item clearfix js-item-menu"
-                      style="cursor: default"
-                    >
-                      <!-- <div class="image">
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <form class="form-header invisible" action="" method="POST" id="form">
+                                <input class="au-input au-input--xl" type="text" name="search"
+                                    placeholder="Search for datas &amp; reports..." />
+                                <button class="au-btn--submit" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
+                            </form>
+                            <!-- Header -->
+                            <div class="header-button">
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu" style="cursor: default">
+                                        <!-- <div class="image">
                                             <img src="images/icon/avatar-01.jpg" alt="John Doe" />
                                         </div> -->
-                      <div class="content">
-                        <a class="js-acc-btn" href="#" id="username"></a>
-                      </div>
-                      <div class="account-dropdown js-dropdown">
-                        <div class="account-dropdown__footer">
-                          <a href="login.html">
-                            <i class="zmdi zmdi-power"></i>Sair</a
-                          >
+                                        <div class="content">
+                                            <a class="js-acc-btn" href="#" id="username"></a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="account-dropdown__footer">
+                                                <a href="login.html">
+                                                    <i class="zmdi zmdi-power"></i>Sair</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE -->
+                                <h3 class="title-5 m-b-35">Sprint</h3>
+                                <div class="table-data__tool">
+                                </div>
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>Sprint</th>
+                                                <th>Data de Entrega</th>
+                                                <th>Time</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody-avaliacao">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </header>
-        <!-- HEADER DESKTOP-->
-
-        <!-- MAIN CONTENT-->
-        <div class="main-content">
-          <div class="section__content section__content--p30">
-            <div class="container-fluid">
-              <!-- SPRINTS PARA AVALIAR -->
-              <div class="row">
-                <div class="col-md-12">
-                  <!-- DATA TABLE -->
-                  <h3 class="title-5 m-b-35">Sprints para Avaliar</h3>
-                  <div class="table-data__tool"></div>
-                  <div class="table-responsive table-responsive-data2">
-                    <table class="table table-data2">
-                      <thead>
-                        <tr>
-                          <th>Sprint</th>
-                          <th>Data de Entrega</th>
-                          <th>Time</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody id="tbody-avaliacao"></tbody>
-                    </table>
-                  </div>
-                  <!-- END DATA TABLE -->
-                </div>
-              </div>
-
-              <br />
-              <br />
-
-              <!-- SPRINTS JA FINALIZADAS -->
-              <div class="row">
-                <div class="col-md-12">
-                  <!-- DATA TABLE -->
-                  <h3 class="title-5 m-b-35">Sprints já Avaliadas</h3>
-                  <div class="table-data__tool"></div>
-                  <div class="table-responsive table-responsive-data2">
-                    <table class="table table-data2">
-                      <thead>
-                        <tr>
-                          <th>Sprint</th>
-                          <th>Data de Entrega</th>
-                          <th>Time</th>
-                        </tr>
-                      </thead>
-                      <tbody id="tbody-avaliacao-finalizada"></tbody>
-                    </table>
-                  </div>
-                  <!-- END DATA TABLE -->
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
 
-      <!-- modal  -->
-      <div
-        class="modal fade"
-        id="avaliar"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="avaliar"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="avaliar">Avaliar</h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
+        <!-- modal  -->
+        <div class="modal fade" id="avaliar" tabindex="-1" role="dialog" aria-labelledby="avaliar" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="avaliar">Avaliar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="max-height: 80vh; overflow-y: scroll;">
+                        <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
+                        <div class="login-form">
+                            <div class="form-group" id="list-names">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;"
+                            class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" style="height: 35px; width: 65px; font-size: 13px;"
+                            class="btn btn-primary" disabled="true" id="btnAvaliar"
+                            onclick="newAvaliacao()">Avaliar</button>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-              <input
-                class="au-input au-input--full"
-                type="hidden"
-                name="id-user"
-                id="id-user"
-              />
-              <div class="login-form">
-                <div class="form-group" id="list-names"></div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                style="height: 35px; width: 65px; font-size: 13px"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Fechar
-              </button>
-              <button
-                type="button"
-                style="height: 35px; width: 65px; font-size: 13px"
-                class="btn btn-primary"
-                onclick="newAvaliacao()"
-              >
-                Avaliar
-              </button>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </body>
+</body>
 
-  <!-- Jquery JS-->
-  <script src="vendor/jquery-3.2.1.min.js"></script>
-  <!-- Bootstrap JS-->
-  <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-  <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-  <!-- Vendor JS       -->
-  <script src="vendor/slick/slick.min.js"></script>
-  <script src="vendor/wow/wow.min.js"></script>
-  <script src="vendor/animsition/animsition.min.js"></script>
-  <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-  <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-  <script src="vendor/counter-up/jquery.counterup.min.js"></script>
-  <script src="vendor/circle-progress/circle-progress.min.js"></script>
-  <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-  <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-  <script src="vendor/select2/select2.min.js"></script>
-  <script src="js/sidebar.js"></script>
+<!-- Jquery JS-->
+<script src="vendor/jquery-3.2.1.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<!-- Vendor JS       -->
+<script src="vendor/slick/slick.min.js">
+</script>
+<script src="vendor/wow/wow.min.js"></script>
+<script src="vendor/animsition/animsition.min.js"></script>
+<script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+</script>
+<script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+<script src="vendor/counter-up/jquery.counterup.min.js">
+</script>
+<script src="vendor/circle-progress/circle-progress.min.js"></script>
+<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="vendor/chartjs/Chart.bundle.min.js"></script>
+<script src="vendor/select2/select2.min.js"> </script>
+<script src="js/sidebar.js"></script>
 
-  <!-- Main JS-->
-  <script src="js/main.js"></script>
-  <script src="js/consts.js"></script>
-  <script src="js/js-brasil.js"></script>
+<!-- Main JS-->
+<script src="js/main.js"></script>
+<script src="js/consts.js"></script>
+<script src="js/js-brasil.js"></script>
 
-  <script>
-    document.getElementById("username").innerHTML = JSON.parse(
-      window.localStorage.getItem("user")
-    ).usuario;
-  </script>
+<script>
+    document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
+</script>
 
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <script src="js/avaliacao.js"></script>
-  ]
-  <script src="js/teams.js"></script>
+<script src="js/avaliacao.js"></script>]
+<script src="js/teams.js"></script>
 
-  <script>
+<script>
+
     var times;
+
+    var qtdAvaliacoes = 0;
+    var qtdAvaliados = 0;
 
     var avaliacoes = [];
 
     loadSprints();
-    loadAlreadyRatedSprints();
 
     async function loadSprints() {
-      let user_id = JSON.parse(window.localStorage.getItem("user")).id;
-      var sprints = await getFinishedSprints(user_id);
-      times = await getTeams();
-      var tbody = document.getElementById("tbody-avaliacao");
-      var today = new Date().toLocaleDateString("sv").replaceAll("-", "");
+        let user_id = JSON.parse(window.localStorage.getItem('user')).id;
+        var sprints = await getFinishedSprints(user_id);
+        times = await getTeams();
+        var tbody = document.getElementById('tbody-avaliacao');
+        var today = new Date().toLocaleDateString('sv').replaceAll('-', '');
 
-      for (var i = 0; i < sprints.length; i++) {
-        if (sprints[i].evaluation_range.replaceAll("-", "") >= today) {
-          tbody.innerHTML +=
-            '<tr class="tr-shadow">' +
-            "<td>" +
-            sprints[i].name +
-            "</td>" +
-            "<td>" +
-            sprints[i].end_date +
-            "</td>" +
-            "<td>" +
-            times.find((x) => x.id == sprints[i].team_id).times +
-            "</td>" +
-            '<td>\<div class="table-data-feature">' +
-            '<button class="item" data-toggle="modal" data-target="#avaliar" onclick="loadUsersTeam(' +
-            sprints[i].team_id +
-            ", " +
-            sprints[i].id +
-            ')" data-placement="top" title="Avaliar" "><i class="fas fa-thumbs-up"></i></button>' +
-            "</div>\</td>" +
-            '</tr><tr class="spacer"></tr>';
+        for (var i = 0; i < sprints.length; i++) {
+            if (sprints[i].evaluation_range.replaceAll('-', '') >= today) {
+                tbody.innerHTML += "<tr class=\"tr-shadow\">" +
+                    "<td>" + sprints[i].name + "</td>" +
+                    "<td>" + sprints[i].end_date + "</td>" +
+                    "<td>" + times.find(x => x.id == sprints[i].team_id).times + "</td>" +
+                    "<td>\<div class=\"table-data-feature\">" +
+                    '<button class="item" data-toggle="modal" data-target="#avaliar" onclick="loadUsersTeam(' + sprints[i].team_id + ', ' + sprints[i].id + ')" data-placement="top" title="Avaliar" "><i class="fas fa-thumbs-up"></i></button>' +
+                    "</div>\</td>" +
+                    "</tr><tr class=\"spacer\"></tr>"
+            }
         }
-      }
-    }
-
-    async function loadAlreadyRatedSprints() {
-      let userId = JSON.parse(window.localStorage.getItem("user")).id;
-      let alreadyRated = await getAlreadyRatedSprints(userId);
-
-      times = await getTeams()
-
-      var tbody = document.getElementById("tbody-avaliacao-finalizada");
-      var today = new Date().toLocaleDateString("sv").replaceAll("-", "");
-
-      for (var i = 0; i < alreadyRated.length; i++) {
-        tbody.innerHTML +=
-          '<tr class="tr-shadow">' +
-            "<td>" + alreadyRated[i].name + "</td>" +
-            "<td>" + alreadyRated[i].end_date + "</td>" +
-            "<td>" + times.find((x) => x.id == alreadyRated[i].team_id).times + "</td>" +
-          '</tr>' + 
-          '<tr class="spacer"></tr>';
-      }
     }
 
     function loadUsersTeam(team_id, sprint_id) {
-      var team = times.find((x) => x.id == team_id);
+        document.getElementById('btnAvaliar').disabled = true;
 
-      var listNames = document.getElementById("list-names");
-      listNames.innerHTML = "";
+        var team = times.find(x => x.id == team_id)
 
-      for (var i = 0; i < team.userName.length; i++) {
-        listNames.innerHTML +=
-          `<label>${team.userName[i]}</label>` +
-          `<button id="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-${sprint_id}')" class="item"><i class="far fa-tired fa-2xl mr-2"></i> </button>` +
-          `<button id="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-${sprint_id}')" class="item"> <i class="far fa-frown fa-2xl mr-2"></i> </button>` +
-          `<button id="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-${sprint_id}')" class="item"> <i class="far fa-meh fa-2xl mr-2"></i> </button>` +
-          `<button id="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-${sprint_id}')" class="item"> <i class="far fa-smile fa-2xl mr-2"></i> </button>` +
-          `<button id="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-${sprint_id}')" class="item"> <i class="far fa-laugh fa-2xl"></i> </button>`;
-      }
+        var listNames = document.getElementById('list-names');
+        listNames.innerHTML = "";
+
+        console.log(team);
+
+        team.userName = team.userName.reduce(function (a, b) { if (a.indexOf(b) < 0) a.push(b); return a; }, []);
+
+        avaliacoes = [];
+        qtdAvaliacoes = team.userName.length * 5;
+
+        // for (var i = 0; i < team.userName.length; i++) {
+        //     listNames.innerHTML += `<label>${team.userName[i]}</label><div class="form-control form-check-inline mb-3">` +
+        //         `<input class="form-check-input" type="radio" value="1" id="${team.id_users[i]}-1-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-${sprint_id}')" class="item"></input>` +
+        //         `<label class="form-check-label" for="${team.id_users[i]}-1-${sprint_id}">Muito Ruim</label>` +
+
+        //         `<input class="form-check-input" type="radio" value="2" id="${team.id_users[i]}-2-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-${sprint_id}')" class="item"></input>` +
+        //         `<label class="form-check-label" for="${team.id_users[i]}-2-${sprint_id}">Ruim</label>` +
+
+        //         `<input class="form-check-input" type="radio" value="3" id="${team.id_users[i]}-3-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-${sprint_id}')" class="item"></input>` +
+        //         `<label class="form-check-label" for="${team.id_users[i]}-3-${sprint_id}">Regular</label>` +
+
+        //         `<input class="form-check-input" type="radio" value="4" id="${team.id_users[i]}-4-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-${sprint_id}')" class="item"></input>` +
+        //         `<label class="form-check-label" for="${team.id_users[i]}-4-${sprint_id}">Bom</label>` +
+
+        //         `<input class="form-check-input" type="radio" value="5" id="${team.id_users[i]}-5-${sprint_id}" name="${team.id_users[i]}-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-${sprint_id}')" class="item"></input>` +
+        //         `<label class="form-check-label" for="${team.id_users[i]}-5-${sprint_id}">Muito Bom</label></div>`;
+        // }
+
+        for (var i = 0; i < team.userName.length; i++) {
+            listNames.innerHTML += `
+                <div class="wrap">
+                    <h3 class="likert-header">${team.userName[i]}</h3>
+                    <h6 class="likert-header mt-2">Trabalho em equipe, cooperação e descentralização de conhecimento</h6>
+                    <ul class='likert'>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-1-${sprint_id}')">
+                            <label>Muito ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-2-${sprint_id}')">
+                            <label>Ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-3-${sprint_id}')">
+                            <label>Regular</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-4-${sprint_id}')">
+                            <label>Bom</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-1-${sprint_id}" onclick="selectRate('${team.id_users[i]}-1-5-${sprint_id}')">
+                            <label>Muito bom</label>
+                        </li>
+                    </ul>
+                    <h6 class="likert-header mt-2">Iniciativa e proatividade</h6>
+                    <ul class='likert'>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-1-${sprint_id}')">
+                            <label>Muito ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-2-${sprint_id}')">
+                            <label>Ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-3-${sprint_id}')">
+                            <label>Regular</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-4-${sprint_id}')">
+                            <label>Bom</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-2-${sprint_id}" onclick="selectRate('${team.id_users[i]}-2-5-${sprint_id}')">
+                            <label>Muito bom</label>
+                        </li>
+                    </ul>
+                    <h6 class="likert-header mt-2">Autodidaxia e agregação de conhecimento ao grupo </h6>
+                    <ul class='likert'>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-1-${sprint_id}')">
+                            <label>Muito ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-2-${sprint_id}')">
+                            <label>Ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-3-${sprint_id}')">
+                            <label>Regular</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-4-${sprint_id}')">
+                            <label>Bom</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-3-${sprint_id}" onclick="selectRate('${team.id_users[i]}-3-5-${sprint_id}')">
+                            <label>Muito bom</label>
+                        </li>
+                    </ul>
+                    <h6 class="likert-header mt-2">Entrega de resultados e participação efetiva no projeto </h6>
+                    <ul class='likert'>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-1-${sprint_id}')">
+                            <label>Muito ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-2-${sprint_id}')">
+                            <label>Ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-3-${sprint_id}')">
+                            <label>Regular</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-4-${sprint_id}')">
+                            <label>Bom</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-4-${sprint_id}" onclick="selectRate('${team.id_users[i]}-4-5-${sprint_id}')">
+                            <label>Muito bom</label>
+                        </li>
+                    </ul>
+                    <h6 class="likert-header mt-2">Competência Técnica </h6>
+                    <ul class='likert'>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-1-${sprint_id}')">
+                            <label>Muito ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-2-${sprint_id}')">
+                            <label>Ruim</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-3-${sprint_id}')">
+                            <label>Regular</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-4-${sprint_id}')">
+                            <label>Bom</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="${team.id_users[i]}-5-${sprint_id}" onclick="selectRate('${team.id_users[i]}-5-5-${sprint_id}')">
+                            <label>Muito bom</label>
+                        </li>
+                    </ul>
+                </div>
+            `;
+        }
     }
 
     function selectRate(rate_info) {
-      var user = rate_info.split("-")[0];
-      var rate = rate_info.split("-")[1];
-      var sprint = rate_info.split("-")[2];
+        var user = rate_info.split('-')[0];
+        var criterion = rate_info.split('-')[1];
+        var rate = Number(rate_info.split('-')[2]);
+        var sprint = Number(rate_info.split('-')[3]);
 
-      if (avaliacoes.length > 0) {
-        if (avaliacoes[0].sprint != sprint) {
-          avaliacoes = [];
+        var rated_by = Number(JSON.parse(window.localStorage.getItem('user')).id);
+
+        var exists = false;
+
+        if (avaliacoes.length > 0) {
+            if (avaliacoes[0].sprint_id != sprint) {
+                avaliacoes = [];
+            }
         }
-      }
 
-      for (var i = 0; i < avaliacoes.length; i++) {
-        if (avaliacoes[i].user == user) {
-          avaliacoes.splice(i, 1);
+        for (var i = 0; i < avaliacoes.length; i++) {
+            if (avaliacoes[i].rated_user == user) {
+                exists = true;
+
+                if (criterion == 1) {
+                    lastGrade = avaliacoes[i].grade1;
+                    avaliacoes[i].grade1 = rate;
+                }
+                else if (criterion == 2) {
+                    lastGrade = avaliacoes[i].grade2;
+                    avaliacoes[i].grade2 = rate;
+                }
+                else if (criterion == 3) {
+                    lastGrade = avaliacoes[i].grade3;
+                    avaliacoes[i].grade3 = rate;
+                }
+                else if (criterion == 4) {
+                    lastGrade = avaliacoes[i].grade4;
+                    avaliacoes[i].grade4 = rate;
+                }
+                else if (criterion == 5) {
+                    lastGrade = avaliacoes[i].grade5;
+                    avaliacoes[i].grade5 = rate;
+                }
+
+                if (lastGrade == null) {
+                    qtdAvaliados++;
+                }
+            }
         }
-      }
 
-      avaliacoes.push({ user: user, rate: rate, sprint: sprint });
-
-      for (var i = 1; i < 6; i++) {
-        if (i == rate) {
-          var element = document.getElementById(rate_info);
-          var oldIcon = element.innerHTML;
-          var newIcon = element.innerHTML.replace("far", "fas");
-          element.innerHTML = newIcon;
-        } else {
-          var element = document.getElementById(user + "-" + i + "-" + sprint);
-          var oldIcon = element.innerHTML;
-          var newIcon = element.innerHTML.replace("fas", "far");
-          element.innerHTML = newIcon;
+        if (!exists) {
+            qtdAvaliados++;
+            if (criterion == 1) {
+                avaliacoes.push({
+                    id: 0,
+                    rated_user: user,
+                    sprint_id: sprint,
+                    rated_by: rated_by,
+                    grade1: rate,
+                    grade2: null,
+                    grade3: null,
+                    grade4: null,
+                    grade5: null,
+                    comment: ''
+                });
+            }
+            else if (criterion == 2) {
+                avaliacoes.push({
+                    id: 0,
+                    rated_user: user,
+                    sprint_id: sprint,
+                    rated_by: rated_by,
+                    grade1: null,
+                    grade2: rate,
+                    grade3: null,
+                    grade4: null,
+                    grade5: null,
+                    comment: ''
+                });
+            }
+            else if (criterion == 3) {
+                avaliacoes.push({
+                    id: 0,
+                    rated_user: user,
+                    sprint_id: sprint,
+                    rated_by: rated_by,
+                    grade1: null,
+                    grade2: null,
+                    grade3: rate,
+                    grade4: null,
+                    grade5: null,
+                    comment: ''
+                });
+            }
+            else if (criterion == 4) {
+                avaliacoes.push({
+                    id: 0,
+                    rated_user: user,
+                    sprint_id: sprint,
+                    rated_by: rated_by,
+                    grade1: null,
+                    grade2: null,
+                    grade3: null,
+                    grade4: rate,
+                    grade5: null,
+                    comment: ''
+                });
+            }
+            else if (criterion == 5) {
+                avaliacoes.push({
+                    id: 0,
+                    rated_user: user,
+                    sprint_id: sprint,
+                    rated_by: rated_by,
+                    grade1: null,
+                    grade2: null,
+                    grade3: null,
+                    grade4: null,
+                    grade5: rate,
+                    comment: ''
+                });
+            }
         }
-      }
+
+        console.log(avaliacoes)
+
+        if (qtdAvaliados == qtdAvaliacoes) {
+            document.getElementById('btnAvaliar').disabled = false;
+        }
     }
 
     async function newAvaliacao() {
-      var rated_by = JSON.parse(window.localStorage.getItem("user")).id;
-
-      let avaliacoesToPush = [];
-
-      for (var i = 0; i < avaliacoes.length; i++) {
-        avaliacoesToPush.push({
-          rated_user: parseInt(avaliacoes[i].user),
-          sprint_id: parseInt(avaliacoes[i].sprint),
-          rated_by: rated_by,
-          grade: parseInt(avaliacoes[i].rate),
-        });
-      }
-
-      let errors = validateRatings(avaliacoesToPush);
-      if (errors.length > 0) {
-        alert(errors.join("\n"));
-        return;
-      }
-
-      await createAvaliacao(avaliacoesToPush);
+        for (var i = 0; i < avaliacoes.length; i++) {
+            var response = await createAvaliacao(
+                avaliacoes[i].rated_user,
+                avaliacoes[i].sprint_id,
+                avaliacoes[i].rated_by,
+                avaliacoes[i].grade1,
+                avaliacoes[i].grade2,
+                avaliacoes[i].grade3,
+                avaliacoes[i].grade4,
+                avaliacoes[i].grade5,
+                avaliacoes[i].comment
+            );
+        }
     }
 
-    function validateRatings(avaliacoesToPush) {
-      let errors = [];
+        // var profiles = await getProfiles(); 
+        //     var select = document.getElementById("id_profile")
+        //     for (var i = 0; i < profiles.length; i++) {
+        //         select.innerHTML += `<option option value = ${ profiles[i].id }> ${ profiles[i].perfil }</option >`
+        //     }
 
-      let numberOfParticipants = document
-        .getElementById("list-names")
-        .getElementsByTagName("label").length;
+        // function updateAvaliacao(id_usuario, nota){
+        //     var n = notas.filter(x => x.id_u == id_usuario)[0]
+        //     n.id_u = id_usuario;
+        //     n.n = nota;
+        // }
 
-      if (numberOfParticipants != avaliacoesToPush.length) {
-        errors.push(
-          "Atenção! É necessário avaliar todos os integrantes do time."
-        );
-      }
+</script>
 
-      return errors;
-    }
-  </script>
 </html>
 <!-- end document-->

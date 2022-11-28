@@ -7,9 +7,9 @@ let getAvaliacao = async () => {
     var avaliacao;
 
     await fetch(localURL + '/api/v1/avaliacao/', requestOptions)
-    .then(response => response.text())
-    .then(result => avaliacao = result)
-    .catch(error => console.log('error', error));
+        .then(response => response.text())
+        .then(result => avaliacao = result)
+        .catch(error => console.log('error', error));
 
     return JSON.parse(avaliacao);
 }
@@ -23,9 +23,9 @@ let getFinishedSprints = async (user_id) => {
     var sprints;
 
     await fetch(localURL + `/api/v1/sprint/finished/${user_id}`, requestOptions)
-    .then(response => response.text())
-    .then(result => sprints = result)
-    .catch(error => console.log('error', error));
+        .then(response => response.text())
+        .then(result => sprints = result)
+        .catch(error => console.log('error', error));
 
     return JSON.parse(sprints);
 }
@@ -55,10 +55,10 @@ let getAvaliacaoById = async (id) => {
 
     var avaliacao;
 
-    await fetch(localURL + '/api/v1/avaliacao/'+ id, requestOptions)
-    .then(response => response.text())
-    .then(result => avaliacao = result)
-    .catch(error => console.log('error', error));
+    await fetch(localURL + '/api/v1/avaliacao/' + id, requestOptions)
+        .then(response => response.text())
+        .then(result => avaliacao = result)
+        .catch(error => console.log('error', error));
 
     return JSON.parse(avaliacao);
 }
@@ -70,18 +70,18 @@ let deleteAvaliacao = async (id) => {
     };
 
     await fetch(localURL + '/api/v1/avaliacao/' + id, requestOptions)
-    .then(response => response.text())
-    .then(result => callbackHandler(result, 'Avaliação deletada com sucesso'))
-    .catch(error => console.log('error', error));
+        .then(response => response.text())
+        .then(result => callbackHandler(result, 'Avaliação deletada com sucesso'))
+        .catch(error => console.log('error', error));
 
     window.location.reload();
 }
 
-let createAvaliacao = async (avaliacoes) => {
+let createAvaliacao = async (rated_user, sprint_id, rated_by, grade1, grade2, grade3, grade4, grade5, comment) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = JSON.stringify(avaliacoes)
+    var raw = createBody(0, rated_user, sprint_id, rated_by, grade1, grade2, grade3, grade4, grade5, comment)
 
     var requestOptions = {
         method: 'POST',
@@ -92,11 +92,9 @@ let createAvaliacao = async (avaliacoes) => {
 
     
     await fetch(localURL + "/api/v1/avaliacaoUsuario/", requestOptions)
-    .then(response => response.text())
-    .then(result => callbackHandler(result, 'Avaliacao efetuada com sucesso'))
-    .catch(error => console.log('error', error))
-
-    window.location.reload();
+        .then(response => response.text())
+        .then(result => callbackHandler(result, 'Avaliacao efetuada com sucesso'))
+        .catch(error => console.log('error', error))
 }
 
 let updateAvaliacao = async (avaliacoes) => {
@@ -113,13 +111,29 @@ let updateAvaliacao = async (avaliacoes) => {
     };
 
     await fetch(localURL + "/api/v1/avaliacao/", requestOptions)
-    .then(response => response.text())
-    .then(result => callbackHandler(result, 'Atualização realizada com sucesso'))
-    .catch(error => console.log('error', error));
+        .then(response => response.text())
+        .then(result => callbackHandler(result, 'Atualização realizada com sucesso'))
+        .catch(error => console.log('error', error));
 }
 
-function callbackHandler(response, successMessage){
-    if(response == 200){
+
+function createBody(id, rated_user, sprint_id, rated_by, grade1, grade2, grade3, grade4, grade5, comment) {
+    return JSON.stringify({
+        "id": id,
+        "rated_user": rated_user.toString(),
+        "sprint_id": sprint_id.toString(),
+        "rated_by": rated_by.toString(),
+        "grade1": grade1,
+        "grade2": grade2,
+        "grade3": grade3,
+        "grade4": grade4,
+        "grade5": grade5,
+        "comment": comment.toString(),
+    });
+}
+
+function callbackHandler(response, successMessage) {
+    if (response == 200) {
         alert(successMessage)
         window.location.reload()
         return;
