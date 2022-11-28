@@ -16,6 +16,8 @@ class times_services(object):
 
     def buscar_times(self):
         times = self._times_repository.get()
+        profiles = self._profiles_repository.get();
+        
         timeResponseList = []
 
         for time in times:
@@ -24,7 +26,7 @@ class times_services(object):
                 time.id)
             for userTeam in userTeams:
                 user = self._usuario_repository.get_by_id(userTeam.id_user);
-                timeResponse.userName.append(user.usuario)
+                timeResponse.userName.append(user.usuario+' ['+profiles[userTeam.id_profile-1].perfil+']')
                 timeResponse.id_users.append(user.id)
 
             timeResponseList.append(timeResponse)
