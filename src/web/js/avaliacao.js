@@ -60,16 +60,14 @@ let deleteAvaliacao = async (id) => {
     window.location.reload();
 }
 
-let createAvaliacao = async (rated_user, sprint_id, rated_by, grade1, grade2, grade3, grade4, grade5, comment) => {
+let createAvaliacao = async (avaliacoes) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
-    var raw = createBody(0, rated_user, sprint_id, rated_by, grade1, grade2, grade3, grade4, grade5, comment)
 
     var requestOptions = {
         method: 'POST',
         headers: myHeaders,
-        body: raw,
+        body: JSON.stringify(avaliacoes),
         redirect: 'follow'
     };
 

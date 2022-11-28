@@ -22,24 +22,19 @@ def get_avaliacaoUsuario():
 def id_get_avaliacaoUsuario(id: int):
     return service.buscar_id_avaliacaoUsuario(id)
 
+@router.get('/already-rated/{userId}')
+def get_already_rated_sprints(userId: int):
+    return service.get_already_rated_sprints(userId);
+
 
 @router.post("/")
-def post_avaliacaoUsuario(model: avaliacaoUsuario_model):
+def post_avaliacaoUsuario(avaliacaoList: list[avaliacaoUsuario_model]):
     try:
-        service.post_avaliacaoUsuario(model)
+        for avaliacao in avaliacaoList:
+            service.post_avaliacaoUsuario(avaliacao)
         return OK
     except Exception as e:
         return str(e)
-
-
-@router.put("/")
-def put_avaliacaoUsuario(model: avaliacaoUsuario_model):
-    try:
-        service.put_avaliacaoUsuario(model)
-        return OK
-    except Exception as e:
-        return str(e)
-
 
 @router.delete("/{id}")
 def delete_id_avaliacaoUsuario(id: int):

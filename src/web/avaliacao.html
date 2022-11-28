@@ -509,19 +509,7 @@
     }
 
     async function newAvaliacao() {
-        for (var i = 0; i < avaliacoes.length; i++) {
-            var response = await createAvaliacao(
-                avaliacoes[i].rated_user,
-                avaliacoes[i].sprint_id,
-                avaliacoes[i].rated_by,
-                avaliacoes[i].grade1,
-                avaliacoes[i].grade2,
-                avaliacoes[i].grade3,
-                avaliacoes[i].grade4,
-                avaliacoes[i].grade5,
-                avaliacoes[i].comment
-            );
-        }
+        var response = await createAvaliacao(avaliacoes);
     }
 
         // var profiles = await getProfiles(); 
