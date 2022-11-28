@@ -1,7 +1,10 @@
 from ftplib import all_errors
 from tokenize import group
-from ..models.grupo_model import grupo_bd, grupo_model
+from ..models.grupo_model import grupo_model,grupo_bd
+
+from ..models.times_model import times_bd
 from ..repository.grupo_repository import grupo_repository
+from ..repository.times_repository import times_repository
 from ..repository.times_repository import times_repository
 
 
@@ -21,22 +24,47 @@ class grupo_services(object):
         grupoModel = self._bdToModel(grupo, teams)    
         return grupoModel;
 
+    def get_groups_by_leaders_id(self, userId):
+        allGroups = self._grupo_repository.get_groups_by_leaders_id(userId)
+
+        returnGroups = []
+        for group in allGroups:
+            returnGroups.append(self.buscar_id_grupo(group.id))
+
+        return returnGroups
+
     def create(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
-        item = self._grupo_repository.post_grupo(grupoBd)
+        self._validate(model)
 
+        item = self._grupo_repository.post_grupo(grupoBd)
         model.id = item.id;
         self.updateTeam(model);
-       
+
+    def _validate(self, model):
+        for teamId in model.teams:
+            teamObject = self._teamsRepository.busca_id_times(teamId)
+            
+            if teamObject.id_group == model.id:
+                continue;
+
+            if (teamObject.id_group != 0 and teamObject.id_group != None):
+                group = self.buscar_id_grupo(teamObject.id_group)
+                raise Exception("O time "+ teamObject.times + " já está associado ao grupo " + group.name + ", por favor retire a relação antes de atribui-lo de novo.")
+
     def update(self, model: grupo_model):
         grupoBd = self._modelToBd(model)
-        self._grupo_repository.put_grupo(grupoBd)
+        self._validate(model);
 
+        self._grupo_repository.put_grupo(grupoBd)
         teams = self._teamsRepository.findTeamByGroup(model.id);
         for team in teams:
+            if team.id_group != model.id:
+                continue;
+                
             team.id_group = 0;
             self._teamsRepository.update(team);
-        
+
         self.updateTeam(model)
 
     def updateTeam(self, model: grupo_model):
@@ -49,6 +77,7 @@ class grupo_services(object):
                 team.id_group = model.id;
                 self._teamsRepository.update(team)
 
+
     def delete_id_grupo(self, id: int):
         allTeams = self._teamsRepository.get();        
         
@@ -57,6 +86,7 @@ class grupo_services(object):
                 raise Exception("Existe um time associado a este grupo, por favor atulize-o antes de excluir");
 
         return self ._grupo_repository.delete_id_grupo(id)
+
 
     def _modelToBd(self, model):
         grupoBd = grupo_bd();

@@ -55,13 +55,13 @@
                         <div class="header-wrap">
                             <!-- Search -->
 
-                            <form class="form-header invisible" action="" method="POST" id="form">
+                            <div class="form-header invisible" action="" method="POST" id="form">
                                 <input class="au-input au-input--xl" type="hidden" name="search"
                                     placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
-                            </form>
+                            </div>
 
                             <!-- Search -->
                             <div class="header-button">
@@ -141,31 +141,45 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input class="au-input au-input--full" type="hidden" name="id-user" id="id-user">
-                        <div class="login-form">
-                            <div class="form-group">
-                                <label>Nome da Sprint</label>
-                                <input class="au-input au-input--full" type="text'" name="nome" id="nome" placeholder="Ex: Projeto">
+                        <form id="sprint-form" name="sprint-form">
+                            <input class="au-input au-input--full" type="hidden" name="id" id="id" value="0">
+                            <div class="login-form">
+                                <div class="form-group">
+                                    <label>Nome da Sprint</label>
+                                    <input class="au-input au-input--full" type="text'" name="name" id="name" placeholder="Ex: Projeto">
+                                </div>
+                                <div class="form-group">
+                                    <label>Data de Inicio</label>
+                                    <input class="au-input au-input--full" type="date" name="start_date" id="start_date" placeholder="Ex: dd/mm/aaaa">
+                                </div>
+                                <div class="form-group">
+                                    <label>Data de Entrega</label>
+                                    <input class="au-input au-input--full" type="date" name="end_date" id="end_date" placeholder="Ex: dd/mm/aaaa">
+                                </div>
+                                <div class="form-group">
+                                    <label>Avaliação libererada até</label>
+                                    <input class="au-input au-input--full" type="date" name="evaluation_range" id="evaluation_range" placeholder="Ex: dd/mm/aaaa">
+                                </div>
+
+                                <div class="container m-t-30">
+                                    Cadastrar para
+                                        <ul class="nav nav-tabs">
+                                            <li class="nav-item">
+                                                <button id="timesC" class="btn btn-link nav-link active" type="button" onclick="changeType('team')">Times</button>
+                                            </li>
+                                            <li class="nav-item">
+                                                <button id="turmasC" class="btn btn-link nav-link" type="button" onclick="changeType('group')">Turmas</button>
+                                            </li>
+                                        </ul>
+                                        <div class="form-group m-t-10">
+                                            <select class="form-control" id="team_id" name="team_id" style="height: 43px;font-size: 13px">
+                                                <option disabled selected value="-1">Selecionar</option>
+                                            </select>
+                                        </div>
+                                </div>
+                                
                             </div>
-                            <div class="form-group">
-                                <label>Data de Inicio</label>
-                                <input class="au-input au-input--full" type="date" name="datainicio" id="datainicio" placeholder="Ex: dd/mm/aaaa">
-                            </div>
-                            <div class="form-group">
-                                <label>Data de Entrega</label>
-                                <input class="au-input au-input--full" type="date" name="dataentrega" id="dataentrega" placeholder="Ex: dd/mm/aaaa">
-                            </div>
-                            <div class="form-group">
-                                <label>Avaliação libererada até</label>
-                                <input class="au-input au-input--full" type="date" name="dataavaliacao" id="dataavaliacao" placeholder="Ex: dd/mm/aaaa">
-                            </div>
-                            <div class="form-group">
-                                <label>Times</label>
-                                <select class="form-control" id="combobox-times" style="height: 43px;font-size: 13px">
-                                    <option disabled selected value="-1">Selecionar</option>
-                                </select>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" style="height: 35px; width: 65px; font-size: 13px;" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -201,81 +215,128 @@
     <!-- Main JS-->
     <script src="js/main.js"></script>
     <script src="js/consts.js"></script>
-    <script src="js/js-brasil.js"></script>
-
-    <script>
-        document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
-    </script>
-
     <script src="js/sprint.js"></script>
     <script src="js/teams.js"></script>
+    <script src="js/groups.js"></script>
 
-    <script>
+<script>
+        document.getElementById('username').innerHTML = JSON.parse(window.localStorage.getItem('user')).usuario;
+        
+        var isTeamChoosed = true;
+        
         loadSprints();
-        loadComboBox();
+        loadComboTeams();
 
         async function loadSprints() {
             var sprints = await getSprints();
             var times = await getTeams();
             var tbody = document.getElementById('tbody-sprint');
-        
+           
             for (var i = 0; i < sprints.length; i++) {
-                tbody.innerHTML += "<tr class=\"tr-shadow\">" +
-                    "<td>" + sprints[i].name + "</td>" +
-                    "<td>" + sprints[i].start_date + "</td>" +
-                    "<td>" + sprints[i].end_date + "</td>" +
-                    "<td>" + times.find(x => x.id == sprints[i].team_id).times + "</td>" +
-                    "<td>\<div class=\"table-data-feature\">" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#createsprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"loadSprint("+ sprints[i].id +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"tooltip\" data-placement=\"top\"\title=\"Deletar\" onclick=\"deleteSprint(" + sprints[i].id + ")\" >\<i class=\"zmdi zmdi-delete text-danger\"></i>\</button>" +
-                    "<button class=\"item\" data-toggle=\"modal\" data-target=\"#notasprint\" data-placement=\"top\"\title=\"Editar\" onclick=\"notasprint("+ +")\">\<i class=\"zmdi zmdi-edit\"></i>\</button>" 
-                    "</div>\</td>" +
-                    "</tr><tr class=\"spacer\"></tr>"
+                tbody.innerHTML += `
+                    <tr class=\"tr-shadow\"> 
+                        <td> ${sprints[i].name} </td>
+                        <td> ${sprints[i].start_date} </td>
+                        <td> ${sprints[i].end_date }</td>
+                        <td> ${times.filter(x => x.id == sprints[i].team_id)[0]?.times} </td>
+                        <td>
+                            <div class=\"table-data-feature\">
+                                <button 
+                                    class=\"item\" 
+                                    data-toggle=\"modal\" 
+                                    data-target=\"#createsprint\" 
+                                    data-placement=\"top\"
+                                    title=\"Editar\" 
+                                    onclick=\"loadSprint(${sprints[i].id})\"
+                                >
+                                    <i class=\"zmdi zmdi-edit\"></i>
+                                </button>
+                                <button 
+                                    class=\"item\" 
+                                    data-toggle=\"tooltip\" 
+                                    data-placement=\"top\"
+                                    title=\"Deletar\" 
+                                    onclick=\"deleteSprint(${sprints[i].id})\"
+                                > 
+                                    <i class=\"zmdi zmdi-delete text-danger\"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class=\"spacer\">
+                    </tr>
+                `
             }
         }
 
-        async function loadComboBox(){
+        async function loadComboTeams(){
             var times = await getTeams();
-            var select = document.getElementById("combobox-times")
-
+            
+            var selectTeams = document.getElementById("team_id")
+            selectTeams.innerHTML = ''
             for(var i = 0; i < times.length; i++){
-                select.innerHTML += `<option value=${times[i].id}>${times[i].times}</option>`
+                selectTeams.innerHTML += `<option value=${times[i].id}>${times[i].times}</option>`
+            }
+        }
+
+        async function loadComboGroups(){
+            var groups = await getGroups();
+            
+            var selectTeams = document.getElementById("team_id")
+            selectTeams.innerHTML = ''
+            for(var i = 0; i < groups.length; i++){
+                selectTeams.innerHTML += `<option value=${groups[i].id}>${groups[i].name}</option>`
             }
         }
 
         async function loadSprint(id){
             var sprint = await getSprintsById(id)
-            document.getElementById('id-user').value = id;
-            document.getElementById('nome').value = sprint.name;
-            document.getElementById('datainicio').value = sprint.start_date;
-            document.getElementById('dataentrega').value = sprint.end_date;
-            document.getElementById('dataavaliacao').value = sprint.evaluation_range;
-            document.getElementById('combobox-times').value = sprint.team_id;
-        }
-        
-        function clearForm(){
-            document.getElementById('id-user').value = 0;
-            document.getElementById('nome').value = '';
-            document.getElementById('datainicio').value = null;
-            document.getElementById('dataentrega').value = null;
-            document.getElementById('dataavaliacao').value = null;
-            document.getElementById('combobox-times').value = -1;
+            jsonToForm(sprint);
+
+            document.getElementById('turmasC').classList.add('disabled')
         }
 
         function insertOrUpdate(){
-            var id = document.getElementById('id-user').value;
-            var nome = document.getElementById('nome').value;
-            var datainico = document.getElementById('datainicio').value;
-            var dataentrega = document.getElementById('dataentrega').value;
-            var dataavaliacao = document.getElementById('dataavaliacao').value;
-            var time = document.getElementById('combobox-times').value;
+            var json = formToJson("sprint-form");
 
-            if(id == 0){
-                createSprint(nome, datainico, dataentrega, time, dataavaliacao);
+            if(json["id"] == 0){
+                if(!isTeamChoosed) {
+                    createSprintForGroup(json)
+                    return;
+                }
+                createSprint(json);
                 return;
             }
 
-            updateSprint(id, nome, datainico, dataentrega, time, dataavaliacao)
+            updateSprint(json)
+        }
+
+        async function changeType(nav){
+            isTeamChoosed = nav == 'team';
+            
+            if(!isTeamChoosed){
+                await loadComboGroups();
+                document.getElementById('timesC').classList.remove('active')
+                document.getElementById('turmasC').classList.add('active')
+                return;
+            }
+            
+            await loadComboTeams();
+            document.getElementById('turmasC').classList.remove('active')
+            document.getElementById('timesC').classList.add('active')
+
+        }
+
+        function clearForm(){
+            let f = document.getElementById("sprint-form");
+            f.reset();
+
+            $('#teams').val(null).trigger('change');
+            document.getElementById('id').value = 0;
+
+            
+            document.getElementById('turmasC').classList.remove('disabled')
+            $('#timesC').tab('show')
         }
     </script>
 

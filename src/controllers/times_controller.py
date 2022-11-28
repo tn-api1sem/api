@@ -44,9 +44,7 @@ def put_times(objectToPut: times_model):
     except Exception as e:
         return str(e)
 
-
-
 @router.delete("/{id}")
-def delete_id_times(id: int):
-    times_services.delete_id_times(id)
+def delete_id_times(id:int):
+    times_services.delete(id)
     return OK

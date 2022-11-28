@@ -1,11 +1,14 @@
 from datetime import datetime
 from src.models.sprints_model import SprintsModel
 from src.repository.sprint_repository import SprintsRepository
-
+from src.repository.times_repository import times_repository as TeamRepository
+from src.services.grupo_service import grupo_services as GrupoService
 
 class SprintService(object):
     repository:SprintsRepository = SprintsRepository()
-    
+    team_repository:TeamRepository = TeamRepository()
+    group_service:GrupoService = GrupoService()
+
     def __init__(self) -> None:
         pass
 
@@ -15,12 +18,45 @@ class SprintService(object):
     def get_by_id(self, id:int) -> SprintsModel: 
         return self.repository.get_by_id(id)
 
-    def get_sprint_finished(self, user_teams) -> SprintsModel:
-        return self.repository.get_sprint_finished(user_teams)
+    def get_sprint_finished(self, userId, user_teams, ratedSprints) -> SprintsModel:
+        sprintsFinished = self.repository.get_sprint_finished(user_teams)
+        
+        allIds = []
+        for ratedSprint in ratedSprints:
+            allIds.append(ratedSprint.id)
+
+        #Obtem todas sprints finalizadas e nao avaliadas
+        returnSprints = []
+        for finishedSprints in sprintsFinished:
+            if finishedSprints.id not in allIds:
+                returnSprints.append(finishedSprints)
+
+        #Avaliações especiais
+        groupsThatIsLeader = self.group_service.get_groups_by_leaders_id(userId);
+        teamsThatIsLeader = []  
+        for group in groupsThatIsLeader:
+            for team in group.teams:
+                teamsThatIsLeader.append(team);
+
+        teamsThatIsLeader = list(dict.fromkeys(teamsThatIsLeader))
+        for t in self.repository.get_sprint_finished(teamsThatIsLeader):
+            returnSprints.append(t);
+
+        return returnSprints;
 
     def create(self, model: SprintsModel):
         self._validate(model);
         self.repository.create(model)
+        return
+
+    def create_for_group(self, model: SprintsModel):
+        teams = self.team_repository.findTeamByGroup(model.team_id) #é o id do grupo, fica mais facil no front
+
+        for team in teams:
+            model.team_id = team.id;
+            self._validate(model);
+            self.repository.create(model)
+            
         return
 
     def update(self, model: SprintsModel):

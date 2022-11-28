@@ -1,1 +1,1 @@
-{"last_index": 2, "dataset": [{"id": 1, "times": "Teste Time 1", "id_group": 2, "userName": ["admin[Usu\u00e1rio]", "admin[L\u00edder T\u00e9cnico]", "usuario[Product Owner]", "usuario[Usu\u00e1rio]"], "id_users": [1, 1, 2, 2]}, {"id": 2, "times": "Teste Time usuario_teste", "id_group": 2, "userName": ["usuario_teste[Usu\u00e1rio]", "admin[L\u00edder T\u00e9cnico]", "usuario[Product Owner]"], "id_users": [3, 1, 2]}]}
+{"last_index": 2, "dataset": [{"id": 1, "times": "Time 1", "id_group": 1}, {"id": 2, "times": "Time 2", "id_group": 1}]}

@@ -45,5 +45,5 @@ def delete_id_usuario(id:int):
         return OK
     except Exception as e:
         return str(e)
-    
+
 

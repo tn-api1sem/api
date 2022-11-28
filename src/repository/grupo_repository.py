@@ -1,5 +1,4 @@
-from src.repository.context.api_context import ApiContext
-
+from .context.api_context import ApiContext
 
 class grupo_repository(object):
     _apiContext: ApiContext = ApiContext()
@@ -28,3 +27,13 @@ class grupo_repository(object):
         self._apiContext.grupo_table.begin_transaction()
         self._apiContext.grupo_table.delete(id)
         self._apiContext.grupo_table.commit()
+
+    def get_groups_by_leaders_id(self, userId):
+        allGroups = self.get();
+
+        groupWithLeaderFound = [];
+        for group in allGroups:
+            if group.leader_id == userId or group.client_id == userId:
+                groupWithLeaderFound.append(group);
+
+        return groupWithLeaderFound;
